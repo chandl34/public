@@ -1,3 +1,0 @@
-name: fly
-xsize: 26 pixels
-ysize: 16 pixels

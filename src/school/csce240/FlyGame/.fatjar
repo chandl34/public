@@ -1,0 +1,14 @@
+#Fat Jar Configuration File
+#Wed Dec 19 19:07:56 EST 2007
+onejar.license.required=false
+manifest.classpath=
+manifest.removesigners=true
+onejar.checkbox=true
+jarname=FlyGame.jar
+manifest.mergeall=true
+manifest.mainclass=main.FlyGame
+manifest.file=<createnew>
+jarname.isextern=false
+onejar.expand=
+excludes=
+includes=
