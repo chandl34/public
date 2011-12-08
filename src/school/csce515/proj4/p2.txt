@@ -1,0 +1,4 @@
+eos.cse.sc.edu 17000
+ares.cse.sc.edu 19000
+ashley.cse.sc.edu 20000
+

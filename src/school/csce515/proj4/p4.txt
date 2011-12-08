@@ -1,0 +1,3 @@
+eos.cse.sc.edu 17000
+eos.cse.sc.edu 18000
+ares.cse.sc.edu 19000

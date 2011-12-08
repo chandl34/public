@@ -1,0 +1,13 @@
+from one machine (or one terminal):
+  ./wserver
+
+from another machine (or terminal):
+  ./wclient hostname 2010 username
+
+In the terminal where you start wclient, type in 
+anything, and the wserver will reponse.
+
+^C, or q to quit wclient.
+
+#hostname is the machine where you start wserver, 
+#username is your login name

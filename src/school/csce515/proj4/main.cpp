@@ -1,0 +1,360 @@
+#include <netdb.h> 
+#include <arpa/inet.h>	
+#include <iostream>
+#include <stdio.h>
+#include <stdlib.h>
+#include <list>
+#include <fcntl.h>
+#include <sys/errno.h>
+#include <pthread.h>
+#include <string.h>
+#include <signal.h>
+
+
+using namespace std;
+
+
+const int MAXLINE = 4096, LISTENQ = 1024;
+enum{DISCONNECTED, CONNECTING, CONNECTED};
+
+int listenfd;
+int* connpeerfd;
+int* peerfd;
+list<sockaddr_in> peer;
+list<sockaddr_in>::iterator iter;
+int maxpeers;
+
+
+
+void error(const char* msg){
+    perror(msg);
+    exit(0);
+}
+
+// Socket functions
+int Socket(int family, int type, int protocol){
+	int n = socket(family, type, protocol);
+	if(n < 0)
+		error("socket() error\n");
+	return n;
+}
+
+int Connect(int sockfd, struct sockaddr_in* addr){
+	socklen_t len = sizeof(*addr);	
+	return connect(sockfd, (struct sockaddr*) addr, len);
+	//if(connect(sockfd, (struct sockaddr*) addr, len) < 0)
+	//	error("connect() error\n");
+}
+
+ 
+void Close(int sockfd){
+	if(close(sockfd) < 0)
+		error("close() error\n");
+}
+
+void Bind(int sockfd, struct sockaddr_in* addr){	
+	if(bind(sockfd, (struct sockaddr*) addr, sizeof(*addr)) < 0)
+		error("bind() error\n");
+}
+
+void Listen(int sockfd){
+	if(listen(sockfd, LISTENQ) < 0)
+		error("listen() error\n");
+}
+
+int Accept(int sockfd){	
+	int n = accept(sockfd, 0, 0);
+	if(n < 0)
+		error("accept() error\n");
+	return n;
+}
+
+int Fcntl(int fd, int cmd, int arg){
+	int n = fcntl(fd, cmd, arg); 
+	if(n < 0)
+		error("fcntl() error");
+	return n;
+}
+
+int Select(int maxfdp1, fd_set* readset, fd_set* writeset, 
+		   fd_set* exceptset, struct timeval* timeout){
+	int n = select(maxfdp1, readset, writeset, exceptset, timeout);
+	if(n < 0)
+		error("select() error\n");	
+	return n;
+}
+
+
+// Socket I/O
+int Read(int sockfd, char* buffer, int s){
+	int n = read(sockfd, buffer, s);
+	if(n < 0)
+		error("read() error\n");
+	return n;
+}
+
+int Write(int sockfd, char* buffer, int s){
+	int n = write(sockfd, buffer, s);
+	if(n < 0)
+		error("write() error\n");
+	return n;
+}
+
+int Recvfrom(int sockfd, char* buffer, int size, 
+			 struct sockaddr_in* addr){
+	socklen_t len = sizeof(*addr);	
+	int n = recvfrom(sockfd, buffer, size, 0, 
+					 (struct sockaddr*) addr, &len);
+	if(n < 0)
+		error("recvfrom() error\n");
+	return n;
+}
+
+int Sendto(int sockfd, char* buffer, int size, 
+		   struct sockaddr_in* addr){
+	socklen_t len = sizeof(*addr);	
+	int n = sendto(sockfd, buffer, size, 0, 
+				   (struct sockaddr*) addr, len);
+	if(n < 0)
+		error("sendto() error\n");
+	return n;
+}
+
+uint32_t getIP(int sockfd){
+	struct sockaddr_in serv;
+	socklen_t len = sizeof(serv);
+	if(getsockname(sockfd, (struct sockaddr*) &serv, &len) < 0)
+		return -1;
+	return serv.sin_addr.s_addr;
+}
+
+uint16_t getPort(int sockfd){
+	struct sockaddr_in serv;
+	socklen_t len = sizeof(serv);
+	if(getsockname(sockfd, (struct sockaddr*) &serv, &len) < 0)
+		return -1;
+	return serv.sin_port;
+}
+
+
+// File I/O
+void readPeersFile(char* filename, int localport){
+	FILE* file;
+	char str[MAXLINE];
+	
+	// Open peersfile for reading
+	file = fopen(filename, "rb");
+	if(file == NULL)
+		error("file not found");
+	
+	while(fscanf(file, "%s", str) != EOF){
+		struct sockaddr_in p;
+		
+		bzero(&p, sizeof(p));		
+		p.sin_family = AF_INET;	
+		
+		// Get hostname
+		struct hostent* server = gethostbyname(str);
+		bcopy((char*) server->h_addr, 
+			  (char*) &p.sin_addr.s_addr,
+			  server->h_length);	
+		
+		if(fscanf(file, "%s", str) == EOF){
+			printf("Error reading port, skipping peer\n");
+			break;
+		}				
+		
+		// Get portname
+		p.sin_port = htons(atoi(str));	
+		
+		if(p.sin_addr.s_addr != 16777343 || // This # always shows when you use loopback 127.0.0.1
+		   p.sin_port != htons(localport))	// ... prevents connecting to your own listening socket
+			peer.push_back(p);
+		
+	}
+	
+	fclose(file);
+}
+
+
+// Closing client handler
+void sigLeave(int signo){	
+	printf("\nShutting down...\n");
+	delete [] connpeerfd;
+	delete [] peerfd;
+	exit(0);
+}
+
+
+// Child process
+void* userInput(void* data){	
+	char buffer[MAXLINE];
+	int i, fd;
+	while(true){
+		if(fgets(buffer, MAXLINE-1, stdin) == NULL)	 // Catch CTRL + D
+			sigLeave(SIGINT);		
+		
+		// Send to all other connected clients
+		for(i = 0; i < maxpeers; i++){
+			fd = connpeerfd[i];
+			if(fd == -1)
+				break;
+			Write(fd, buffer, strlen(buffer));
+		}
+	}
+	pthread_exit(NULL);
+}
+
+
+
+
+int main (int argc, char* const argv[]) {
+	if(argc < 4)
+		error("usage %s port maxpeers peersfile");			
+		
+	int i;
+	struct sockaddr_in localaddr;
+			   			   
+	// Create list of peers
+	readPeersFile(argv[3], atoi(argv[1]));
+	maxpeers = atoi(argv[2]);
+	int totalpeers = peer.size();
+	 
+	// Create sockets for each peer, sets non-blocking
+	peerfd = new int[totalpeers];	
+	int connstate[totalpeers];
+	int flags;
+	for(i = 0; i < totalpeers; i++){
+		peerfd[i] = Socket(AF_INET, SOCK_STREAM, 0);
+		flags = Fcntl(peerfd[i], F_GETFL, 0);
+		Fcntl(peerfd[i], F_SETFL, flags | O_NONBLOCK);
+		connstate[i] = DISCONNECTED;
+	}
+			
+	// Attempt to connect to peers
+	int peers = 0;
+	int connecting = 0;
+	for(i = 0, iter = peer.begin(); iter != peer.end() || peers == maxpeers; i++, iter++){
+		if(Connect(peerfd[i], &(*iter)) == 0){  // Code doesn't go here
+			cout << "Shouldn't be here" << endl;
+			connstate[i] = CONNECTED;
+			peers++;
+		}
+	//	cout << errno << endl;
+		if(errno == EINPROGRESS){			// Always goes to here
+			connstate[i] = CONNECTING;
+			connecting++;
+		}
+	}	
+	
+	int connfd;	
+	connpeerfd = new int[maxpeers];  // Another array of sockets of peers... this allows sockets for peers not on the peer list
+	for(i = 0; i < maxpeers; i++)
+		connpeerfd[i] = -1;
+			
+	// Setup signals for quitting peers
+	signal(SIGHUP, sigLeave);		// Catch closing window
+	signal(SIGINT, sigLeave);		// Catch CTRL + C
+	signal(SIGQUIT, sigLeave);		// Catch CTRL + \\
+	
+	// Wait for all connections to be made
+	int err = 0;
+	socklen_t len = sizeof(err);
+	while(connecting > 0){
+		for(i = 0, iter = peer.begin(); iter != peer.end(); i++, iter++){
+			if(connstate[i] == CONNECTING){
+				cout << "error: " << getsockopt(peerfd[i], SOL_SOCKET, SO_ERROR, &err, &len) << endl;
+				cout << "i: " << i << " : " << err << " " << errno << endl;
+				if(err == 0){	// Connected
+					connstate[i] = CONNECTED;
+					connecting--;
+										
+					if(peers < maxpeers){
+						connpeerfd[peers] = peerfd[i];
+						peers++;
+//cout << connpeerfd[peers-1] << endl;
+						printf("Client connected...\n");
+					}
+					else{
+						printf("Too many connections, closing socket...\n");
+						Close(peerfd[i]);						
+					}
+				}
+				else if(err == ECONNREFUSED){
+					connstate[i] = DISCONNECTED;
+					connecting--;
+				}
+			}
+		}
+	}
+	
+	// Setup TCP listening socket
+	listenfd = Socket(AF_INET, SOCK_STREAM, 0);	
+	
+	// Init localaddr
+	bzero(&localaddr, sizeof(localaddr));
+	localaddr.sin_family = AF_INET;
+	localaddr.sin_addr.s_addr = htonl(INADDR_ANY);
+	localaddr.sin_port = htons(atoi(argv[1]));
+	
+	// Listen for new connections
+	Bind(listenfd, &localaddr);
+	Listen(listenfd);
+	int maxfd = listenfd;
+	
+	// Setting up select()
+	fd_set readset, allset;
+	FD_ZERO(&allset);
+	FD_SET(listenfd, &allset);
+	for(int i = 0; i < peers; i++)
+		FD_SET(connpeerfd[i], &allset);
+	
+	// Collect user input
+	pthread_t child;
+	if(pthread_create(&child, NULL, userInput, NULL))
+		error("pthread_create() error");
+	
+	int n;
+	char buffer[MAXLINE];
+	while(true){	
+		readset = allset;
+		Select(maxfd + 1, &readset, NULL, NULL, NULL);
+				
+		if(FD_ISSET(listenfd, &readset)){
+			connfd = Accept(listenfd);
+			
+			if(peers < maxpeers){
+				FD_SET(connfd, &allset);
+				maxfd = max(connfd, maxfd);
+				connpeerfd[peers] = connfd;
+				peers++;
+				printf("Client connected...\n");
+			}
+			else
+				Close(connfd);
+		}	
+		for(i = 0; i < peers; i++){
+			if(FD_ISSET(connpeerfd[i], &readset)){
+//cout << connpeerfd[i] << endl;
+				n = Read(connpeerfd[i], buffer, MAXLINE);
+				if(n == 0){		// Disconnect
+					Close(connpeerfd[i]);
+					FD_CLR(connpeerfd[i], &allset);
+					for(int j = i; j < peers - 1; j++)
+						connpeerfd[j] = connpeerfd[j+1];					
+					peers--;
+					i--;
+					connpeerfd[peers] = -1;
+					printf("Client disconnected...\n");
+				}				
+				else{					
+					printf("> ");	
+					fwrite(buffer, sizeof(char), n, stdout);					
+				}
+			}		
+		}				
+	}
+	
+	
+    return 0;
+}

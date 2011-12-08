@@ -1,0 +1,51 @@
+#include <iostream>
+#include <stdlib.h> /* for atoi() */
+#include <unistd.h> /* for getlogin() */
+#include <string>
+#include "Gui.h"
+#include "ClientConn.h"
+using namespace std;
+
+int main(int argc, char** argv) {
+
+  char* hostname;
+  int portno;
+  string username;
+  
+  if (argc < 3 || argc > 4){
+    cerr << "Usage: " << argv[0] << " HOSTNAME PORTNO [USERNAME] ..." << endl;
+    return -1;
+  }
+
+  hostname = argv[1];
+  portno = atoi(argv[2]);
+
+  if (argc == 3)
+    username = getlogin();  // be unix login name by default
+  else                      // argc == 4
+    username = argv[3];     // using what user provided
+
+  Gui g;
+
+//  try {
+  ClientConn c(hostname, portno);
+
+  if (!c.connect()) {
+	cerr << "Exiting, Attempt to connect failed!" << endl;
+	return -1;
+  }
+//  }
+//  catch {
+//  }
+  int turn = 1;
+  string tmp;
+  tmp = "HELO HUMAN WAR1.0 " + username;
+  c.send(tmp);
+  while(true) {
+      tmp = g.input();
+      if (tmp != "A") c.send(tmp);
+      if (tmp == "q") break;
+  }
+  return 0;
+}
+
