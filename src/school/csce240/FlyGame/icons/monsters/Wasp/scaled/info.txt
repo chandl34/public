@@ -1,0 +1,7 @@
+name: wasp
+xsize: 60
+ysize: 44
+
+~scaled
+xsize: 120
+ysize: 88

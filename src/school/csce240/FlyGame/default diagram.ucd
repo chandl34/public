@@ -1,0 +1,335 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<editmodel:ClassDiagramEditModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:editmodel="editmodel.xmi" xmlns:options="options.xmi" name="default diagram" foregroundRGB="255,255,255" id="{UMLID=_VRpZUKUnEdyoeenXuu_VTg,JavaID=.}" metadata="uml2-1.0" initialized="true" scrolledY="-45" tag="1000" key="323030373036323920466C7947616D652F4A6F6E617468616E204368616E646C6572">
+  <children xsi:type="editmodel:ClassEditModel" targetConnections="//@children.1/@sourceConnections.0 //@children.2/@sourceConnections.0 //@children.3/@sourceConnections.0 //@children.5/@sourceConnections.0 //@children.6/@sourceConnections.0 //@children.7/@sourceConnections.0 //@children.10/@sourceConnections.0" name="AnimatedLabel" location="310,190" size="161,275" id="{UMLID=_W4nXIKUnEdyoeenXuu_VTg,JavaID=/AnimatedLabel}" runTimeClassModel="step(),isAlive(),remove(),createGnats(),sendCursorLocation(II),causeDamage(),hitTest(IIII),AnimatedLabel(ILFlyGame;),createBlueShots(),game,kill(),thing">
+    <children xsi:type="editmodel:CompartmentEditModel">
+      <children xsi:type="editmodel:AttributeEditModel" name="game" id="{UMLID=_W5NNAKUnEdyoeenXuu_VTg,JavaID=/AnimatedLabel@aLabel+/FlyGame@game|/FlyGame#game}"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="thing" id="{UMLID=_W5gvAaUnEdyoeenXuu_VTg,JavaID=/AnimatedLabel@aLabel+/AnimatedThing@thing|/AnimatedThing#thing}"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="138,180">
+      <children xsi:type="editmodel:MethodEditModel" name="AnimatedLabel" id="{UMLID=_W6Zf0qUnEdyoeenXuu_VTg,JavaID=/AnimatedLabel#AnimatedLabel(ILFlyGame;)}"/>
+      <children xsi:type="editmodel:MethodEditModel" name="causeDamage" id="{UMLID=_W5p48aUnEdyoeenXuu_VTg,JavaID=/AnimatedLabel#causeDamage()}"/>
+      <children xsi:type="editmodel:MethodEditModel" name="createBlueShots" id="{UMLID=_W6Gk5qUnEdyoeenXuu_VTg,JavaID=/AnimatedLabel#createBlueShots()}"/>
+      <children xsi:type="editmodel:MethodEditModel" name="createGnats" id="{UMLID=_W5p48qUnEdyoeenXuu_VTg,JavaID=/AnimatedLabel#createGnats()}"/>
+      <children xsi:type="editmodel:MethodEditModel" name="hitTest" id="{UMLID=_W6QV4KUnEdyoeenXuu_VTg,JavaID=/AnimatedLabel#hitTest(IIII)}"/>
+      <children xsi:type="editmodel:MethodEditModel" name="isAlive" id="{UMLID=_W5p486UnEdyoeenXuu_VTg,JavaID=/AnimatedLabel#isAlive()}"/>
+      <children xsi:type="editmodel:MethodEditModel" name="kill" id="{UMLID=_W5gvA6UnEdyoeenXuu_VTg,JavaID=/AnimatedLabel#kill()}"/>
+      <children xsi:type="editmodel:MethodEditModel" name="remove" id="{UMLID=_W5p48KUnEdyoeenXuu_VTg,JavaID=/AnimatedLabel#remove()}"/>
+      <children xsi:type="editmodel:MethodEditModel" name="sendCursorLocation" id="{UMLID=_W6Gk4KUnEdyoeenXuu_VTg,JavaID=/AnimatedLabel#sendCursorLocation(II)}"/>
+      <children xsi:type="editmodel:MethodEditModel" name="step" id="{UMLID=_W6Gk5aUnEdyoeenXuu_VTg,JavaID=/AnimatedLabel#step()}"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <sourceConnections xsi:type="editmodel:DependencyEditModel" size="2,1" autoLocated="true" id="{UMLID=_W8CekaUnEdyoeenXuu_VTg,JavaID=/AnimatedLabel->/FlyGame}" source="//@children.0" target="//@children.5" targetEnd="//@children.0/@sourceConnections.0/@children.2" label="//@children.0/@sourceConnections.0/@children.0" sourceEnd="//@children.0/@sourceConnections.0/@children.1" connectionRouterKind="Manhattan">
+      <children xsi:type="editmodel:WireLabelEditModel" foregroundRGB="255,255,255" location="521,279" size="87,28" fontInfo="Arial-8-0" anchorKind="MiddlePart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="161,117" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="0,327"/>
+    </sourceConnections>
+    <sourceConnections xsi:type="editmodel:DependencyEditModel" size="2,1" autoLocated="true" id="{UMLID=_W8WAkaUnEdyoeenXuu_VTg,JavaID=/AnimatedLabel->/AnimatedThing}" source="//@children.0" target="//@children.1" targetEnd="//@children.0/@sourceConnections.1/@children.2" label="//@children.0/@sourceConnections.1/@children.0" sourceEnd="//@children.0/@sourceConnections.1/@children.1" connectionRouterKind="Manhattan">
+      <children xsi:type="editmodel:WireLabelEditModel" foregroundRGB="255,255,255" location="212,419" size="87,28" fontInfo="Arial-8-0" anchorKind="MiddlePart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="0,257" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="174,17"/>
+    </sourceConnections>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPrivateAttributes="true" showProtectedAttributes="true" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showProtectedMethods="true" showPublicMethods="true" showPackageMethods="true" showPrivateMethods="true" showStaticMethods="true" showProtectedInnerClasses="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showPrivateInnerClasses="true" showStaticInnerClasses="true" showMethods="true" showAttributes="true"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" targetConnections="//@children.0/@sourceConnections.1 //@children.2/@sourceConnections.1 //@children.3/@sourceConnections.1 //@children.6/@sourceConnections.1 //@children.7/@sourceConnections.1 //@children.10/@sourceConnections.1" name="AnimatedThing" location="18,430" size="174,527" id="{UMLID=_W5gvAqUnEdyoeenXuu_VTg,JavaID=/AnimatedThing}" runTimeClassModel="step(),getVVelocity(),INCREMENTMAX,setSpeed(I),alive,goingClockwise,setVelocity(II),timer,setAlive(Z),increment,deathSound,isAlive(),vely,velx,speed,targetX,targetY,degrees,getSpeed(),aLabel,circularMovement(),AnimatedThing(LAnimatedLabel;),setTargetLocation(II),whenSwitchedDirections,getHVelocity(),kill()">
+    <children xsi:type="editmodel:CompartmentEditModel" size="151,216">
+      <children xsi:type="editmodel:AttributeEditModel" name="INCREMENTMAX" id="{UMLID=_W-k1MqUnEdyoeenXuu_VTg,JavaID=/AnimatedThing#INCREMENTMAX}"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="aLabel" id="{UMLID=_W-umMKUnEdyoeenXuu_VTg,JavaID=/AnimatedLabel@aLabel+/AnimatedThing@thing|/AnimatedLabel#aLabel}"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="alive" id="{UMLID=_W-k1NKUnEdyoeenXuu_VTg,JavaID=/AnimatedThing#alive}"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="deathSound" id="{UMLID=_W-bEMaUnEdyoeenXuu_VTg,JavaID=/Sound@deathSound+/AnimatedThing@ownedEnd|/Sound#deathSound}"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="degrees" id="{UMLID=_W-k1NaUnEdyoeenXuu_VTg,JavaID=/AnimatedThing#degrees}"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="goingClockwise" id="{UMLID=_W-k1NqUnEdyoeenXuu_VTg,JavaID=/AnimatedThing#goingClockwise}"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="increment" id="{UMLID=_W-bEMKUnEdyoeenXuu_VTg,JavaID=/AnimatedThing#increment}"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="speed" id="{UMLID=_W-k1MKUnEdyoeenXuu_VTg,JavaID=/AnimatedThing#speed}"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="targetX" id="{UMLID=_W-k1MaUnEdyoeenXuu_VTg,JavaID=/AnimatedThing#targetX}"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="targetY" id="{UMLID=_W-k1M6UnEdyoeenXuu_VTg,JavaID=/AnimatedThing#targetY}"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="timer" id="{UMLID=_W-umMaUnEdyoeenXuu_VTg,JavaID=/AnimatedThing#timer}"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="velx" id="{UMLID=_W-bENKUnEdyoeenXuu_VTg,JavaID=/AnimatedThing#velx}"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="vely" id="{UMLID=_W-bEM6UnEdyoeenXuu_VTg,JavaID=/AnimatedThing#vely}"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="whenSwitchedDirections" id="{UMLID=_W-umMqUnEdyoeenXuu_VTg,JavaID=/AnimatedThing#whenSwitchedDirections}"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="127,216">
+      <children xsi:type="editmodel:MethodEditModel" name="AnimatedThing" id="{UMLID=_W_BhJKUnEdyoeenXuu_VTg,JavaID=/AnimatedThing#AnimatedThing(LAnimatedLabel;)}"/>
+      <children xsi:type="editmodel:MethodEditModel" name="circularMovement" id="{UMLID=_W_BhI6UnEdyoeenXuu_VTg,JavaID=/AnimatedThing#circularMovement()}"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getHVelocity" id="{UMLID=_W_KrFqUnEdyoeenXuu_VTg,JavaID=/AnimatedThing#getHVelocity()}"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getSpeed" id="{UMLID=_W-3wIqUnEdyoeenXuu_VTg,JavaID=/AnimatedThing#getSpeed()}"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getVVelocity" id="{UMLID=_W_UcEKUnEdyoeenXuu_VTg,JavaID=/AnimatedThing#getVVelocity()}"/>
+      <children xsi:type="editmodel:MethodEditModel" name="isAlive" id="{UMLID=_W_KrE6UnEdyoeenXuu_VTg,JavaID=/AnimatedThing#isAlive()}"/>
+      <children xsi:type="editmodel:MethodEditModel" name="kill" id="{UMLID=_W_KrEqUnEdyoeenXuu_VTg,JavaID=/AnimatedThing#kill()}"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setAlive" id="{UMLID=_W_BhJ6UnEdyoeenXuu_VTg,JavaID=/AnimatedThing#setAlive(Z)}"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setSpeed" id="{UMLID=_W_UcE6UnEdyoeenXuu_VTg,JavaID=/AnimatedThing#setSpeed(I)}"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setTargetLocation" id="{UMLID=_W-3wJaUnEdyoeenXuu_VTg,JavaID=/AnimatedThing#setTargetLocation(II)}"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setVelocity" id="{UMLID=_W-umM6UnEdyoeenXuu_VTg,JavaID=/AnimatedThing#setVelocity(II)}"/>
+      <children xsi:type="editmodel:MethodEditModel" name="step" id="{UMLID=_W-3wIaUnEdyoeenXuu_VTg,JavaID=/AnimatedThing#step()}"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <sourceConnections xsi:type="editmodel:DependencyEditModel" size="2,1" autoLocated="true" id="{UMLID=_XAzp0qUnEdyoeenXuu_VTg,JavaID=/AnimatedThing->/AnimatedLabel}" source="//@children.1" target="//@children.0" targetEnd="//@children.1/@sourceConnections.0/@children.2" label="//@children.1/@sourceConnections.0/@children.0" sourceEnd="//@children.1/@sourceConnections.0/@children.1" connectionRouterKind="Manhattan">
+      <children xsi:type="editmodel:WireLabelEditModel" foregroundRGB="255,255,255" location="261,445" size="87,28" fontInfo="Arial-8-0" anchorKind="MiddlePart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="174,37" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="0,261"/>
+    </sourceConnections>
+    <sourceConnections xsi:type="editmodel:DependencyEditModel" size="2,1" autoLocated="true" id="{UMLID=_XAgu4qUnEdyoeenXuu_VTg,JavaID=/AnimatedThing->/Sound}" source="//@children.1" target="//@children.8" targetEnd="//@children.1/@sourceConnections.1/@children.2" label="//@children.1/@sourceConnections.1/@children.0" sourceEnd="//@children.1/@sourceConnections.1/@children.1" connectionRouterKind="Manhattan">
+      <children xsi:type="editmodel:WireLabelEditModel" foregroundRGB="255,255,255" location="89,393" size="122,28" fontInfo="Arial-8-0" anchorKind="MiddlePart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="61,0" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="59,193"/>
+    </sourceConnections>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPrivateAttributes="true" showProtectedAttributes="true" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showProtectedMethods="true" showPublicMethods="true" showPackageMethods="true" showPrivateMethods="true" showStaticMethods="true" showProtectedInnerClasses="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showPrivateInnerClasses="true" showStaticInnerClasses="true" showMethods="true" showAttributes="true"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" name="BlueFly" location="510,1000" size="128,121" id="{UMLID=_XCvjgKUnEdyoeenXuu_VTg,JavaID=/BlueFly}" runTimeClassModel="BlueFly(LAnimatedLabel;),step(),icon,attackAnimating">
+    <children xsi:type="editmodel:CompartmentEditModel" size="105,36">
+      <children xsi:type="editmodel:AttributeEditModel" name="attackAnimating" id="{UMLID=_XC5UgqUnEdyoeenXuu_VTg,JavaID=/BlueFly#attackAnimating}"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="icon" id="{UMLID=_XC5UgKUnEdyoeenXuu_VTg,JavaID=/BlueFly#icon}"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="75,36">
+      <children xsi:type="editmodel:MethodEditModel" name="BlueFly" id="{UMLID=_XDDFgKUnEdyoeenXuu_VTg,JavaID=/BlueFly#BlueFly(LAnimatedLabel;)}"/>
+      <children xsi:type="editmodel:MethodEditModel" name="step" id="{UMLID=_XDDFg6UnEdyoeenXuu_VTg,JavaID=/BlueFly#step()}"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <sourceConnections xsi:type="editmodel:DependencyEditModel" size="2,1" autoLocated="true" id="{UMLID=_XEYiQaUnEdyoeenXuu_VTg,JavaID=/BlueFly->/AnimatedLabel}" source="//@children.2" target="//@children.0" targetEnd="//@children.2/@sourceConnections.0/@children.2" label="//@children.2/@sourceConnections.0/@children.0" sourceEnd="//@children.2/@sourceConnections.0/@children.1" connectionRouterKind="Manhattan">
+      <children xsi:type="editmodel:WireLabelEditModel" foregroundRGB="255,255,255" location="295,712" size="87,28" fontInfo="Arial-8-0" automaticRelocationAllowed="false" locationOnWireFromSource="147.0" distanceFromWire="-284.0" anchorKind="MiddlePart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="0,10" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="151,275"/>
+    </sourceConnections>
+    <sourceConnections xsi:type="editmodel:DependencyEditModel" size="2,1" autoLocated="true" id="{UMLID=_XD72UqUnEdyoeenXuu_VTg,JavaID=/BlueFly->/AnimatedThing}" source="//@children.2" target="//@children.1" targetEnd="//@children.2/@sourceConnections.1/@children.2" label="//@children.2/@sourceConnections.1/@children.0" sourceEnd="//@children.2/@sourceConnections.1/@children.1" connectionRouterKind="Manhattan">
+      <children xsi:type="editmodel:WireLabelEditModel" foregroundRGB="255,255,255" location="361,965" size="149,28" fontInfo="Arial-8-0" anchorKind="MiddlePart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="0,10" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="164,527"/>
+    </sourceConnections>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPrivateAttributes="true" showProtectedAttributes="true" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showProtectedMethods="true" showPublicMethods="true" showPackageMethods="true" showPrivateMethods="true" showStaticMethods="true" showProtectedInnerClasses="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showPrivateInnerClasses="true" showStaticInnerClasses="true" showMethods="true" showAttributes="true"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" name="BlueShot" location="380,1000" size="106,103" id="{UMLID=_XE-_MKUnEdyoeenXuu_VTg,JavaID=/BlueShot}" runTimeClassModel="step(),icon,BlueShot(ILAnimatedLabel;)">
+    <children xsi:type="editmodel:CompartmentEditModel" size="49,18">
+      <children xsi:type="editmodel:AttributeEditModel" name="icon" id="{UMLID=_XFIJIaUnEdyoeenXuu_VTg,JavaID=/BlueShot#icon}"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="83,36">
+      <children xsi:type="editmodel:MethodEditModel" name="BlueShot" id="{UMLID=_XFIJI6UnEdyoeenXuu_VTg,JavaID=/BlueShot#BlueShot(ILAnimatedLabel;)}"/>
+      <children xsi:type="editmodel:MethodEditModel" name="step" id="{UMLID=_XFIJIqUnEdyoeenXuu_VTg,JavaID=/BlueShot#step()}"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <sourceConnections xsi:type="editmodel:DependencyEditModel" size="2,1" autoLocated="true" id="{UMLID=_XGLSAaUnEdyoeenXuu_VTg,JavaID=/BlueShot->/AnimatedLabel}" source="//@children.3" target="//@children.0" targetEnd="//@children.3/@sourceConnections.0/@children.2" label="//@children.3/@sourceConnections.0/@children.0" sourceEnd="//@children.3/@sourceConnections.0/@children.1" connectionRouterKind="Manhattan">
+      <children xsi:type="editmodel:WireLabelEditModel" foregroundRGB="255,255,255" location="435,719" size="87,28" fontInfo="Arial-8-0" anchorKind="MiddlePart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="45,0" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="115,275"/>
+    </sourceConnections>
+    <sourceConnections xsi:type="editmodel:DependencyEditModel" size="2,1" autoLocated="true" id="{UMLID=_XFumEqUnEdyoeenXuu_VTg,JavaID=/BlueShot->/AnimatedThing}" source="//@children.3" target="//@children.1" targetEnd="//@children.3/@sourceConnections.1/@children.2" label="//@children.3/@sourceConnections.1/@children.0" sourceEnd="//@children.3/@sourceConnections.1/@children.1" connectionRouterKind="Manhattan">
+      <children xsi:type="editmodel:WireLabelEditModel" foregroundRGB="255,255,255" location="400,960" size="149,28" fontInfo="Arial-8-0" anchorKind="MiddlePart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="10,0" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="174,517"/>
+    </sourceConnections>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPrivateAttributes="true" showProtectedAttributes="true" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showProtectedMethods="true" showPublicMethods="true" showPackageMethods="true" showPrivateMethods="true" showStaticMethods="true" showProtectedInnerClasses="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showPrivateInnerClasses="true" showStaticInnerClasses="true" showMethods="true" showAttributes="true"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" targetConnections="//@children.5/@sourceConnections.1" name="Data" location="160,0" size="87,108" id="{UMLID=_XG644KUnEdyoeenXuu_VTg,JavaID=/Data}" runTimeClassModel="save(LUser;),u,load()">
+    <children xsi:type="editmodel:CompartmentEditModel">
+      <children xsi:type="editmodel:AttributeEditModel" name="u" id="{UMLID=_XG644aUnEdyoeenXuu_VTg,JavaID=/User@u+/Data@ownedEnd|/User#u}"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="64,36">
+      <children xsi:type="editmodel:MethodEditModel" name="load" id="{UMLID=_XHEp4aUnEdyoeenXuu_VTg,JavaID=/Data#load()}"/>
+      <children xsi:type="editmodel:MethodEditModel" name="save" id="{UMLID=_XHEp5KUnEdyoeenXuu_VTg,JavaID=/Data#save(LUser;)}"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <sourceConnections xsi:type="editmodel:DependencyEditModel" size="2,1" autoLocated="true" id="{UMLID=_XI2ykqUnEdyoeenXuu_VTg,JavaID=/Data->/User}" source="//@children.4" target="//@children.9" targetEnd="//@children.4/@sourceConnections.0/@children.2" label="//@children.4/@sourceConnections.0/@children.0" sourceEnd="//@children.4/@sourceConnections.0/@children.1" connectionRouterKind="Manhattan">
+      <children xsi:type="editmodel:WireLabelEditModel" foregroundRGB="255,255,255" location="161,39" size="87,28" fontInfo="Arial-8-0" anchorKind="MiddlePart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="0,54" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="124,64"/>
+    </sourceConnections>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPrivateAttributes="true" showProtectedAttributes="true" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showProtectedMethods="true" showPublicMethods="true" showPackageMethods="true" showPrivateMethods="true" showStaticMethods="true" showProtectedInnerClasses="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showPrivateInnerClasses="true" showStaticInnerClasses="true" showMethods="true" showAttributes="true"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" targetConnections="//@children.0/@sourceConnections.0" name="FlyGame" location="650,-20" size="184,1295" id="{UMLID=_W5gvAKUnEdyoeenXuu_VTg,JavaID=/FlyGame}" runTimeClassModel="main([Ljava.lang.String;),mouseDragged(Ljava.awt.event.MouseEvent;),BLUESHOT4,backgroundLabel,onTitleScreen,swatterIcon,damageAnimating,createAndShowGUI(),createBug(I),currentMusic,gameOver,mouseClicked(Ljava.awt.event.MouseEvent;),aLabel,FlyGame(),BLUESHOT2,lvl2IntroSound,BLUESHOT3,BLUESHOT1,counterLabel,WASP,onScreen,blueShotSound,remove(LAnimatedLabel;),musicPlaying,createGnats(LAnimatedLabel;),swatSound,mouseEntered(Ljava.awt.event.MouseEvent;),currentLevel,HEIGHT,layeredPane,BLUEFLY,hurtHandIcon,YFUDGE,startSound,timer,takeDamage(),healthHandIcon,healthHandLabel,gameCursorLabelAnimating,mouseReleased(Ljava.awt.event.MouseEvent;),stopMusic(),music,GNAT1,backgroundIcon,rainbowCursorIcon,playLevel(I),toBeKilled,gameOver(),clearScreen(),gameCursorLabel,mouseExited(Ljava.awt.event.MouseEvent;),ableToAttack,playMusic(),GNAT3,GNAT2,WIDTH,menuCursorLabel,SMALLFLY,mouseMoved(Ljava.awt.event.MouseEvent;),SWATTERHEIGHT,XFUDGE,mousePressed(Ljava.awt.event.MouseEvent;),createBlueShots(LAnimatedLabel;),menuCursorLabelAnimating,counterIcon,user,SWATTERWIDTH">
+    <children xsi:type="editmodel:CompartmentEditModel" size="161,702">
+      <children xsi:type="editmodel:AttributeEditModel" name="BLUEFLY" id="{UMLID=_XNn906UnEdyoeenXuu_VTg,JavaID=/FlyGame#BLUEFLY}"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="BLUESHOT1" id="{UMLID=_XOhVsaUnEdyoeenXuu_VTg,JavaID=/FlyGame#BLUESHOT1}"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="BLUESHOT2" id="{UMLID=_XOXktaUnEdyoeenXuu_VTg,JavaID=/FlyGame#BLUESHOT2}"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="BLUESHOT3" id="{UMLID=_XOhVsKUnEdyoeenXuu_VTg,JavaID=/FlyGame#BLUESHOT3}"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="BLUESHOT4" id="{UMLID=_XNeM06UnEdyoeenXuu_VTg,JavaID=/FlyGame#BLUESHOT4}"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="GNAT1" id="{UMLID=_XN64wqUnEdyoeenXuu_VTg,JavaID=/FlyGame#GNAT1}"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="GNAT2" id="{UMLID=_XOEpxKUnEdyoeenXuu_VTg,JavaID=/FlyGame#GNAT2}"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="GNAT3" id="{UMLID=_XOEpw6UnEdyoeenXuu_VTg,JavaID=/FlyGame#GNAT3}"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="HEIGHT" id="{UMLID=_XNeM1qUnEdyoeenXuu_VTg,JavaID=/FlyGame#HEIGHT}"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="SMALLFLY" id="{UMLID=_XOOawKUnEdyoeenXuu_VTg,JavaID=/FlyGame#SMALLFLY}"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="SWATTERHEIGHT" id="{UMLID=_XOXksqUnEdyoeenXuu_VTg,JavaID=/FlyGame#SWATTERHEIGHT}"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="SWATTERWIDTH" id="{UMLID=_XOhVtaUnEdyoeenXuu_VTg,JavaID=/FlyGame#SWATTERWIDTH}"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="WASP" id="{UMLID=_XOhVtKUnEdyoeenXuu_VTg,JavaID=/FlyGame#WASP}"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="WIDTH" id="{UMLID=_XOEpxaUnEdyoeenXuu_VTg,JavaID=/FlyGame#WIDTH}"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="XFUDGE" id="{UMLID=_XOXks6UnEdyoeenXuu_VTg,JavaID=/FlyGame#XFUDGE}"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="YFUDGE" id="{UMLID=_XNxu06UnEdyoeenXuu_VTg,JavaID=/FlyGame#YFUDGE}"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="aLabel" id="{UMLID=_XOOawaUnEdyoeenXuu_VTg,JavaID=/AnimatedLabel@aLabel+/FlyGame@game|/AnimatedLabel#aLabel}"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="ableToAttack" id="{UMLID=_XOEpwqUnEdyoeenXuu_VTg,JavaID=/FlyGame#ableToAttack}"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="backgroundIcon" id="{UMLID=_XN64xKUnEdyoeenXuu_VTg,JavaID=/FlyGame#backgroundIcon}"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="backgroundLabel" id="{UMLID=_XNn90KUnEdyoeenXuu_VTg,JavaID=/FlyGame#backgroundLabel}"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="blueShotSound" id="{UMLID=_XNeM0aUnEdyoeenXuu_VTg,JavaID=/Sound@blueShotSound+/FlyGame@ownedEnd|/Sound#blueShotSound}"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="counterIcon" id="{UMLID=_XOXktqUnEdyoeenXuu_VTg,JavaID=/FlyGame#counterIcon}"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="counterLabel" id="{UMLID=_XOhVsqUnEdyoeenXuu_VTg,JavaID=/FlyGame#counterLabel}"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="currentLevel" id="{UMLID=_XNeM1aUnEdyoeenXuu_VTg,JavaID=/FlyGame#currentLevel}"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="currentMusic" id="{UMLID=_XN64waUnEdyoeenXuu_VTg,JavaID=/Sound@currentMusic+/FlyGame@ownedEnd|/Sound#currentMusic}"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="damageAnimating" id="{UMLID=_XNxu0KUnEdyoeenXuu_VTg,JavaID=/FlyGame#damageAnimating}"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="gameCursorLabel" id="{UMLID=_XOEpwaUnEdyoeenXuu_VTg,JavaID=/FlyGame#gameCursorLabel}"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="gameCursorLabelAnimating" id="{UMLID=_XN64wKUnEdyoeenXuu_VTg,JavaID=/FlyGame#gameCursorLabelAnimating}"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="gameOver" id="{UMLID=_XN64xqUnEdyoeenXuu_VTg,JavaID=/FlyGame#gameOver}"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="healthHandIcon" id="{UMLID=_XNxu1qUnEdyoeenXuu_VTg,JavaID=/FlyGame#healthHandIcon}"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="healthHandLabel" id="{UMLID=_XNxu1aUnEdyoeenXuu_VTg,JavaID=/FlyGame#healthHandLabel}"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="hurtHandIcon" id="{UMLID=_XNxu0aUnEdyoeenXuu_VTg,JavaID=/FlyGame#hurtHandIcon}"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="layeredPane" id="{UMLID=_XNn90aUnEdyoeenXuu_VTg,JavaID=/FlyGame#layeredPane}"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="lvl2IntroSound" id="{UMLID=_XOXkt6UnEdyoeenXuu_VTg,JavaID=/Sound@lvl2IntroSound+/FlyGame@ownedEnd|/Sound#lvl2IntroSound}"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="menuCursorLabel" id="{UMLID=_XOEpxqUnEdyoeenXuu_VTg,JavaID=/FlyGame#menuCursorLabel}"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="menuCursorLabelAnimating" id="{UMLID=_XOXktKUnEdyoeenXuu_VTg,JavaID=/FlyGame#menuCursorLabelAnimating}"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="music" id="{UMLID=_XN64w6UnEdyoeenXuu_VTg,JavaID=/Sound@music+/FlyGame@ownedEnd|/Sound#music}"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="musicPlaying" id="{UMLID=_XNeM0qUnEdyoeenXuu_VTg,JavaID=/FlyGame#musicPlaying}"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="onScreen" id="{UMLID=_XNeM0KUnEdyoeenXuu_VTg,JavaID=/FlyGame#onScreen}"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="onTitleScreen" id="{UMLID=_XNn91KUnEdyoeenXuu_VTg,JavaID=/FlyGame#onTitleScreen}"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="rainbowCursorIcon" id="{UMLID=_XN64xaUnEdyoeenXuu_VTg,JavaID=/FlyGame#rainbowCursorIcon}"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="startSound" id="{UMLID=_XNxu0qUnEdyoeenXuu_VTg,JavaID=/Sound@startSound+/FlyGame@ownedEnd|/Sound#startSound}"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="swatSound" id="{UMLID=_XNeM1KUnEdyoeenXuu_VTg,JavaID=/Sound@swatSound+/FlyGame@ownedEnd|/Sound#swatSound}"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="swatterIcon" id="{UMLID=_XNn91aUnEdyoeenXuu_VTg,JavaID=/FlyGame#swatterIcon}"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="timer" id="{UMLID=_XNxu1KUnEdyoeenXuu_VTg,JavaID=/FlyGame#timer}"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="toBeKilled" id="{UMLID=_XOEpwKUnEdyoeenXuu_VTg,JavaID=/FlyGame#toBeKilled}"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="user" id="{UMLID=_XOhVs6UnEdyoeenXuu_VTg,JavaID=/User@user+/FlyGame@ownedEnd|/User#user}"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="137,360">
+      <children xsi:type="editmodel:MethodEditModel" name="FlyGame" id="{UMLID=_XPQ8k6UnEdyoeenXuu_VTg,JavaID=/FlyGame#FlyGame()}"/>
+      <children xsi:type="editmodel:MethodEditModel" name="clearScreen" id="{UMLID=_XO0QoaUnEdyoeenXuu_VTg,JavaID=/FlyGame#clearScreen()}"/>
+      <children xsi:type="editmodel:MethodEditModel" name="createAndShowGUI" id="{UMLID=_XPHLlqUnEdyoeenXuu_VTg,JavaID=/FlyGame#createAndShowGUI()}"/>
+      <children xsi:type="editmodel:MethodEditModel" name="createBlueShots" id="{UMLID=_XO-BoqUnEdyoeenXuu_VTg,JavaID=/FlyGame#createBlueShots(LAnimatedLabel;)}"/>
+      <children xsi:type="editmodel:MethodEditModel" name="createBug" id="{UMLID=_XPQ8laUnEdyoeenXuu_VTg,JavaID=/FlyGame#createBug(I)}"/>
+      <children xsi:type="editmodel:MethodEditModel" name="createGnats" id="{UMLID=_XPHLk6UnEdyoeenXuu_VTg,JavaID=/FlyGame#createGnats(LAnimatedLabel;)}"/>
+      <children xsi:type="editmodel:MethodEditModel" name="gameOver" id="{UMLID=_XPtohaUnEdyoeenXuu_VTg,JavaID=/FlyGame#gameOver()}"/>
+      <children xsi:type="editmodel:MethodEditModel" name="main" id="{UMLID=_XPtogaUnEdyoeenXuu_VTg,JavaID=/FlyGame#main([Ljava.lang.String;)}"/>
+      <children xsi:type="editmodel:MethodEditModel" name="mouseClicked" id="{UMLID=_XO0QoqUnEdyoeenXuu_VTg,JavaID=/FlyGame#mouseClicked(Ljava.awt.event.MouseEvent;)}"/>
+      <children xsi:type="editmodel:MethodEditModel" name="mouseDragged" id="{UMLID=_XPQ8kKUnEdyoeenXuu_VTg,JavaID=/FlyGame#mouseDragged(Ljava.awt.event.MouseEvent;)}"/>
+      <children xsi:type="editmodel:MethodEditModel" name="mouseEntered" id="{UMLID=_XPj3haUnEdyoeenXuu_VTg,JavaID=/FlyGame#mouseEntered(Ljava.awt.event.MouseEvent;)}"/>
+      <children xsi:type="editmodel:MethodEditModel" name="mouseExited" id="{UMLID=_XPj3gqUnEdyoeenXuu_VTg,JavaID=/FlyGame#mouseExited(Ljava.awt.event.MouseEvent;)}"/>
+      <children xsi:type="editmodel:MethodEditModel" name="mouseMoved" id="{UMLID=_XPatkqUnEdyoeenXuu_VTg,JavaID=/FlyGame#mouseMoved(Ljava.awt.event.MouseEvent;)}"/>
+      <children xsi:type="editmodel:MethodEditModel" name="mousePressed" id="{UMLID=_XO-BpaUnEdyoeenXuu_VTg,JavaID=/FlyGame#mousePressed(Ljava.awt.event.MouseEvent;)}"/>
+      <children xsi:type="editmodel:MethodEditModel" name="mouseReleased" id="{UMLID=_XOqfoKUnEdyoeenXuu_VTg,JavaID=/FlyGame#mouseReleased(Ljava.awt.event.MouseEvent;)}"/>
+      <children xsi:type="editmodel:MethodEditModel" name="playLevel" id="{UMLID=_XO0QpqUnEdyoeenXuu_VTg,JavaID=/FlyGame#playLevel(I)}"/>
+      <children xsi:type="editmodel:MethodEditModel" name="playMusic" id="{UMLID=_XO0QoKUnEdyoeenXuu_VTg,JavaID=/FlyGame#playMusic()}"/>
+      <children xsi:type="editmodel:MethodEditModel" name="remove" id="{UMLID=_XPHLkKUnEdyoeenXuu_VTg,JavaID=/FlyGame#remove(LAnimatedLabel;)}"/>
+      <children xsi:type="editmodel:MethodEditModel" name="stopMusic" id="{UMLID=_XPQ8lKUnEdyoeenXuu_VTg,JavaID=/FlyGame#stopMusic()}"/>
+      <children xsi:type="editmodel:MethodEditModel" name="takeDamage" id="{UMLID=_XO0QpaUnEdyoeenXuu_VTg,JavaID=/FlyGame#takeDamage()}"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <sourceConnections xsi:type="editmodel:DependencyEditModel" size="2,1" autoLocated="true" id="{UMLID=_XXAjUaUnEdyoeenXuu_VTg,JavaID=/FlyGame->/AnimatedLabel}" source="//@children.5" target="//@children.0" targetEnd="//@children.5/@sourceConnections.0/@children.2" label="//@children.5/@sourceConnections.0/@children.0" sourceEnd="//@children.5/@sourceConnections.0/@children.1" connectionRouterKind="Manhattan">
+      <children xsi:type="editmodel:WireLabelEditModel" foregroundRGB="255,255,255" location="522,299" size="87,28" fontInfo="Arial-8-0" anchorKind="MiddlePart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="0,347" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="161,137"/>
+    </sourceConnections>
+    <sourceConnections xsi:type="editmodel:DependencyEditModel" size="2,1" autoLocated="true" id="{UMLID=_XUCH0qUnEdyoeenXuu_VTg,JavaID=/FlyGame->/Data}" source="//@children.5" target="//@children.4" targetEnd="//@children.5/@sourceConnections.1/@children.2" label="//@children.5/@sourceConnections.1/@children.0" sourceEnd="//@children.5/@sourceConnections.1/@children.1" connectionRouterKind="Manhattan">
+      <children xsi:type="editmodel:WireLabelEditModel" foregroundRGB="255,255,255" location="388,26" size="131,28" fontInfo="Arial-8-0" anchorKind="MiddlePart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="0,74" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="87,54"/>
+    </sourceConnections>
+    <sourceConnections xsi:type="editmodel:DependencyEditModel" size="2,1" autoLocated="true" id="{UMLID=_XUezwqUnEdyoeenXuu_VTg,JavaID=/FlyGame->/User}" source="//@children.5" target="//@children.9" targetEnd="//@children.5/@sourceConnections.2/@children.2" label="//@children.5/@sourceConnections.2/@children.0" sourceEnd="//@children.5/@sourceConnections.2/@children.1" connectionRouterKind="Manhattan">
+      <children xsi:type="editmodel:WireLabelEditModel" foregroundRGB="255,255,255" location="357,58" size="87,28" fontInfo="Arial-8-0" anchorKind="MiddlePart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="0,106" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="124,96"/>
+    </sourceConnections>
+    <sourceConnections xsi:type="editmodel:DependencyEditModel" size="2,1" autoLocated="true" id="{UMLID=_XYWnIaUnEdyoeenXuu_VTg,JavaID=/FlyGame->/Sound}" source="//@children.5" target="//@children.8" targetEnd="//@children.5/@sourceConnections.3/@children.2" label="//@children.5/@sourceConnections.3/@children.0" sourceEnd="//@children.5/@sourceConnections.3/@children.1" connectionRouterKind="Manhattan">
+      <children xsi:type="editmodel:WireLabelEditModel" foregroundRGB="255,255,255" location="356,258" size="87,28" fontInfo="Arial-8-0" anchorKind="MiddlePart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="0,306" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="119,96"/>
+    </sourceConnections>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPrivateAttributes="true" showProtectedAttributes="true" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showProtectedMethods="true" showPublicMethods="true" showPackageMethods="true" showPrivateMethods="true" showStaticMethods="true" showProtectedInnerClasses="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showPrivateInnerClasses="true" showStaticInnerClasses="true" showMethods="true" showAttributes="true"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" name="Gnat" location="10,1000" size="96,139" id="{UMLID=_XcFQkKUnEdyoeenXuu_VTg,JavaID=/Gnat}" runTimeClassModel="step(),icon,startStep,Gnat(ILAnimatedLabel;),compass">
+    <children xsi:type="editmodel:CompartmentEditModel" size="73,54">
+      <children xsi:type="editmodel:AttributeEditModel" name="compass" id="{UMLID=_XcYLgaUnEdyoeenXuu_VTg,JavaID=/Gnat#compass}"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="icon" id="{UMLID=_XcOagKUnEdyoeenXuu_VTg,JavaID=/Gnat#icon}"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="startStep" id="{UMLID=_XcYLgKUnEdyoeenXuu_VTg,JavaID=/Gnat#startStep}"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="63,36">
+      <children xsi:type="editmodel:MethodEditModel" name="Gnat" id="{UMLID=_XcYLgqUnEdyoeenXuu_VTg,JavaID=/Gnat#Gnat(ILAnimatedLabel;)}"/>
+      <children xsi:type="editmodel:MethodEditModel" name="step" id="{UMLID=_Xch8gqUnEdyoeenXuu_VTg,JavaID=/Gnat#step()}"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <sourceConnections xsi:type="editmodel:DependencyEditModel" size="2,1" autoLocated="true" id="{UMLID=_XdatUaUnEdyoeenXuu_VTg,JavaID=/Gnat->/AnimatedLabel}" source="//@children.6" target="//@children.0" targetEnd="//@children.6/@sourceConnections.0/@children.2" label="//@children.6/@sourceConnections.0/@children.0" sourceEnd="//@children.6/@sourceConnections.0/@children.1" connectionRouterKind="Manhattan">
+      <children xsi:type="editmodel:WireLabelEditModel" foregroundRGB="255,255,255" location="174,982" size="87,28" fontInfo="Arial-8-0" anchorKind="MiddlePart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="96,10" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="10,275"/>
+    </sourceConnections>
+    <sourceConnections xsi:type="editmodel:DependencyEditModel" size="2,1" autoLocated="true" id="{UMLID=_Xc-BYqUnEdyoeenXuu_VTg,JavaID=/Gnat->/AnimatedThing}" source="//@children.6" target="//@children.1" targetEnd="//@children.6/@sourceConnections.1/@children.2" label="//@children.6/@sourceConnections.1/@children.0" sourceEnd="//@children.6/@sourceConnections.1/@children.1" connectionRouterKind="Manhattan">
+      <children xsi:type="editmodel:WireLabelEditModel" foregroundRGB="255,255,255" location="71,965" size="149,28" fontInfo="Arial-8-0" anchorKind="MiddlePart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="51,0" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="43,527"/>
+    </sourceConnections>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPrivateAttributes="true" showProtectedAttributes="true" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showProtectedMethods="true" showPublicMethods="true" showPackageMethods="true" showPrivateMethods="true" showStaticMethods="true" showProtectedInnerClasses="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showPrivateInnerClasses="true" showStaticInnerClasses="true" showMethods="true" showAttributes="true"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" name="SmallFly" location="260,1000" size="102,103" id="{UMLID=_XeKUMKUnEdyoeenXuu_VTg,JavaID=/SmallFly}" runTimeClassModel="step(),icon,SmallFly(LAnimatedLabel;)">
+    <children xsi:type="editmodel:CompartmentEditModel" size="49,18">
+      <children xsi:type="editmodel:AttributeEditModel" name="icon" id="{UMLID=_XeUFMKUnEdyoeenXuu_VTg,JavaID=/SmallFly#icon}"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="79,36">
+      <children xsi:type="editmodel:MethodEditModel" name="SmallFly" id="{UMLID=_XeUFMqUnEdyoeenXuu_VTg,JavaID=/SmallFly#SmallFly(LAnimatedLabel;)}"/>
+      <children xsi:type="editmodel:MethodEditModel" name="step" id="{UMLID=_XeUFMaUnEdyoeenXuu_VTg,JavaID=/SmallFly#step()}"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <sourceConnections xsi:type="editmodel:DependencyEditModel" size="2,1" autoLocated="true" id="{UMLID=_XfNdEaUnEdyoeenXuu_VTg,JavaID=/SmallFly->/AnimatedLabel}" source="//@children.7" target="//@children.0" targetEnd="//@children.7/@sourceConnections.0/@children.2" label="//@children.7/@sourceConnections.0/@children.0" sourceEnd="//@children.7/@sourceConnections.0/@children.1" connectionRouterKind="Manhattan">
+      <children xsi:type="editmodel:WireLabelEditModel" foregroundRGB="255,255,255" location="345,719" size="87,28" fontInfo="Arial-8-0" anchorKind="MiddlePart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="75,0" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="25,275"/>
+    </sourceConnections>
+    <sourceConnections xsi:type="editmodel:DependencyEditModel" size="2,1" autoLocated="true" id="{UMLID=_Xe6iIqUnEdyoeenXuu_VTg,JavaID=/SmallFly->/AnimatedThing}" source="//@children.7" target="//@children.1" targetEnd="//@children.7/@sourceConnections.1/@children.2" label="//@children.7/@sourceConnections.1/@children.0" sourceEnd="//@children.7/@sourceConnections.1/@children.1" connectionRouterKind="Manhattan">
+      <children xsi:type="editmodel:WireLabelEditModel" foregroundRGB="255,255,255" location="112,786" size="149,28" fontInfo="Arial-8-0" automaticRelocationAllowed="false" locationOnWireFromSource="173.0" distanceFromWire="84.0" anchorKind="MiddlePart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="10,0" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="174,517"/>
+    </sourceConnections>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPrivateAttributes="true" showProtectedAttributes="true" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showProtectedMethods="true" showPublicMethods="true" showPackageMethods="true" showPrivateMethods="true" showStaticMethods="true" showProtectedInnerClasses="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showPrivateInnerClasses="true" showStaticInnerClasses="true" showMethods="true" showAttributes="true"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" targetConnections="//@children.1/@sourceConnections.1 //@children.5/@sourceConnections.3" name="Sound" location="20,190" size="119,193" id="{UMLID=_W-bEMqUnEdyoeenXuu_VTg,JavaID=/Sound}" runTimeClassModel="getSamples(),Sound(Ljava.lang.String;),stop(),line,format,getSamples(Ljavax.sound.sampled.AudioInputStream;),play(),samples">
+    <children xsi:type="editmodel:CompartmentEditModel" size="69,54">
+      <children xsi:type="editmodel:AttributeEditModel" name="format" id="{UMLID=_XgP-46UnEdyoeenXuu_VTg,JavaID=/Sound#format}"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="line" id="{UMLID=_XgG08KUnEdyoeenXuu_VTg,JavaID=/Sound#line}"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="samples" id="{UMLID=_XgZv4KUnEdyoeenXuu_VTg,JavaID=/Sound#samples}"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="96,90">
+      <children xsi:type="editmodel:MethodEditModel" name="Sound" id="{UMLID=_Xgi516UnEdyoeenXuu_VTg,JavaID=/Sound#Sound(Ljava.lang.String;)}"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getSamples" id="{UMLID=_XgZv56UnEdyoeenXuu_VTg,JavaID=/Sound#getSamples(Ljavax.sound.sampled.AudioInputStream;)}"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getSamples" id="{UMLID=_XgZv4qUnEdyoeenXuu_VTg,JavaID=/Sound#getSamples()}"/>
+      <children xsi:type="editmodel:MethodEditModel" name="play" id="{UMLID=_Xgsq0aUnEdyoeenXuu_VTg,JavaID=/Sound#play()}"/>
+      <children xsi:type="editmodel:MethodEditModel" name="stop" id="{UMLID=_XgZv4aUnEdyoeenXuu_VTg,JavaID=/Sound#stop()}"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPrivateAttributes="true" showProtectedAttributes="true" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showProtectedMethods="true" showPublicMethods="true" showPackageMethods="true" showPrivateMethods="true" showStaticMethods="true" showProtectedInnerClasses="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showPrivateInnerClasses="true" showStaticInnerClasses="true" showMethods="true" showAttributes="true"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" targetConnections="//@children.4/@sourceConnections.0 //@children.5/@sourceConnections.2" name="User" location="18,-10" size="124,193" id="{UMLID=_XHEp4KUnEdyoeenXuu_VTg,JavaID=/User}" runTimeClassModel="setMaxLevel(I),getMaxLevel(),getHealth(),maxLevel,User(II),health,User(),setHealth(I)">
+    <children xsi:type="editmodel:CompartmentEditModel" size="75,36">
+      <children xsi:type="editmodel:AttributeEditModel" name="health" id="{UMLID=_Xm9D0aUnEdyoeenXuu_VTg,JavaID=/User#health}"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="maxLevel" id="{UMLID=_Xm9D0KUnEdyoeenXuu_VTg,JavaID=/User#maxLevel}"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="101,108">
+      <children xsi:type="editmodel:MethodEditModel" name="User" id="{UMLID=_XnG00KUnEdyoeenXuu_VTg,JavaID=/User#User()}"/>
+      <children xsi:type="editmodel:MethodEditModel" name="User" id="{UMLID=_XnG00aUnEdyoeenXuu_VTg,JavaID=/User#User(II)}"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getHealth" id="{UMLID=_Xm9D0qUnEdyoeenXuu_VTg,JavaID=/User#getHealth()}"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getMaxLevel" id="{UMLID=_XnG01qUnEdyoeenXuu_VTg,JavaID=/User#getMaxLevel()}"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setHealth" id="{UMLID=_XnQl1aUnEdyoeenXuu_VTg,JavaID=/User#setHealth(I)}"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setMaxLevel" id="{UMLID=_XnQl0qUnEdyoeenXuu_VTg,JavaID=/User#setMaxLevel(I)}"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPrivateAttributes="true" showProtectedAttributes="true" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showProtectedMethods="true" showPublicMethods="true" showPackageMethods="true" showPrivateMethods="true" showStaticMethods="true" showProtectedInnerClasses="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showPrivateInnerClasses="true" showStaticInnerClasses="true" showMethods="true" showAttributes="true"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" name="Wasp" location="119,1000" size="128,121" id="{UMLID=_XovzkKUnEdyoeenXuu_VTg,JavaID=/Wasp}" runTimeClassModel="step(),icon,Wasp(LAnimatedLabel;),attackAnimating">
+    <children xsi:type="editmodel:CompartmentEditModel" size="105,36">
+      <children xsi:type="editmodel:AttributeEditModel" name="attackAnimating" id="{UMLID=_XpCugKUnEdyoeenXuu_VTg,JavaID=/Wasp#attackAnimating}"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="icon" id="{UMLID=_Xo49gaUnEdyoeenXuu_VTg,JavaID=/Wasp#icon}"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="68,36">
+      <children xsi:type="editmodel:MethodEditModel" name="Wasp" id="{UMLID=_XpCugqUnEdyoeenXuu_VTg,JavaID=/Wasp#Wasp(LAnimatedLabel;)}"/>
+      <children xsi:type="editmodel:MethodEditModel" name="step" id="{UMLID=_XpCugaUnEdyoeenXuu_VTg,JavaID=/Wasp#step()}"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <sourceConnections xsi:type="editmodel:DependencyEditModel" size="2,1" autoLocated="true" id="{UMLID=_XqPBUaUnEdyoeenXuu_VTg,JavaID=/Wasp->/AnimatedLabel}" source="//@children.10" target="//@children.0" targetEnd="//@children.10/@sourceConnections.0/@children.2" label="//@children.10/@sourceConnections.0/@children.0" sourceEnd="//@children.10/@sourceConnections.0/@children.1" connectionRouterKind="Manhattan">
+      <children xsi:type="editmodel:WireLabelEditModel" foregroundRGB="255,255,255" location="283,891" size="87,28" fontInfo="Arial-8-0" automaticRelocationAllowed="false" locationOnWireFromSource="43.00000000000001" distanceFromWire="105.0" anchorKind="MiddlePart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="128,10" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="10,275"/>
+    </sourceConnections>
+    <sourceConnections xsi:type="editmodel:DependencyEditModel" size="2,1" autoLocated="true" id="{UMLID=_Xp8GYqUnEdyoeenXuu_VTg,JavaID=/Wasp->/AnimatedThing}" source="//@children.10" target="//@children.1" targetEnd="//@children.10/@sourceConnections.1/@children.2" label="//@children.10/@sourceConnections.1/@children.0" sourceEnd="//@children.10/@sourceConnections.1/@children.1" connectionRouterKind="Manhattan">
+      <children xsi:type="editmodel:WireLabelEditModel" foregroundRGB="255,255,255" location="165,965" size="149,28" fontInfo="Arial-8-0" anchorKind="MiddlePart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="36,0" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="137,527"/>
+    </sourceConnections>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPrivateAttributes="true" showProtectedAttributes="true" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showProtectedMethods="true" showPublicMethods="true" showPackageMethods="true" showPrivateMethods="true" showStaticMethods="true" showProtectedInnerClasses="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showPrivateInnerClasses="true" showStaticInnerClasses="true" showMethods="true" showAttributes="true"/>
+  </children>
+  <diagramOptions xsi:type="options:ClassDiagramOptions" properties="wireOptions=4"/>
+  <boardSetting snapToGeometry="true" gridEnabled="true" gridSpacing="10,10" gridOrigin="0,0" rulerUnit="pixel">
+    <leftRuler/>
+    <topRuler/>
+  </boardSetting>
+  <classDiagramPreferences xsi:type="editmodel:UMLClassDiagramPreference" attributeSorter="Natural" methodSorter="Natural" showClassStereotype="true" showPackageStereotype="true" innerClassSorter="Natural" showPrivateAttributes="true" showProtectedAttributes="true" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showProtectedMethods="true" showPublicMethods="true" showPackageMethods="true" showPrivateMethods="true" showStaticMethods="true" showProtectedInnerClasses="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showPrivateInnerClasses="true" showStaticInnerClasses="true" showInterfaceStereotype="true" showMethods="true" showAttributes="true" showLiterlas="true" showInnerEntity="true"/>
+</editmodel:ClassDiagramEditModel>
