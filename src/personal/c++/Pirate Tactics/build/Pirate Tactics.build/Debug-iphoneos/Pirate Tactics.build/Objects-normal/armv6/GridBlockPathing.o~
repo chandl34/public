@@ -1,0 +1,11 @@
+/Users/jmc/Documents/iPhone/Pirate Tactics/Classes/GridBlockPathing.mm:14: error: no 'bool GridBlock::hasVisibleUnit() const' member function declared in class 'GridBlock'
+/Users/jmc/Documents/iPhone/Pirate Tactics/Classes/GridBlockPathing.mm: In member function 'bool GridBlock::hasVisibleUnit() const':
+/Users/jmc/Documents/iPhone/Pirate Tactics/Classes/GridBlockPathing.mm:15: error: 'class Unit' has no member named 'hasBeenSeen'
+/Users/jmc/Documents/iPhone/Pirate Tactics/Classes/Const.h: At global scope:
+/Users/jmc/Documents/iPhone/Pirate Tactics/Classes/Const.h:53: warning: 'MAP_SIZE_3D' defined but not used
+/Users/jmc/Documents/iPhone/Pirate Tactics/Classes/Const.h:82: warning: 'MAP_OFFSET' defined but not used
+/Users/jmc/Documents/iPhone/Pirate Tactics/Classes/Const.h:87: warning: 'Z_MOD' defined but not used
+/Users/jmc/Documents/iPhone/Pirate Tactics/Classes/Const.h:89: warning: 'VIEW_SIZE' defined but not used
+/Users/jmc/Documents/iPhone/Pirate Tactics/Classes/Const.h:95: warning: 'CAMERA_BOUND' defined but not used
+/Users/jmc/Documents/iPhone/Pirate Tactics/Classes/Const.h:107: warning: 'SCREEN_BLOCK' defined but not used
+/Users/jmc/Documents/iPhone/Pirate Tactics/Classes/Const.h:160: warning: 'MOVE_STEP_3D' defined but not used

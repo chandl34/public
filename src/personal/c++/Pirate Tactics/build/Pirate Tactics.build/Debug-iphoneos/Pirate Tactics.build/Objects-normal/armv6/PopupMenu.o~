@@ -1,0 +1,41 @@
+/Users/jmc/Documents/iPhone/Pirate Tactics/Classes/PopupMenu.mm:12: error: prototype for 'PopupMenu::PopupMenu(Button*, Menu*)' does not match any in class 'PopupMenu'
+/Users/jmc/Documents/iPhone/Pirate Tactics/Classes/PopupMenu.h:15: error: candidates are: PopupMenu::PopupMenu(const PopupMenu&)
+/Users/jmc/Documents/iPhone/Pirate Tactics/Classes/PopupMenu.h:17: error:                 PopupMenu::PopupMenu(const Button&, const Menu&)
+/Users/jmc/Documents/iPhone/Pirate Tactics/Classes/PopupMenu.mm: In constructor 'PopupMenu::PopupMenu(Button*, Menu*)':
+/Users/jmc/Documents/iPhone/Pirate Tactics/Classes/PopupMenu.mm:12: error: no matching function for call to 'Button::Button()'
+/Users/jmc/Documents/iPhone/Pirate Tactics/Classes/Button.h:18: note: candidates are: Button::Button(const Icon&)
+/Users/jmc/Documents/iPhone/Pirate Tactics/Classes/Button.h:16: note:                 Button::Button(const Button&)
+/Users/jmc/Documents/iPhone/Pirate Tactics/Classes/PopupMenu.mm:12: error: no matching function for call to 'Menu::Menu()'
+/Users/jmc/Documents/iPhone/Pirate Tactics/Classes/Menu.h:17: note: candidates are: Menu::Menu(const Coord2d<short int>&, const Size2d<short int>&, const Size2d<short int>&)
+/Users/jmc/Documents/iPhone/Pirate Tactics/Classes/Menu.h:15: note:                 Menu::Menu(const Menu&)
+/Users/jmc/Documents/iPhone/Pirate Tactics/Classes/PopupMenu.mm:14: error: no match for 'operator=' in '((PopupMenu*)this)->PopupMenu::button = b'
+/Users/jmc/Documents/iPhone/Pirate Tactics/Classes/Button.h:16: note: candidates are: Button& Button::operator=(const Button&)
+/Users/jmc/Documents/iPhone/Pirate Tactics/Classes/PopupMenu.mm:15: error: no match for 'operator=' in '((PopupMenu*)this)->PopupMenu::menu = m'
+/Users/jmc/Documents/iPhone/Pirate Tactics/Classes/Menu.h:15: note: candidates are: Menu& Menu::operator=(const Menu&)
+/Users/jmc/Documents/iPhone/Pirate Tactics/Classes/PopupMenu.mm: In destructor 'virtual PopupMenu::~PopupMenu()':
+/Users/jmc/Documents/iPhone/Pirate Tactics/Classes/PopupMenu.mm:26: error: type 'class Button' argument given to 'delete', expected pointer
+/Users/jmc/Documents/iPhone/Pirate Tactics/Classes/PopupMenu.mm:27: error: type 'class Menu' argument given to 'delete', expected pointer
+/Users/jmc/Documents/iPhone/Pirate Tactics/Classes/PopupMenu.mm: In member function 'virtual void PopupMenu::draw(bool)':
+/Users/jmc/Documents/iPhone/Pirate Tactics/Classes/PopupMenu.mm:45: error: base operand of '->' has non-pointer type 'Button'
+/Users/jmc/Documents/iPhone/Pirate Tactics/Classes/PopupMenu.mm:47: error: base operand of '->' has non-pointer type 'Menu'
+/Users/jmc/Documents/iPhone/Pirate Tactics/Classes/PopupMenu.mm: In member function 'virtual bool PopupMenu::push(const Coord2d<short int>&)':
+/Users/jmc/Documents/iPhone/Pirate Tactics/Classes/PopupMenu.mm:53: error: base operand of '->' has non-pointer type 'Button'
+/Users/jmc/Documents/iPhone/Pirate Tactics/Classes/PopupMenu.mm:56: error: base operand of '->' has non-pointer type 'Button'
+/Users/jmc/Documents/iPhone/Pirate Tactics/Classes/PopupMenu.mm: In member function 'virtual void PopupMenu::move(const Coord2d<short int>&)':
+/Users/jmc/Documents/iPhone/Pirate Tactics/Classes/PopupMenu.mm:63: error: base operand of '->' has non-pointer type 'Button'
+/Users/jmc/Documents/iPhone/Pirate Tactics/Classes/PopupMenu.mm:64: error: base operand of '->' has non-pointer type 'Button'
+/Users/jmc/Documents/iPhone/Pirate Tactics/Classes/PopupMenu.mm:66: error: base operand of '->' has non-pointer type 'Menu'
+/Users/jmc/Documents/iPhone/Pirate Tactics/Classes/PopupMenu.mm:68: error: base operand of '->' has non-pointer type 'Menu'
+/Users/jmc/Documents/iPhone/Pirate Tactics/Classes/PopupMenu.mm:69: error: base operand of '->' has non-pointer type 'Menu'
+/Users/jmc/Documents/iPhone/Pirate Tactics/Classes/PopupMenu.mm: In member function 'virtual void PopupMenu::release(const Coord2d<short int>&)':
+/Users/jmc/Documents/iPhone/Pirate Tactics/Classes/PopupMenu.mm:76: error: base operand of '->' has non-pointer type 'Button'
+/Users/jmc/Documents/iPhone/Pirate Tactics/Classes/PopupMenu.mm:77: error: base operand of '->' has non-pointer type 'Button'
+/Users/jmc/Documents/iPhone/Pirate Tactics/Classes/PopupMenu.mm:79: error: base operand of '->' has non-pointer type 'Menu'
+/Users/jmc/Documents/iPhone/Pirate Tactics/Classes/Const.h: At global scope:
+/Users/jmc/Documents/iPhone/Pirate Tactics/Classes/Const.h:53: warning: 'MAP_SIZE_3D' defined but not used
+/Users/jmc/Documents/iPhone/Pirate Tactics/Classes/Const.h:82: warning: 'MAP_OFFSET' defined but not used
+/Users/jmc/Documents/iPhone/Pirate Tactics/Classes/Const.h:87: warning: 'Z_MOD' defined but not used
+/Users/jmc/Documents/iPhone/Pirate Tactics/Classes/Const.h:89: warning: 'VIEW_SIZE' defined but not used
+/Users/jmc/Documents/iPhone/Pirate Tactics/Classes/Const.h:95: warning: 'CAMERA_BOUND' defined but not used
+/Users/jmc/Documents/iPhone/Pirate Tactics/Classes/Const.h:107: warning: 'SCREEN_BLOCK' defined but not used
+/Users/jmc/Documents/iPhone/Pirate Tactics/Classes/Const.h:160: warning: 'MOVE_STEP_3D' defined but not used

@@ -1,0 +1,10 @@
+/Users/jmc/Documents/iPhone/Pirate Tactics/Classes/Pathing.mm: In static member function 'static bool Pathing::canGoTo(const Coord2d<short int>&, const Coord2d<short int>&, GLshort)':
+/Users/jmc/Documents/iPhone/Pirate Tactics/Classes/Pathing.mm:129: error: 'class GridBlock' has no member named 'hasVisibleUnit'
+/Users/jmc/Documents/iPhone/Pirate Tactics/Classes/Const.h: At global scope:
+/Users/jmc/Documents/iPhone/Pirate Tactics/Classes/Const.h:53: warning: 'MAP_SIZE_3D' defined but not used
+/Users/jmc/Documents/iPhone/Pirate Tactics/Classes/Const.h:82: warning: 'MAP_OFFSET' defined but not used
+/Users/jmc/Documents/iPhone/Pirate Tactics/Classes/Const.h:87: warning: 'Z_MOD' defined but not used
+/Users/jmc/Documents/iPhone/Pirate Tactics/Classes/Const.h:89: warning: 'VIEW_SIZE' defined but not used
+/Users/jmc/Documents/iPhone/Pirate Tactics/Classes/Const.h:95: warning: 'CAMERA_BOUND' defined but not used
+/Users/jmc/Documents/iPhone/Pirate Tactics/Classes/Const.h:107: warning: 'SCREEN_BLOCK' defined but not used
+/Users/jmc/Documents/iPhone/Pirate Tactics/Classes/Const.h:160: warning: 'MOVE_STEP_3D' defined but not used

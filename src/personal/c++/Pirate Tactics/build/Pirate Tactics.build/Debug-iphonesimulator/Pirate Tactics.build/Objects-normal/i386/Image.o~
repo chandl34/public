@@ -1,0 +1,11 @@
+/Users/jmc/Documents/Pirate Tactics/Classes/Image.mm:13: error: prototype for 'Image::Image(GLshort, GLshort, GLshort)' does not match any in class 'Image'
+/Users/jmc/Documents/Pirate Tactics/Classes/Image.h:15: error: candidates are: Image::Image(const Image&)
+/Users/jmc/Documents/Pirate Tactics/Classes/Image.h:17: error:                 Image::Image(GLshort, GLshort)
+/Users/jmc/Documents/Pirate Tactics/Classes/Image.mm: In constructor 'Image::Image(GLshort, GLshort, GLshort)':
+/Users/jmc/Documents/Pirate Tactics/Classes/Image.mm:18: error: 'texName' was not declared in this scope
+/Users/jmc/Documents/Pirate Tactics/Classes/Image.mm: In member function 'void Image::draw(bool)':
+/Users/jmc/Documents/Pirate Tactics/Classes/Image.mm:35: error: 'texName' was not declared in this scope
+/Users/jmc/Documents/Pirate Tactics/Classes/Include.h: At global scope:
+/Users/jmc/Documents/Pirate Tactics/Classes/Include.h:39: warning: 'MAP_OFFSET' defined but not used
+/Users/jmc/Documents/Pirate Tactics/Classes/Include.h:42: warning: 'CAMERA_BOUND' defined but not used
+/Users/jmc/Documents/Pirate Tactics/Classes/Include.h:74: warning: 'MOVE_STEP' defined but not used

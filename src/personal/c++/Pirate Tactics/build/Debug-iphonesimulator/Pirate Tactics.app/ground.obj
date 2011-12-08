@@ -1,0 +1,16 @@
+# Max2Obj Version 4.0 Mar 10th, 2001
+#
+# object Plane01 to come ...
+#
+v  0 0 0
+v  40 0 0
+v  0 40 0
+v  40 40 0
+# 4 vertices
+
+g Plane01
+f 3 1 4
+f 2 4 1
+# 2 faces
+
+g
