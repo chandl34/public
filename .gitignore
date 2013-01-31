@@ -12,8 +12,13 @@
 *.la
 *.a
 
+# Log files
+*.tlog
+
 # Build directories
 build/
+Debug/
 
 # Metadata
-*.DS_Store
+.DS_Store
+*.xcuserstate
