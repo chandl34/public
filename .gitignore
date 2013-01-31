@@ -23,5 +23,5 @@ Debug/
 ipch/
 
 # Metadata
-.DS_Store
+*.DS_Store
 *.xcuserstate
