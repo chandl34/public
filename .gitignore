@@ -19,6 +19,9 @@
 build/
 Debug/
 
+#Other directories
+ipch/
+
 # Metadata
 .DS_Store
 *.xcuserstate
