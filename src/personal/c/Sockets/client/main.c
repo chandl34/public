@@ -10,7 +10,6 @@
 
 
 // Constants
-const int MAX_LINE = 4096;
 const int PUB_PORT = 10000;
 const int PRV_PORT = 20000;
 
@@ -43,21 +42,35 @@ int main(char** argv, int argc)
 
 	}
 
-	// Setup public socket
-	int pub_sock = socket(AF_INET, SOCK_DGRAM, 0);
+	// Setup socket
+	int sock = socket(AF_INET, SOCK_DGRAM, 0);
 	
-	if(pub_sock < 0)
+	if(sock < 0)
 	{
-
 		error("ERROR: socket()");
 	}
 
-	struct sockaddr_in pub_addr;
-	bzero(&pub_addr, sizeof(pub_addr));
-	pub_addr.sin_family = AF_INET;					// IPv4
-	pub_addr.sin_addr.s_addr = htonl(INADDR_ANY);
-	pub_addr.sin_port = htons(PUB_PORT);
-	
+	struct sockaddr_in serv_addr;
+	bzero(&serv_addr, sizeof(serv_addr));
+	serv_addr.sin_family = AF_INET;					// IPv4
+	serv_addr.sin_addr.s_addr = htonl(INADDR_ANY);
+
+	serv_addr.sin_port = htons(PUB_PORT);
+	sendto(sock, "", 0, 0, (SA*) &serv_addr, sizeof(serv_addr));
+	sendto(sock, "", 0, 0, (SA*) &serv_addr, sizeof(serv_addr));
+
+	serv_addr.sin_port = htons(PRV_PORT);
+	sendto(sock, "", 0, 0, (SA*) &serv_addr, sizeof(serv_addr));
+
+	serv_addr.sin_port = htons(PUB_PORT);
+	sendto(sock, "", 0, 0, (SA*) &serv_addr, sizeof(serv_addr));
+
+
+	serv_addr.sin_port = htons(PRV_PORT);
+	sendto(sock, "", 0, 0, (SA*) &serv_addr, sizeof(serv_addr));
+
+/*
+
 	if(bind(pub_sock, (SA*) &pub_addr, sizeof(pub_addr)) < 0)
 	{
 		error("Error: bind()");
@@ -86,40 +99,30 @@ int main(char** argv, int argc)
 	int ret;
 	int max_fd = max(pub_sock, prv_sock) + 1;
 
-	fd_set read_set;
-	FD_ZERO(&read_set);
-
-	char msg[MAX_LINE];
+	fd_set rset;
+	FD_ZERO(&rset);
+	FD_SET(pub_sock, &rset);
+	FD_SET(prv_sock, &rset);
 
 	for(;;)
 	{
-		FD_SET(pub_sock, &read_set);
-		FD_SET(prv_sock, &read_set);
-
-		if(select(max_fd, &read_set, NULL, NULL, NULL) < 0)
+		if(select(max_fd, &rset, NULL, NULL, NULL))
 		{
 			error("ERROR: select()");
 		}
 
-		if(FD_ISSET(pub_sock, &read_set))
+		if(FD_ISSET(pub_sock, &rset))
 		{
 			printf("pub\n");
-			read(pub_sock, msg, MAX_LINE);
-
-			// place packet in a buffer
 		}
-
-		if(FD_ISSET(prv_sock, &read_set))
+		else if(FD_ISSET(prv_sock, &rset))
 		{
 			printf("prv\n");
-			read(prv_sock, msg, MAX_LINE);
-		
-			// data is fragmented, send frament to remote network address			
-			//sendto(pub_sock, "", 0, 0, (SA*) &rem_addr, sizeof(rem_addr));
-
-			// if contiguous and checksums match, send the packet to the local network address	
-			//sendto(pub_sock, "", 0, 0, (SA*) &loc_addr, sizeof(loc_addr));
 		}
-	}			
+		
+	}		
+
+*/
+	
 }
 
