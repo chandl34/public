@@ -9,11 +9,16 @@ public:
 	SudokuBlock();
 	~SudokuBlock();
 
-	void setValue(int);
+	int getValue();
+	bool isSolved();
 
-	bool solved();
+	void setValue(int);
+	void remove(int);
+	bool check();
+
+	void print();
 
 private:
-	int _val;
+	bool _checked;
 	cliext::set<int> _poss;
 };

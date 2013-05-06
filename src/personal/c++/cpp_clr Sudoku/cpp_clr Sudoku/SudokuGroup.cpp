@@ -4,8 +4,8 @@
 
 // Constructors / Destructors
 SudokuGroup::SudokuGroup()
-	: _block(9)
 {
+
 }
 
 SudokuGroup::~SudokuGroup()
@@ -15,7 +15,15 @@ SudokuGroup::~SudokuGroup()
 
 	
 // Class Methods
-void SudokuGroup::setBlock(int i, SudokuBlock^ sb)
+void SudokuGroup::addBlock(SudokuBlock^ sb)
 {
-	_block.at(i) = sb;
+	_block.push_back(sb);
+}
+	
+void SudokuGroup::remove(int val)
+{
+	for(cliext::list<SudokuBlock^>::iterator iter = _block.begin(); iter != _block.end(); ++iter)
+	{
+		(*iter)->remove(val);
+	}
 }

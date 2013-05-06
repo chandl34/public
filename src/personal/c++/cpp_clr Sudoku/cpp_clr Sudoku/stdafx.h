@@ -8,4 +8,5 @@
 #include <string>
 #include <cliext/set>
 #include <cliext/vector>
+#include <cliext/list>
 

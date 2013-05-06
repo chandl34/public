@@ -1,5 +1,6 @@
 #pragma once
 
+#include "stdafx.h"
 #include "SudokuBlock.h"
 
 
@@ -9,9 +10,10 @@ public:
 	SudokuGroup();
 	~SudokuGroup();
 
-	void setBlock(int, SudokuBlock^);
+	void addBlock(SudokuBlock^);
+	void remove(int);
 
 private:
-	cliext::vector<SudokuBlock^> _block;
+	cliext::list<SudokuBlock^> _block;
 };
 
