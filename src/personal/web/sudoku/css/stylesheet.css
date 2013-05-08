@@ -1,0 +1,26 @@
+section {
+  width:             270px;
+  height:            270px;
+}
+
+div {
+  width:            30px;
+  height:           30px;
+  
+  outline-style:    solid;
+  outline-width:    1px;
+  outline-color:    black;
+  
+  text-align:       center;
+  font-size:        28px;
+  
+  float:left;
+}
+
+div.block_odd {
+  background-color: #C0C0C0;
+}
+
+div.block_even {
+  background-color: #D8D8D8;
+}
