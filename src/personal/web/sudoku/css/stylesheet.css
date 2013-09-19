@@ -1,9 +1,26 @@
-section {
-  width:             270px;
-  height:            270px;
+div.board {
+  width:            270px;
+  height:           270px;
+  
+  position:         fixed;
+  top:              50%;
+  left:             50%;
+  margin-top:       -135px;
+  margin-left:      -135px;
 }
 
-div {
+div.box {
+  width:            90px;
+  height:           90px;
+  
+  outline-style:    solid;
+  outline-width:    2px;
+  outline-color:    black;
+  
+  float:            left;
+}
+
+div.block {
   width:            30px;
   height:           30px;
   
@@ -14,13 +31,13 @@ div {
   text-align:       center;
   font-size:        28px;
   
-  float:left;
+  float:            left;
 }
 
-div.block_odd {
+div.odd {
   background-color: #C0C0C0;
 }
 
-div.block_even {
+div.even {
   background-color: #D8D8D8;
 }
