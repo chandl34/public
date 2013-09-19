@@ -1,0 +1,55 @@
+/*
+ *  MainScreen.h
+ *  Pirate Tactics
+ *
+ *  Created by Jonathan Chandler on 2/19/10.
+ *  Copyright 2010 __MyCompanyName__. All rights reserved.
+ *
+ */
+
+#ifndef MAIN_SCREEN_H_
+#define MAIN_SCREEN_H_
+
+#include "Screen.h"
+
+#include "ImageStorage.h"
+
+
+class MainScreen : public BaseScreen{
+public:
+	MainScreen();
+	~MainScreen();
+	
+	//---- GENERAL ----//
+	static void setScreen(GLshort);
+	
+	//---- DRAW ----//
+	void draw();
+	
+	//--- TOUCH ---//
+	void push(GLshort, const Coord2d<GLshort>&);
+	void move(GLshort, const Coord2d<GLshort>&);
+	bool release(GLshort, const Coord2d<GLshort>&);	
+	 
+private:
+	//---- GENERAL ----//
+	// Data Storage
+	ImageStorage imageStorage;
+	
+	// Screens
+	static BaseScreen* currentScreen;
+	static vector<BaseScreen*> screen;
+	
+	// FPS
+	GLuint frames;
+	GLuint totalFrames;
+	double lastTime;
+	double timeElapsed;
+	
+	//---- DRAW ----//
+	void draw(bool);	
+	 
+};
+
+
+#endif

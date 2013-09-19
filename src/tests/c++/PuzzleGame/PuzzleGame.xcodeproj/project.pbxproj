@@ -1,0 +1,649 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 45;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		1D60589B0D05DD56006BFB54 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
+		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
+		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
+		2514C27B10084DCA00A42282 /* Shader.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 2514C27910084DCA00A42282 /* Shader.fsh */; };
+		2514C27C10084DCA00A42282 /* Shader.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 2514C27A10084DCA00A42282 /* Shader.vsh */; };
+		28AD733F0D9D9553002E5188 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28AD733E0D9D9553002E5188 /* MainWindow.xib */; };
+		28EC4C5A11D54ECE0027AA9F /* PuzzleGameViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28EC4C5811D54ECE0027AA9F /* PuzzleGameViewController.xib */; };
+		28FD15000DC6FC520079059D /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28FD14FF0DC6FC520079059D /* OpenGLES.framework */; };
+		28FD15080DC6FC5B0079059D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28FD15070DC6FC5B0079059D /* QuartzCore.framework */; };
+		807AC3BB1662E5AE00CCC9FA /* the_great_wave_off_kanagawa.png in Resources */ = {isa = PBXBuildFile; fileRef = 807AC3BA1662E5AE00CCC9FA /* the_great_wave_off_kanagawa.png */; };
+		807AC3E71662E5D300CCC9FA /* EAGLView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 807AC3C11662E5D300CCC9FA /* EAGLView.mm */; };
+		807AC3E81662E5D300CCC9FA /* HitTest2D.mm in Sources */ = {isa = PBXBuildFile; fileRef = 807AC3C31662E5D300CCC9FA /* HitTest2D.mm */; };
+		807AC3EB1662E5D300CCC9FA /* ImageStorage.mm in Sources */ = {isa = PBXBuildFile; fileRef = 807AC3C91662E5D300CCC9FA /* ImageStorage.mm */; };
+		807AC3EC1662E5D300CCC9FA /* MainScreen.mm in Sources */ = {isa = PBXBuildFile; fileRef = 807AC3CC1662E5D300CCC9FA /* MainScreen.mm */; };
+		807AC3ED1662E5D300CCC9FA /* Math.mm in Sources */ = {isa = PBXBuildFile; fileRef = 807AC3CE1662E5D300CCC9FA /* Math.mm */; };
+		807AC3EE1662E5D300CCC9FA /* Puzzle.mm in Sources */ = {isa = PBXBuildFile; fileRef = 807AC3D11662E5D300CCC9FA /* Puzzle.mm */; };
+		807AC3EF1662E5D300CCC9FA /* PuzzleGameAppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 807AC3D21662E5D300CCC9FA /* PuzzleGameAppDelegate.mm */; };
+		807AC3F01662E5D300CCC9FA /* PuzzleGameViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 807AC3D31662E5D300CCC9FA /* PuzzleGameViewController.mm */; };
+		807AC3F41662E5D300CCC9FA /* GameScreen.mm in Sources */ = {isa = PBXBuildFile; fileRef = 807AC3DA1662E5D300CCC9FA /* GameScreen.mm */; };
+		807AC3F61662E5D300CCC9FA /* PuzzleTouch.mm in Sources */ = {isa = PBXBuildFile; fileRef = 807AC3DC1662E5D300CCC9FA /* PuzzleTouch.mm */; };
+		807AC3F71662E5D300CCC9FA /* Screen.mm in Sources */ = {isa = PBXBuildFile; fileRef = 807AC3DE1662E5D300CCC9FA /* Screen.mm */; };
+		807AC3F81662E5D300CCC9FA /* TextureIO.mm in Sources */ = {isa = PBXBuildFile; fileRef = 807AC3E11662E5D300CCC9FA /* TextureIO.mm */; };
+		807AC3F91662E5D300CCC9FA /* TitleScreen.mm in Sources */ = {isa = PBXBuildFile; fileRef = 807AC3E31662E5D300CCC9FA /* TitleScreen.mm */; };
+		807AC3FA1662E5D300CCC9FA /* TitleScreenTouch.mm in Sources */ = {isa = PBXBuildFile; fileRef = 807AC3E41662E5D300CCC9FA /* TitleScreenTouch.mm */; };
+		807AC3FB1662E5D300CCC9FA /* Touchable.mm in Sources */ = {isa = PBXBuildFile; fileRef = 807AC3E61662E5D300CCC9FA /* Touchable.mm */; };
+		807AC4071662E61C00CCC9FA /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 807AC4061662E61C00CCC9FA /* CoreGraphics.framework */; };
+		807AC4311662E8ED00CCC9FA /* PieceData.mm in Sources */ = {isa = PBXBuildFile; fileRef = 807AC4301662E8ED00CCC9FA /* PieceData.mm */; };
+		807AC44E1662EF4700CCC9FA /* PieceMask.mm in Sources */ = {isa = PBXBuildFile; fileRef = 807AC44D1662EF4700CCC9FA /* PieceMask.mm */; };
+		807AC4691662F1E300CCC9FA /* mask1.png in Resources */ = {isa = PBXBuildFile; fileRef = 807AC45D1662F1E300CCC9FA /* mask1.png */; };
+		807AC46A1662F1E300CCC9FA /* mask2.png in Resources */ = {isa = PBXBuildFile; fileRef = 807AC45E1662F1E300CCC9FA /* mask2.png */; };
+		807AC46B1662F1E300CCC9FA /* mask3.png in Resources */ = {isa = PBXBuildFile; fileRef = 807AC45F1662F1E300CCC9FA /* mask3.png */; };
+		807AC46C1662F1E300CCC9FA /* mask4.png in Resources */ = {isa = PBXBuildFile; fileRef = 807AC4601662F1E300CCC9FA /* mask4.png */; };
+		807AC46D1662F1E300CCC9FA /* mask5.png in Resources */ = {isa = PBXBuildFile; fileRef = 807AC4611662F1E300CCC9FA /* mask5.png */; };
+		807AC46E1662F1E300CCC9FA /* mask6.png in Resources */ = {isa = PBXBuildFile; fileRef = 807AC4621662F1E300CCC9FA /* mask6.png */; };
+		807AC46F1662F1E300CCC9FA /* mask7.png in Resources */ = {isa = PBXBuildFile; fileRef = 807AC4631662F1E300CCC9FA /* mask7.png */; };
+		807AC4701662F1E300CCC9FA /* mask8.png in Resources */ = {isa = PBXBuildFile; fileRef = 807AC4641662F1E300CCC9FA /* mask8.png */; };
+		807AC4711662F1E300CCC9FA /* mask9.png in Resources */ = {isa = PBXBuildFile; fileRef = 807AC4651662F1E300CCC9FA /* mask9.png */; };
+		807AC4721662F1E300CCC9FA /* mask10.png in Resources */ = {isa = PBXBuildFile; fileRef = 807AC4661662F1E300CCC9FA /* mask10.png */; };
+		807AC4731662F1E300CCC9FA /* mask11.png in Resources */ = {isa = PBXBuildFile; fileRef = 807AC4671662F1E300CCC9FA /* mask11.png */; };
+		807AC4741662F1E300CCC9FA /* mask12.png in Resources */ = {isa = PBXBuildFile; fileRef = 807AC4681662F1E300CCC9FA /* mask12.png */; };
+		807AC5311663019800CCC9FA /* Image.mm in Sources */ = {isa = PBXBuildFile; fileRef = 807AC5301663019800CCC9FA /* Image.mm */; };
+		80832A0A16640BC700951EAE /* mask13.png in Resources */ = {isa = PBXBuildFile; fileRef = 80832A0816640BC700951EAE /* mask13.png */; };
+		80832A0B16640BC700951EAE /* mask14.png in Resources */ = {isa = PBXBuildFile; fileRef = 80832A0916640BC700951EAE /* mask14.png */; };
+		8089B96D1664114100F9507C /* mask15.png in Resources */ = {isa = PBXBuildFile; fileRef = 8089B96C1664114100F9507C /* mask15.png */; };
+		809589B91664A218009C17CB /* GameScreenTouch.mm in Sources */ = {isa = PBXBuildFile; fileRef = 809589B81664A218009C17CB /* GameScreenTouch.mm */; };
+		80E44048166549FE00396BBE /* PieceImage.mm in Sources */ = {isa = PBXBuildFile; fileRef = 80E44047166549FE00396BBE /* PieceImage.mm */; };
+		80E4414F16655D5800396BBE /* BaseIcon.mm in Sources */ = {isa = PBXBuildFile; fileRef = 80E4414A16655D5800396BBE /* BaseIcon.mm */; };
+		80E4415016655D5800396BBE /* CompositeIcon.mm in Sources */ = {isa = PBXBuildFile; fileRef = 80E4414C16655D5800396BBE /* CompositeIcon.mm */; };
+		80E4415116655D5800396BBE /* Icon.mm in Sources */ = {isa = PBXBuildFile; fileRef = 80E4414E16655D5800396BBE /* Icon.mm */; };
+		80E4415A16655E1300396BBE /* PuzzlePiece.mm in Sources */ = {isa = PBXBuildFile; fileRef = 80E4415916655E1300396BBE /* PuzzlePiece.mm */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		1D3623240D0F684500981E51 /* PuzzleGameAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PuzzleGameAppDelegate.h; sourceTree = "<group>"; };
+		1D6058910D05DD3D006BFB54 /* PuzzleGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PuzzleGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		1DF5F4DF0D08C38300B7A737 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		2514C27910084DCA00A42282 /* Shader.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = Shader.fsh; path = Shaders/Shader.fsh; sourceTree = "<group>"; };
+		2514C27A10084DCA00A42282 /* Shader.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = Shader.vsh; path = Shaders/Shader.vsh; sourceTree = "<group>"; };
+		28AD733E0D9D9553002E5188 /* MainWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainWindow.xib; sourceTree = "<group>"; };
+		28EC4C5611D54ECE0027AA9F /* PuzzleGameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PuzzleGameViewController.h; sourceTree = "<group>"; };
+		28EC4C5811D54ECE0027AA9F /* PuzzleGameViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PuzzleGameViewController.xib; sourceTree = "<group>"; };
+		28FD14FC0DC6FC130079059D /* EAGLView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EAGLView.h; sourceTree = "<group>"; };
+		28FD14FF0DC6FC520079059D /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
+		28FD15070DC6FC5B0079059D /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		32CA4F630368D1EE00C91783 /* PuzzleGame_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PuzzleGame_Prefix.pch; sourceTree = "<group>"; };
+		807AC3BA1662E5AE00CCC9FA /* the_great_wave_off_kanagawa.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = the_great_wave_off_kanagawa.png; path = Textures/backgrounds/the_great_wave_off_kanagawa.png; sourceTree = "<group>"; };
+		807AC3BE1662E5D300CCC9FA /* Const.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Const.h; sourceTree = "<group>"; };
+		807AC3BF1662E5D300CCC9FA /* Coord2d.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Coord2d.h; sourceTree = "<group>"; };
+		807AC3C01662E5D300CCC9FA /* Drawable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Drawable.h; sourceTree = "<group>"; };
+		807AC3C11662E5D300CCC9FA /* EAGLView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = EAGLView.mm; sourceTree = "<group>"; };
+		807AC3C21662E5D300CCC9FA /* HitTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HitTest.h; sourceTree = "<group>"; };
+		807AC3C31662E5D300CCC9FA /* HitTest2D.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = HitTest2D.mm; sourceTree = "<group>"; };
+		807AC3C81662E5D300CCC9FA /* ImageStorage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageStorage.h; sourceTree = "<group>"; };
+		807AC3C91662E5D300CCC9FA /* ImageStorage.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ImageStorage.mm; sourceTree = "<group>"; };
+		807AC3CA1662E5D300CCC9FA /* Include.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; path = Include.h; sourceTree = "<group>"; };
+		807AC3CB1662E5D300CCC9FA /* MainScreen.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainScreen.h; sourceTree = "<group>"; };
+		807AC3CC1662E5D300CCC9FA /* MainScreen.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = MainScreen.mm; sourceTree = "<group>"; };
+		807AC3CD1662E5D300CCC9FA /* Math.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Math.h; sourceTree = "<group>"; };
+		807AC3CE1662E5D300CCC9FA /* Math.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Math.mm; sourceTree = "<group>"; };
+		807AC3CF1662E5D300CCC9FA /* Options.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Options.h; sourceTree = "<group>"; };
+		807AC3D01662E5D300CCC9FA /* Puzzle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Puzzle.h; sourceTree = "<group>"; };
+		807AC3D11662E5D300CCC9FA /* Puzzle.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Puzzle.mm; sourceTree = "<group>"; };
+		807AC3D21662E5D300CCC9FA /* PuzzleGameAppDelegate.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = PuzzleGameAppDelegate.mm; sourceTree = "<group>"; };
+		807AC3D31662E5D300CCC9FA /* PuzzleGameViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = PuzzleGameViewController.mm; sourceTree = "<group>"; };
+		807AC3D91662E5D300CCC9FA /* GameScreen.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameScreen.h; sourceTree = "<group>"; };
+		807AC3DA1662E5D300CCC9FA /* GameScreen.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = GameScreen.mm; sourceTree = "<group>"; };
+		807AC3DC1662E5D300CCC9FA /* PuzzleTouch.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = PuzzleTouch.mm; sourceTree = "<group>"; };
+		807AC3DD1662E5D300CCC9FA /* Screen.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Screen.h; sourceTree = "<group>"; };
+		807AC3DE1662E5D300CCC9FA /* Screen.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Screen.mm; sourceTree = "<group>"; };
+		807AC3DF1662E5D300CCC9FA /* Size2d.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Size2d.h; sourceTree = "<group>"; };
+		807AC3E01662E5D300CCC9FA /* TextureIO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextureIO.h; sourceTree = "<group>"; };
+		807AC3E11662E5D300CCC9FA /* TextureIO.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = TextureIO.mm; sourceTree = "<group>"; };
+		807AC3E21662E5D300CCC9FA /* TitleScreen.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TitleScreen.h; sourceTree = "<group>"; };
+		807AC3E31662E5D300CCC9FA /* TitleScreen.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = TitleScreen.mm; sourceTree = "<group>"; };
+		807AC3E41662E5D300CCC9FA /* TitleScreenTouch.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = TitleScreenTouch.mm; sourceTree = "<group>"; };
+		807AC3E51662E5D300CCC9FA /* Touchable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Touchable.h; sourceTree = "<group>"; };
+		807AC3E61662E5D300CCC9FA /* Touchable.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Touchable.mm; sourceTree = "<group>"; };
+		807AC4061662E61C00CCC9FA /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		807AC42F1662E8ED00CCC9FA /* PieceData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PieceData.h; sourceTree = "<group>"; };
+		807AC4301662E8ED00CCC9FA /* PieceData.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = PieceData.mm; sourceTree = "<group>"; };
+		807AC44C1662EF4700CCC9FA /* PieceMask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PieceMask.h; sourceTree = "<group>"; };
+		807AC44D1662EF4700CCC9FA /* PieceMask.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = PieceMask.mm; sourceTree = "<group>"; };
+		807AC45D1662F1E300CCC9FA /* mask1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = mask1.png; path = Textures/masks/mask1.png; sourceTree = "<group>"; };
+		807AC45E1662F1E300CCC9FA /* mask2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = mask2.png; path = Textures/masks/mask2.png; sourceTree = "<group>"; };
+		807AC45F1662F1E300CCC9FA /* mask3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = mask3.png; path = Textures/masks/mask3.png; sourceTree = "<group>"; };
+		807AC4601662F1E300CCC9FA /* mask4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = mask4.png; path = Textures/masks/mask4.png; sourceTree = "<group>"; };
+		807AC4611662F1E300CCC9FA /* mask5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = mask5.png; path = Textures/masks/mask5.png; sourceTree = "<group>"; };
+		807AC4621662F1E300CCC9FA /* mask6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = mask6.png; path = Textures/masks/mask6.png; sourceTree = "<group>"; };
+		807AC4631662F1E300CCC9FA /* mask7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = mask7.png; path = Textures/masks/mask7.png; sourceTree = "<group>"; };
+		807AC4641662F1E300CCC9FA /* mask8.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = mask8.png; path = Textures/masks/mask8.png; sourceTree = "<group>"; };
+		807AC4651662F1E300CCC9FA /* mask9.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = mask9.png; path = Textures/masks/mask9.png; sourceTree = "<group>"; };
+		807AC4661662F1E300CCC9FA /* mask10.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = mask10.png; path = Textures/masks/mask10.png; sourceTree = "<group>"; };
+		807AC4671662F1E300CCC9FA /* mask11.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = mask11.png; path = Textures/masks/mask11.png; sourceTree = "<group>"; };
+		807AC4681662F1E300CCC9FA /* mask12.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = mask12.png; path = Textures/masks/mask12.png; sourceTree = "<group>"; };
+		807AC52F1663019800CCC9FA /* Image.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Image.h; sourceTree = "<group>"; };
+		807AC5301663019800CCC9FA /* Image.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Image.mm; sourceTree = "<group>"; };
+		80832A0816640BC700951EAE /* mask13.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = mask13.png; path = Textures/masks/mask13.png; sourceTree = "<group>"; };
+		80832A0916640BC700951EAE /* mask14.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = mask14.png; path = Textures/masks/mask14.png; sourceTree = "<group>"; };
+		8089B96C1664114100F9507C /* mask15.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = mask15.png; path = Textures/masks/mask15.png; sourceTree = "<group>"; };
+		809589B81664A218009C17CB /* GameScreenTouch.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = GameScreenTouch.mm; sourceTree = "<group>"; };
+		80E44046166549FE00396BBE /* PieceImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PieceImage.h; sourceTree = "<group>"; };
+		80E44047166549FE00396BBE /* PieceImage.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = PieceImage.mm; sourceTree = "<group>"; };
+		80E4414916655D5800396BBE /* BaseIcon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseIcon.h; sourceTree = "<group>"; };
+		80E4414A16655D5800396BBE /* BaseIcon.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = BaseIcon.mm; sourceTree = "<group>"; };
+		80E4414B16655D5800396BBE /* CompositeIcon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CompositeIcon.h; sourceTree = "<group>"; };
+		80E4414C16655D5800396BBE /* CompositeIcon.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = CompositeIcon.mm; sourceTree = "<group>"; };
+		80E4414D16655D5800396BBE /* Icon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Icon.h; sourceTree = "<group>"; };
+		80E4414E16655D5800396BBE /* Icon.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Icon.mm; sourceTree = "<group>"; };
+		80E4415816655E1300396BBE /* PuzzlePiece.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PuzzlePiece.h; sourceTree = "<group>"; };
+		80E4415916655E1300396BBE /* PuzzlePiece.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = PuzzlePiece.mm; sourceTree = "<group>"; };
+		8D1107310486CEB800E47090 /* PuzzleGame-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "PuzzleGame-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		1D60588F0D05DD3D006BFB54 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */,
+				1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */,
+				28FD15000DC6FC520079059D /* OpenGLES.framework in Frameworks */,
+				28FD15080DC6FC5B0079059D /* QuartzCore.framework in Frameworks */,
+				807AC4071662E61C00CCC9FA /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		080E96DDFE201D6D7F000001 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				807AC3BC1662E5BC00CCC9FA /* Base */,
+				807AC3BD1662E5C100CCC9FA /* Components */,
+				807AC40F1662E67400CCC9FA /* Math */,
+				807AC4111662E68600CCC9FA /* Data Storage */,
+				807AC4101662E67F00CCC9FA /* IO */,
+				807AC3CF1662E5D300CCC9FA /* Options.h */,
+				807AC3BE1662E5D300CCC9FA /* Const.h */,
+				807AC3CA1662E5D300CCC9FA /* Include.h */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		19C28FACFE9D520D11CA2CBB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				1D6058910D05DD3D006BFB54 /* PuzzleGame.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		2514C27610084DB600A42282 /* Shaders */ = {
+			isa = PBXGroup;
+			children = (
+				2514C27910084DCA00A42282 /* Shader.fsh */,
+				2514C27A10084DCA00A42282 /* Shader.vsh */,
+			);
+			name = Shaders;
+			sourceTree = "<group>";
+		};
+		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
+			isa = PBXGroup;
+			children = (
+				080E96DDFE201D6D7F000001 /* Classes */,
+				2514C27610084DB600A42282 /* Shaders */,
+				29B97315FDCFA39411CA2CEA /* Other Sources */,
+				29B97317FDCFA39411CA2CEA /* Resources */,
+				29B97323FDCFA39411CA2CEA /* Frameworks */,
+				19C28FACFE9D520D11CA2CBB /* Products */,
+			);
+			name = CustomTemplate;
+			sourceTree = "<group>";
+		};
+		29B97315FDCFA39411CA2CEA /* Other Sources */ = {
+			isa = PBXGroup;
+			children = (
+				32CA4F630368D1EE00C91783 /* PuzzleGame_Prefix.pch */,
+				29B97316FDCFA39411CA2CEA /* main.m */,
+			);
+			name = "Other Sources";
+			sourceTree = "<group>";
+		};
+		29B97317FDCFA39411CA2CEA /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				807AC3B81662E59D00CCC9FA /* Textures */,
+				28EC4C5811D54ECE0027AA9F /* PuzzleGameViewController.xib */,
+				28AD733E0D9D9553002E5188 /* MainWindow.xib */,
+				8D1107310486CEB800E47090 /* PuzzleGame-Info.plist */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				28FD15070DC6FC5B0079059D /* QuartzCore.framework */,
+				28FD14FF0DC6FC520079059D /* OpenGLES.framework */,
+				1DF5F4DF0D08C38300B7A737 /* UIKit.framework */,
+				1D30AB110D05D00D00671497 /* Foundation.framework */,
+				807AC4061662E61C00CCC9FA /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		807AC3B81662E59D00CCC9FA /* Textures */ = {
+			isa = PBXGroup;
+			children = (
+				807AC3B91662E5A300CCC9FA /* Backgrounds */,
+				807AC45C1662F1D400CCC9FA /* Masks */,
+			);
+			name = Textures;
+			sourceTree = "<group>";
+		};
+		807AC3B91662E5A300CCC9FA /* Backgrounds */ = {
+			isa = PBXGroup;
+			children = (
+				807AC3BA1662E5AE00CCC9FA /* the_great_wave_off_kanagawa.png */,
+			);
+			name = Backgrounds;
+			sourceTree = "<group>";
+		};
+		807AC3BC1662E5BC00CCC9FA /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				28FD14FC0DC6FC130079059D /* EAGLView.h */,
+				807AC3C11662E5D300CCC9FA /* EAGLView.mm */,
+				1D3623240D0F684500981E51 /* PuzzleGameAppDelegate.h */,
+				807AC3D21662E5D300CCC9FA /* PuzzleGameAppDelegate.mm */,
+				28EC4C5611D54ECE0027AA9F /* PuzzleGameViewController.h */,
+				807AC3D31662E5D300CCC9FA /* PuzzleGameViewController.mm */,
+			);
+			name = Base;
+			sourceTree = "<group>";
+		};
+		807AC3BD1662E5C100CCC9FA /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				807AC40E1662E66E00CCC9FA /* Images */,
+				807AC40D1662E66800CCC9FA /* Geometry */,
+				807AC4141662E6C500CCC9FA /* Puzzle */,
+				807AC40C1662E65900CCC9FA /* Screens */,
+				807AC40A1662E64D00CCC9FA /* UI */,
+			);
+			name = Components;
+			sourceTree = "<group>";
+		};
+		807AC40A1662E64D00CCC9FA /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				807AC40B1662E65100CCC9FA /* Virtual */,
+			);
+			name = UI;
+			sourceTree = "<group>";
+		};
+		807AC40B1662E65100CCC9FA /* Virtual */ = {
+			isa = PBXGroup;
+			children = (
+				807AC3C01662E5D300CCC9FA /* Drawable.h */,
+				807AC3E51662E5D300CCC9FA /* Touchable.h */,
+				807AC3E61662E5D300CCC9FA /* Touchable.mm */,
+			);
+			name = Virtual;
+			sourceTree = "<group>";
+		};
+		807AC40C1662E65900CCC9FA /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+				807AC4121662E6B600CCC9FA /* TitleScreen */,
+				807AC4131662E6BC00CCC9FA /* GameScreen */,
+				807AC3CB1662E5D300CCC9FA /* MainScreen.h */,
+				807AC3CC1662E5D300CCC9FA /* MainScreen.mm */,
+				807AC3DD1662E5D300CCC9FA /* Screen.h */,
+				807AC3DE1662E5D300CCC9FA /* Screen.mm */,
+			);
+			name = Screens;
+			sourceTree = "<group>";
+		};
+		807AC40D1662E66800CCC9FA /* Geometry */ = {
+			isa = PBXGroup;
+			children = (
+				807AC3BF1662E5D300CCC9FA /* Coord2d.h */,
+				807AC3DF1662E5D300CCC9FA /* Size2d.h */,
+			);
+			name = Geometry;
+			sourceTree = "<group>";
+		};
+		807AC40E1662E66E00CCC9FA /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				80E4407316654C1300396BBE /* Icons */,
+				807AC52F1663019800CCC9FA /* Image.h */,
+				807AC5301663019800CCC9FA /* Image.mm */,
+			);
+			name = Images;
+			sourceTree = "<group>";
+		};
+		807AC40F1662E67400CCC9FA /* Math */ = {
+			isa = PBXGroup;
+			children = (
+				807AC3C21662E5D300CCC9FA /* HitTest.h */,
+				807AC3C31662E5D300CCC9FA /* HitTest2D.mm */,
+				807AC3CD1662E5D300CCC9FA /* Math.h */,
+				807AC3CE1662E5D300CCC9FA /* Math.mm */,
+			);
+			name = Math;
+			sourceTree = "<group>";
+		};
+		807AC4101662E67F00CCC9FA /* IO */ = {
+			isa = PBXGroup;
+			children = (
+				807AC3E01662E5D300CCC9FA /* TextureIO.h */,
+				807AC3E11662E5D300CCC9FA /* TextureIO.mm */,
+			);
+			name = IO;
+			sourceTree = "<group>";
+		};
+		807AC4111662E68600CCC9FA /* Data Storage */ = {
+			isa = PBXGroup;
+			children = (
+				807AC3C81662E5D300CCC9FA /* ImageStorage.h */,
+				807AC3C91662E5D300CCC9FA /* ImageStorage.mm */,
+			);
+			name = "Data Storage";
+			sourceTree = "<group>";
+		};
+		807AC4121662E6B600CCC9FA /* TitleScreen */ = {
+			isa = PBXGroup;
+			children = (
+				807AC3E21662E5D300CCC9FA /* TitleScreen.h */,
+				807AC3E31662E5D300CCC9FA /* TitleScreen.mm */,
+				807AC3E41662E5D300CCC9FA /* TitleScreenTouch.mm */,
+			);
+			name = TitleScreen;
+			sourceTree = "<group>";
+		};
+		807AC4131662E6BC00CCC9FA /* GameScreen */ = {
+			isa = PBXGroup;
+			children = (
+				807AC3D91662E5D300CCC9FA /* GameScreen.h */,
+				807AC3DA1662E5D300CCC9FA /* GameScreen.mm */,
+				809589B81664A218009C17CB /* GameScreenTouch.mm */,
+			);
+			name = GameScreen;
+			sourceTree = "<group>";
+		};
+		807AC4141662E6C500CCC9FA /* Puzzle */ = {
+			isa = PBXGroup;
+			children = (
+				807AC4151662E6DB00CCC9FA /* Piece */,
+				807AC3D01662E5D300CCC9FA /* Puzzle.h */,
+				807AC3D11662E5D300CCC9FA /* Puzzle.mm */,
+				807AC3DC1662E5D300CCC9FA /* PuzzleTouch.mm */,
+			);
+			name = Puzzle;
+			sourceTree = "<group>";
+		};
+		807AC4151662E6DB00CCC9FA /* Piece */ = {
+			isa = PBXGroup;
+			children = (
+				807AC42E1662E8E100CCC9FA /* PieceData */,
+				80E44046166549FE00396BBE /* PieceImage.h */,
+				80E44047166549FE00396BBE /* PieceImage.mm */,
+				80E4415816655E1300396BBE /* PuzzlePiece.h */,
+				80E4415916655E1300396BBE /* PuzzlePiece.mm */,
+			);
+			name = Piece;
+			sourceTree = "<group>";
+		};
+		807AC42E1662E8E100CCC9FA /* PieceData */ = {
+			isa = PBXGroup;
+			children = (
+				807AC42F1662E8ED00CCC9FA /* PieceData.h */,
+				807AC4301662E8ED00CCC9FA /* PieceData.mm */,
+				807AC44C1662EF4700CCC9FA /* PieceMask.h */,
+				807AC44D1662EF4700CCC9FA /* PieceMask.mm */,
+			);
+			name = PieceData;
+			sourceTree = "<group>";
+		};
+		807AC45C1662F1D400CCC9FA /* Masks */ = {
+			isa = PBXGroup;
+			children = (
+				807AC45D1662F1E300CCC9FA /* mask1.png */,
+				807AC45E1662F1E300CCC9FA /* mask2.png */,
+				807AC45F1662F1E300CCC9FA /* mask3.png */,
+				807AC4601662F1E300CCC9FA /* mask4.png */,
+				807AC4611662F1E300CCC9FA /* mask5.png */,
+				807AC4621662F1E300CCC9FA /* mask6.png */,
+				807AC4631662F1E300CCC9FA /* mask7.png */,
+				807AC4641662F1E300CCC9FA /* mask8.png */,
+				807AC4651662F1E300CCC9FA /* mask9.png */,
+				807AC4661662F1E300CCC9FA /* mask10.png */,
+				807AC4671662F1E300CCC9FA /* mask11.png */,
+				807AC4681662F1E300CCC9FA /* mask12.png */,
+				80832A0816640BC700951EAE /* mask13.png */,
+				80832A0916640BC700951EAE /* mask14.png */,
+				8089B96C1664114100F9507C /* mask15.png */,
+			);
+			name = Masks;
+			sourceTree = "<group>";
+		};
+		80E4407316654C1300396BBE /* Icons */ = {
+			isa = PBXGroup;
+			children = (
+				80E4408816654CB200396BBE /* CompositeIcons */,
+				80E4414916655D5800396BBE /* BaseIcon.h */,
+				80E4414A16655D5800396BBE /* BaseIcon.mm */,
+				80E4414D16655D5800396BBE /* Icon.h */,
+				80E4414E16655D5800396BBE /* Icon.mm */,
+			);
+			name = Icons;
+			sourceTree = "<group>";
+		};
+		80E4408816654CB200396BBE /* CompositeIcons */ = {
+			isa = PBXGroup;
+			children = (
+				80E4414B16655D5800396BBE /* CompositeIcon.h */,
+				80E4414C16655D5800396BBE /* CompositeIcon.mm */,
+			);
+			name = CompositeIcons;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		1D6058900D05DD3D006BFB54 /* PuzzleGame */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1D6058960D05DD3E006BFB54 /* Build configuration list for PBXNativeTarget "PuzzleGame" */;
+			buildPhases = (
+				1D60588D0D05DD3D006BFB54 /* Resources */,
+				1D60588E0D05DD3D006BFB54 /* Sources */,
+				1D60588F0D05DD3D006BFB54 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = PuzzleGame;
+			productName = PuzzleGame;
+			productReference = 1D6058910D05DD3D006BFB54 /* PuzzleGame.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		29B97313FDCFA39411CA2CEA /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "PuzzleGame" */;
+			compatibilityVersion = "Xcode 3.1";
+			developmentRegion = English;
+			hasScannedForEncodings = 1;
+			knownRegions = (
+				English,
+				Japanese,
+				French,
+				German,
+			);
+			mainGroup = 29B97314FDCFA39411CA2CEA /* CustomTemplate */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				1D6058900D05DD3D006BFB54 /* PuzzleGame */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		1D60588D0D05DD3D006BFB54 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2514C27B10084DCA00A42282 /* Shader.fsh in Resources */,
+				2514C27C10084DCA00A42282 /* Shader.vsh in Resources */,
+				28AD733F0D9D9553002E5188 /* MainWindow.xib in Resources */,
+				28EC4C5A11D54ECE0027AA9F /* PuzzleGameViewController.xib in Resources */,
+				807AC3BB1662E5AE00CCC9FA /* the_great_wave_off_kanagawa.png in Resources */,
+				807AC4691662F1E300CCC9FA /* mask1.png in Resources */,
+				807AC46A1662F1E300CCC9FA /* mask2.png in Resources */,
+				807AC46B1662F1E300CCC9FA /* mask3.png in Resources */,
+				807AC46C1662F1E300CCC9FA /* mask4.png in Resources */,
+				807AC46D1662F1E300CCC9FA /* mask5.png in Resources */,
+				807AC46E1662F1E300CCC9FA /* mask6.png in Resources */,
+				807AC46F1662F1E300CCC9FA /* mask7.png in Resources */,
+				807AC4701662F1E300CCC9FA /* mask8.png in Resources */,
+				807AC4711662F1E300CCC9FA /* mask9.png in Resources */,
+				807AC4721662F1E300CCC9FA /* mask10.png in Resources */,
+				807AC4731662F1E300CCC9FA /* mask11.png in Resources */,
+				807AC4741662F1E300CCC9FA /* mask12.png in Resources */,
+				80832A0A16640BC700951EAE /* mask13.png in Resources */,
+				80832A0B16640BC700951EAE /* mask14.png in Resources */,
+				8089B96D1664114100F9507C /* mask15.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		1D60588E0D05DD3D006BFB54 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1D60589B0D05DD56006BFB54 /* main.m in Sources */,
+				807AC3E71662E5D300CCC9FA /* EAGLView.mm in Sources */,
+				807AC3E81662E5D300CCC9FA /* HitTest2D.mm in Sources */,
+				807AC3EB1662E5D300CCC9FA /* ImageStorage.mm in Sources */,
+				807AC3EC1662E5D300CCC9FA /* MainScreen.mm in Sources */,
+				807AC3ED1662E5D300CCC9FA /* Math.mm in Sources */,
+				807AC3EE1662E5D300CCC9FA /* Puzzle.mm in Sources */,
+				807AC3EF1662E5D300CCC9FA /* PuzzleGameAppDelegate.mm in Sources */,
+				807AC3F01662E5D300CCC9FA /* PuzzleGameViewController.mm in Sources */,
+				807AC3F41662E5D300CCC9FA /* GameScreen.mm in Sources */,
+				807AC3F61662E5D300CCC9FA /* PuzzleTouch.mm in Sources */,
+				807AC3F71662E5D300CCC9FA /* Screen.mm in Sources */,
+				807AC3F81662E5D300CCC9FA /* TextureIO.mm in Sources */,
+				807AC3F91662E5D300CCC9FA /* TitleScreen.mm in Sources */,
+				807AC3FA1662E5D300CCC9FA /* TitleScreenTouch.mm in Sources */,
+				807AC3FB1662E5D300CCC9FA /* Touchable.mm in Sources */,
+				807AC4311662E8ED00CCC9FA /* PieceData.mm in Sources */,
+				807AC44E1662EF4700CCC9FA /* PieceMask.mm in Sources */,
+				807AC5311663019800CCC9FA /* Image.mm in Sources */,
+				809589B91664A218009C17CB /* GameScreenTouch.mm in Sources */,
+				80E44048166549FE00396BBE /* PieceImage.mm in Sources */,
+				80E4414F16655D5800396BBE /* BaseIcon.mm in Sources */,
+				80E4415016655D5800396BBE /* CompositeIcon.mm in Sources */,
+				80E4415116655D5800396BBE /* Icon.mm in Sources */,
+				80E4415A16655E1300396BBE /* PuzzlePiece.mm in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		1D6058940D05DD3E006BFB54 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = PuzzleGame_Prefix.pch;
+				"GCC_THUMB_SUPPORT[arch=armv6]" = "";
+				INFOPLIST_FILE = "PuzzleGame-Info.plist";
+				PRODUCT_NAME = PuzzleGame;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		1D6058950D05DD3E006BFB54 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = PuzzleGame_Prefix.pch;
+				"GCC_THUMB_SUPPORT[arch=armv6]" = "";
+				INFOPLIST_FILE = "PuzzleGame-Info.plist";
+				PRODUCT_NAME = PuzzleGame;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		C01FCF4F08A954540054247B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_PREPROCESSOR_DEFINITIONS = DEBUG;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 3.1.3;
+				PREBINDING = NO;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		C01FCF5008A954540054247B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				PREBINDING = NO;
+				SDKROOT = iphoneos;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1D6058960D05DD3E006BFB54 /* Build configuration list for PBXNativeTarget "PuzzleGame" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1D6058940D05DD3E006BFB54 /* Debug */,
+				1D6058950D05DD3E006BFB54 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C01FCF4E08A954540054247B /* Build configuration list for PBXProject "PuzzleGame" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C01FCF4F08A954540054247B /* Debug */,
+				C01FCF5008A954540054247B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 29B97313FDCFA39411CA2CEA /* Project object */;
+}

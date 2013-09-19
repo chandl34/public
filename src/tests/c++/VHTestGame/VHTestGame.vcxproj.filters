@@ -1,0 +1,200 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Source Files\Components">
+      <UniqueIdentifier>{6bfd34fe-a806-48ba-8c45-c26e507fb726}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Components\UI">
+      <UniqueIdentifier>{bb1aec14-785f-4436-8a24-4547a94c7abb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Components\Game">
+      <UniqueIdentifier>{97bbc0c0-172d-410a-b886-0769cda0af29}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Components\Game\GameObjects">
+      <UniqueIdentifier>{6bd0d2af-70d4-4485-a707-649ef78a22bf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Components\Game\GameObjects\Ship">
+      <UniqueIdentifier>{bbdddf76-9ac4-4012-921c-457d335c0eb4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Components\UI\Screens">
+      <UniqueIdentifier>{e2ca1156-ce63-4b13-874e-455fc400697b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Components\UI\Screens\GameScreen">
+      <UniqueIdentifier>{7aed8ce2-24e7-4c7f-af46-0ffaa952ec1b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Components\UI\Screens\StatScreen">
+      <UniqueIdentifier>{d545543a-6643-4614-ab70-ee270108d39b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Components\UI\Tools">
+      <UniqueIdentifier>{f5c2f122-cf97-4815-af6b-69bf3a61e346}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Components\UI\Color">
+      <UniqueIdentifier>{38afb964-18b8-442b-8c80-d8fed7abe19a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Math">
+      <UniqueIdentifier>{bc9f69a4-f8ef-40ef-b00e-87bc57f0e5d6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Components\Game\GameObjects\Asteroid">
+      <UniqueIdentifier>{c730b2ff-dca1-43bd-82ca-f5ad7b556a59}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Components\Game\GameObjects\Asteroid\Digitroid">
+      <UniqueIdentifier>{2033df3a-05fc-4f61-a899-a0e5361f84dd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Components\Game\GameObjects\Asteroid\Operoid">
+      <UniqueIdentifier>{f2348338-1c84-47ea-87e7-cc28c944ff1b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Components\Game\GameObjects\Projectile">
+      <UniqueIdentifier>{2ecc3eb3-9eeb-4685-b919-d5f2c7dcec0f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Components\UI\Screens\PauseScreen">
+      <UniqueIdentifier>{ac4d57a4-d1ca-4bf2-a8bd-1c91976db8d9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Components\Game\GameObjects\Asteroid\Mathteroid">
+      <UniqueIdentifier>{9dc7332c-2b16-4de8-931e-a862effccf8a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Components\Geometry">
+      <UniqueIdentifier>{91967340-b09e-4ede-8c08-636824c3ae9c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Components\Geometry\Base">
+      <UniqueIdentifier>{6b8cd5d0-f420-4e3f-a5d1-25f7ce015e5e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Components\Geometry\Shapes">
+      <UniqueIdentifier>{e10a4c6b-506a-4ee9-bfd5-e34aa1461808}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Components\UI\Virtual">
+      <UniqueIdentifier>{5b41f023-8bd5-4543-9bbb-810b1b3eafcf}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Const.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GameScreen.h">
+      <Filter>Source Files\Components\UI\Screens\GameScreen</Filter>
+    </ClInclude>
+    <ClInclude Include="StatScreen.h">
+      <Filter>Source Files\Components\UI\Screens\StatScreen</Filter>
+    </ClInclude>
+    <ClInclude Include="Game.h">
+      <Filter>Source Files\Components\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="Controller.h">
+      <Filter>Source Files\Components\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="BaseScreen.h">
+      <Filter>Source Files\Components\UI\Screens</Filter>
+    </ClInclude>
+    <ClInclude Include="Rectangle_c34.h">
+      <Filter>Source Files\Components\Geometry\Shapes</Filter>
+    </ClInclude>
+    <ClInclude Include="Color_c34.h">
+      <Filter>Source Files\Components\UI\Color</Filter>
+    </ClInclude>
+    <ClInclude Include="Brush_c34.h">
+      <Filter>Source Files\Components\UI\Tools</Filter>
+    </ClInclude>
+    <ClInclude Include="Pen_c34.h">
+      <Filter>Source Files\Components\UI\Tools</Filter>
+    </ClInclude>
+    <ClInclude Include="GameObject.h">
+      <Filter>Source Files\Components\Game\GameObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="Ship.h">
+      <Filter>Source Files\Components\Game\GameObjects\Ship</Filter>
+    </ClInclude>
+    <ClInclude Include="Coord2d.h">
+      <Filter>Source Files\Components\Geometry\Base</Filter>
+    </ClInclude>
+    <ClInclude Include="Coord2d.h" />
+    <ClInclude Include="Math_c34.h">
+      <Filter>Source Files\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Size2d.h">
+      <Filter>Source Files\Components\Geometry\Base</Filter>
+    </ClInclude>
+    <ClInclude Include="Asteroid.h">
+      <Filter>Source Files\Components\Game\GameObjects\Asteroid</Filter>
+    </ClInclude>
+    <ClInclude Include="Digitroid.h">
+      <Filter>Source Files\Components\Game\GameObjects\Asteroid\Digitroid</Filter>
+    </ClInclude>
+    <ClInclude Include="Operoid.h">
+      <Filter>Source Files\Components\Game\GameObjects\Asteroid\Operoid</Filter>
+    </ClInclude>
+    <ClInclude Include="Projectile.h">
+      <Filter>Source Files\Components\Game\GameObjects\Projectile</Filter>
+    </ClInclude>
+    <ClInclude Include="PauseScreen.h">
+      <Filter>Source Files\Components\UI\Screens\PauseScreen</Filter>
+    </ClInclude>
+    <ClInclude Include="Mathteroid.h">
+      <Filter>Source Files\Components\Game\GameObjects\Asteroid\Mathteroid</Filter>
+    </ClInclude>
+    <ClInclude Include="Drawable.h">
+      <Filter>Source Files\Components\UI\Virtual</Filter>
+    </ClInclude>
+    <ClInclude Include="Colorable.h">
+      <Filter>Source Files\Components\UI\Virtual</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="VHTestGame.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Ship.cpp">
+      <Filter>Source Files\Components\Game\GameObjects\Ship</Filter>
+    </ClCompile>
+    <ClCompile Include="GameScreen.cpp">
+      <Filter>Source Files\Components\UI\Screens\GameScreen</Filter>
+    </ClCompile>
+    <ClCompile Include="StatScreen.cpp">
+      <Filter>Source Files\Components\UI\Screens\StatScreen</Filter>
+    </ClCompile>
+    <ClCompile Include="Game.cpp">
+      <Filter>Source Files\Components\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="Controller.cpp">
+      <Filter>Source Files\Components\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="BaseScreen.cpp">
+      <Filter>Source Files\Components\UI\Screens</Filter>
+    </ClCompile>
+    <ClCompile Include="Color_c34.cpp">
+      <Filter>Source Files\Components\UI\Color</Filter>
+    </ClCompile>
+    <ClCompile Include="Brush_c34.cpp">
+      <Filter>Source Files\Components\UI\Tools</Filter>
+    </ClCompile>
+    <ClCompile Include="Pen_c34.cpp">
+      <Filter>Source Files\Components\UI\Tools</Filter>
+    </ClCompile>
+    <ClCompile Include="GameObject.cpp">
+      <Filter>Source Files\Components\Game\GameObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="Asteroid.cpp">
+      <Filter>Source Files\Components\Game\GameObjects\Asteroid</Filter>
+    </ClCompile>
+    <ClCompile Include="Digitroid.cpp">
+      <Filter>Source Files\Components\Game\GameObjects\Asteroid\Digitroid</Filter>
+    </ClCompile>
+    <ClCompile Include="Operoid.cpp">
+      <Filter>Source Files\Components\Game\GameObjects\Asteroid\Operoid</Filter>
+    </ClCompile>
+    <ClCompile Include="Projectile.cpp">
+      <Filter>Source Files\Components\Game\GameObjects\Projectile</Filter>
+    </ClCompile>
+    <ClCompile Include="PauseScreen.cpp">
+      <Filter>Source Files\Components\UI\Screens\PauseScreen</Filter>
+    </ClCompile>
+    <ClCompile Include="Mathteroid.cpp">
+      <Filter>Source Files\Components\Game\GameObjects\Asteroid\Mathteroid</Filter>
+    </ClCompile>
+    <ClCompile Include="Colorable.cpp">
+      <Filter>Source Files\Components\UI\Virtual</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>
