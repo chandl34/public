@@ -1,3 +1,21 @@
+#pragma once
+
+
+//---- CONSTANTS
+const static UIViewAutoresizing UIViewAutoresizingFlexibleSize = (UIViewAutoresizingFlexibleWidth |
+                                                                  UIViewAutoresizingFlexibleHeight);
+const static UIViewAutoresizing UIViewAutoresizingFlexibleVertical = (UIViewAutoresizingFlexibleTopMargin |
+                                                                      UIViewAutoresizingFlexibleBottomMargin);
+const static UIViewAutoresizing UIViewAutoresizingFlexibleHorizontal = (UIViewAutoresizingFlexibleLeftMargin |
+                                                                        UIViewAutoresizingFlexibleRightMargin);
+const static UIViewAutoresizing UIViewAutoresizingFlexibleAll = (UIViewAutoresizingFlexibleSize |
+                                                                 UIViewAutoresizingFlexibleVertical |
+                                                                 UIViewAutoresizingFlexibleHorizontal);
+
+const static double EPSILON = 0.0000001;
+
+
+
 //---- VIEWS
 // View
 @interface UIView(Custom)

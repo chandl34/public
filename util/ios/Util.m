@@ -1,9 +1,5 @@
 #import "Util.h"
 
-//---- CONSTANTS
-const static double EPSILON = 0.0000001;
-
-
 //---- VIEWS
 // View
 @implementation UIView(Custom)
@@ -162,7 +158,8 @@ const static double EPSILON = 0.0000001;
 {
     for(id object in self)
     {
-        if([object tag] == tag)
+        if([object respondsToSelector:@selector(tag)] &&
+           [object tag] == tag)
         {
             return object;
         }
