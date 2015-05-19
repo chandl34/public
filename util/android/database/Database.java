@@ -10,7 +10,7 @@ public class Database
 extends SQLiteOpenHelper
 {
 	//---- CONSTANTS
-	private static final String DATABASE_NAME = "surgeworks.divineoffice.sqlite";
+	private static final String DATABASE_NAME = "company.project.sqlite";
 	private static final int DATABASE_VERSION = 1;
 	
 	
