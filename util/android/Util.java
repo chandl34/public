@@ -306,24 +306,25 @@ public class Util
 		
 		return builder.toString();
 	}
-	
-	public static String[] split(String string, String delimiter)
-	{
-		if(string == null)
-		{
-			return new String[]{""};
-		}
-		
-		String[] array = string.split(delimiter);
-		if(string.endsWith(delimiter))
-		{
-			ArrayList<String> list = new ArrayList<String>();
-			list.addAll(Arrays.asList(array));	
-			list.add("");
-			array = list.toArray(array);
-		}		
-		return array;
-	}
+    
+    public static String[] split(String string, String delimiter)
+    {
+        if(string == null)
+        {
+            return new String[]{""};
+        }
+        
+        ArrayList<String> list = new ArrayList<String>();
+        while(string.contains(delimiter))
+        {
+            int pos = string.indexOf(delimiter);
+            list.add(string.substring(0, pos));
+            string = string.substring(pos + delimiter.length());
+        }
+        list.add(string);
+        
+        return list.toArray(new String[list.size()]);
+    }
 	
 	public static boolean containsIgnoreCase(String string, String search)
 	{
