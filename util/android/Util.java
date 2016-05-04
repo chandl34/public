@@ -209,6 +209,16 @@ public class Util
 		{
 			return ((Bundle)collection).isEmpty();
 		}
+        
+        if(collection instanceof JSONArray)
+        {
+            return ((JSONArray)collection).length() == 0;
+        }
+        
+        if(collection instanceof JSONObject)
+        {
+            return ((JSONObject)collection).length() == 0;
+        }
 
 		return false;
 	}
@@ -290,6 +300,16 @@ public class Util
 		
 		return Character.toUpperCase(first) + str.substring(1);
 	}
+    
+    public static String pluralize(String singular, String plural, int count)
+    {
+        if(count == 1)
+        {
+            return singular;
+        }
+        
+        return plural;
+    }
 	
 	public static String join(String[] array, String delimiter)
 	{
@@ -425,7 +445,12 @@ public class Util
 		output = output.replace("%@", "%s");
 		return output;
 	}
-	
+    
+    public static int toInt(boolean bool)
+    {
+        return bool ? 1 : 0;
+    }
+    
 	
 	// Math
 	public static int clamp(int value, int min, int max)
@@ -526,7 +551,21 @@ public class Util
 		address = address.replace("\n", "+");
 		String url = "http://maps.google.com/?q=" + address;
 		return getURLIntent(url);
-	}
+    }
+    
+    public static Intent getSMSIntent(String number, String body, boolean exitOnSent)
+    {
+        Intent intent = new Intent(Intent.ACTION_SENDTO);
+        intent.setData(Uri.parse("smsto:" + number));
+        intent.putExtra("sms_body", body);
+        if(Build.VERSION.SDK_INT < Build.VERSION_CODES.JELLY_BEAN_MR2)
+        {
+            intent.putExtra("exit_on_sent", exitOnSent);  // causes message body to disappear
+        }
+        
+        return intent;
+    }
+
 	
 	
 	// Bitmap
@@ -677,64 +716,6 @@ public class Util
 	}
 	
 	
-	// Other
-	public static long currentTimeSeconds()
-	{
-		return System.currentTimeMillis() / 1000;
-	}
-	
-	public static int getInputType(KeyboardType keyboardType, boolean multi)
-	{
-		switch(keyboardType)
-		{
-			default:
-			case None:
-				if(multi)
-				{		
-					return 	InputType.TYPE_CLASS_TEXT | 						
-							InputType.TYPE_TEXT_FLAG_CAP_SENTENCES |
-							InputType.TYPE_TEXT_FLAG_MULTI_LINE;
-				}
-				else
-				{
-					return 	InputType.TYPE_CLASS_TEXT |
-							InputType.TYPE_TEXT_FLAG_CAP_SENTENCES;
-				}
-				
-			case Address:
-				return 	InputType.TYPE_CLASS_TEXT | 
-						InputType.TYPE_TEXT_FLAG_CAP_SENTENCES |
-						InputType.TYPE_TEXT_FLAG_MULTI_LINE | 
-						InputType.TYPE_TEXT_VARIATION_POSTAL_ADDRESS;
-				
-			case Email:
-				return  InputType.TYPE_CLASS_TEXT | 
-						InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS;
-				
-			case Phone:
-				return InputType.TYPE_CLASS_PHONE;
-				
-			case URL:
-				return 	InputType.TYPE_CLASS_TEXT | 
-						InputType.TYPE_TEXT_VARIATION_URI;
-		}
-	}
-	
-	public static View getChildWithTag(ViewGroup viewGroup, Object tag)
-	{
-		for(int i = 0; i < viewGroup.getChildCount(); ++i)
-		{
-			View child = viewGroup.getChildAt(i);
-			if(tag.equals(child.getTag()))
-			{
-				return child;
-			}
-		}
-		
-		return null;
-	}
-	
-	
 	// Encryption
 	public static byte[] encryptAES256(byte[] bytes, byte[] key)
 	{
@@ -802,5 +783,73 @@ public class Util
 	{			
 		byte[] base64 = Base64.encode(utf8, Base64.DEFAULT);
 		return new String(base64);
-	}	
+    }
+    
+    
+    // Other
+    public static long currentTimeSeconds()
+    {
+        return System.currentTimeMillis() / 1000;
+    }
+    
+    public static float pxToDp(Context context, float px)
+    {
+        return px / context.getResources().getDisplayMetrics().density;
+    }
+    
+    public static float dpToPx(Context context, float dp)
+    {
+        return dp * context.getResources().getDisplayMetrics().density;
+    }
+    
+    public static int getInputType(KeyboardType keyboardType, boolean multi)
+    {
+        switch(keyboardType)
+        {
+            default:
+            case None:
+                if(multi)
+                {
+                    return 	InputType.TYPE_CLASS_TEXT |
+                    InputType.TYPE_TEXT_FLAG_CAP_SENTENCES |
+                    InputType.TYPE_TEXT_FLAG_MULTI_LINE;
+                }
+                else
+                {
+                    return 	InputType.TYPE_CLASS_TEXT |
+                    InputType.TYPE_TEXT_FLAG_CAP_SENTENCES;
+                }
+                
+            case Address:
+                return 	InputType.TYPE_CLASS_TEXT |
+                InputType.TYPE_TEXT_FLAG_CAP_SENTENCES |
+                InputType.TYPE_TEXT_FLAG_MULTI_LINE |
+                InputType.TYPE_TEXT_VARIATION_POSTAL_ADDRESS;
+                
+            case Email:
+                return  InputType.TYPE_CLASS_TEXT |
+                InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS;
+                
+            case Phone:
+                return InputType.TYPE_CLASS_PHONE;
+                
+            case URL:
+                return 	InputType.TYPE_CLASS_TEXT | 
+                InputType.TYPE_TEXT_VARIATION_URI;
+        }
+    }
+    
+    public static View getChildWithTag(ViewGroup viewGroup, Object tag)
+    {
+        for(int i = 0; i < viewGroup.getChildCount(); ++i)
+        {
+            View child = viewGroup.getChildAt(i);
+            if(tag.equals(child.getTag()))
+            {
+                return child;
+            }
+        }
+        
+        return null;
+    }
 }
