@@ -6,92 +6,104 @@
 
 - (CGFloat)x
 {
-  return self.frame.origin.x;
+    return self.frame.origin.x;
 }
 
 - (void)setX:(CGFloat)x
 {
-  [self setOrigin:CGPointMake(x, self.y)];
+    [self setOrigin:CGPointMake(x, self.y)];
 }
 
 - (CGFloat)y
 {
-  return self.frame.origin.y;
+    return self.frame.origin.y;
 }
 
 - (void)setY:(CGFloat)y
 {
-  [self setOrigin:CGPointMake(self.x, y)];
+    [self setOrigin:CGPointMake(self.x, y)];
 }
 
 - (CGPoint)origin
 {
-  return self.frame.origin;
+    return self.frame.origin;
 }
 
 - (void)setOrigin:(CGPoint)point
 {
-  [self setFrame:CGRectMake(point.x, point.y, self.width, self.height)];
+    [self setFrame:CGRectMake(point.x, point.y, self.width, self.height)];
 }
 
 - (CGFloat)width
 {
-  return self.frame.size.width;
+    return self.frame.size.width;
 }
 
 - (void)setWidth:(CGFloat)width
 {
-  [self setSize:CGSizeMake(width, self.height)];
+    [self setSize:CGSizeMake(width, self.height)];
 }
 
 - (CGFloat)height
 {
-  return self.frame.size.height;
+    return self.frame.size.height;
 }
 
 - (void)setHeight:(CGFloat)height
 {
-  [self setSize:CGSizeMake(self.width, height)];
+    [self setSize:CGSizeMake(self.width, height)];
 }
 
 - (CGSize)size
 {
-  return self.frame.size;
+    return self.frame.size;
 }
 
 - (void)setSize:(CGSize)size
 {
-  [self setFrame:CGRectMake(self.x, self.y, size.width, size.height)];
+    [self setFrame:CGRectMake(self.x, self.y, size.width, size.height)];
 }
 
 - (CGFloat)right
 {
-  return [self x] + [self width];
+    return [self x] + [self width];
 }
 
 - (void)setRight:(CGFloat)right
 {
-  self.x = right - self.width;
+    self.x = right - self.width;
 }
 
 - (CGFloat)bottom
 {
-  return [self y] + [self height];
+    return [self y] + [self height];
 }
 
 - (void)setBottom:(CGFloat)bottom
 {
-  self.y = bottom - self.height;
+    self.y = bottom - self.height;
 }
 
 - (void)removeSubviews
 {
-  NSArray* subviews = self.subviews;
-  for(int i = 0; i < [subviews count]; ++i)
-  {
-    UIView* subview = [subviews objectAtIndex:i];
-    [subview removeFromSuperview];
-  }
+    NSArray* subviews = self.subviews;
+    for(UIView* subview in subviews)
+    {
+        [subview removeFromSuperview];
+    }
+}
+
+- (UIView*)subviewTagged:(NSInteger)tag
+{
+    for(UIView* view in self.subviews)
+    {
+        if(view.tag == tag)
+        {
+            return view;
+        }
+    }
+    
+    return nil;
 }
 
 @end
@@ -116,12 +128,12 @@
 
 + (UIButton*)withImage:(UIImage*)image
 {
-  UIButton* button = [[UIButton alloc] init];
-  button.size = image.size;
-  
-  [button setImage:image forState:UIControlStateNormal];
-  
-  return button;
+    UIButton* button = [[UIButton alloc] init];
+    button.size = image.size;
+    
+    [button setImage:image forState:UIControlStateNormal];
+    
+    return button;
 }
 
 @end
@@ -151,26 +163,6 @@
 
 
 //---- COLLECTIONS
-// Array
-@implementation NSArray(Custom)
-
-- (id)objectTagged:(NSInteger)tag
-{
-    for(id object in self)
-    {
-        if([object respondsToSelector:@selector(tag)] &&
-           [object tag] == tag)
-        {
-            return object;
-        }
-    }
-    
-    return nil;
-}
-
-@end
-
-
 // Dictionary
 @implementation NSDictionary(Custom)
 
@@ -250,6 +242,16 @@
     return self.size.height;
 }
 
++ (UIImage*)imageNamed:(NSString *)name tinted:(BOOL)tinted
+{
+    UIImage* image = [UIImage imageNamed:name];
+    if(tinted)
+    {
+        return [image imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+    }
+    return image;
+}
+
 + (UIImage *)withColor:(UIColor*)color
 {
     return [self withColor:color size:CGSizeMake(1, 1)];
@@ -265,7 +267,7 @@
     CGContextFillRect(context, rect);
     
     UIImage* image = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();    
+    UIGraphicsEndImageContext();
     return image;
 }
 
@@ -380,12 +382,12 @@
 
 - (BOOL)contains:(NSString*)str
 {
-  return [self rangeOfString:str].location != NSNotFound;
+    return [self rangeOfString:str].location != NSNotFound;
 }
 
 - (NSString*)trim
 {
-  return [self stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+    return [self stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
 }
 
 - (NSString*)pluralize:(NSString*)plural count:(NSInteger)count
@@ -398,9 +400,15 @@
     return plural;
 }
 
+- (id)json
+{
+    NSData* data = [self dataUsingEncoding:NSUTF8StringEncoding];
+    return [data json];
+}
+
 - (NSString*)xml
 {
-  return self;
+    return self;
 }
 
 - (NSString*)toBase64
@@ -451,6 +459,11 @@
 - (NSString*)string
 {
     return [[NSString alloc] initWithData:self encoding:NSUTF8StringEncoding];
+}
+
+- (id)json
+{
+    return [NSJSONSerialization JSONObjectWithData:self options:kNilOptions error:nil];
 }
 
 - (NSString*)toBase64
@@ -506,13 +519,20 @@ NSString* documentsFilePath(NSString* fileName)
 {
     NSURL* url = [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory
                                                          inDomains:NSUserDomainMask] firstObject];
-    return [url URLByAppendingPathComponent:fileName];
+    return [url URLByAppendingPathComponent:fileName].path;
+}
+
+NSString* cachesFilePath(NSString* fileName)
+{
+    NSURL* url = [[[NSFileManager defaultManager] URLsForDirectory:NSCachesDirectory
+                                                         inDomains:NSUserDomainMask] firstObject];
+    return [url URLByAppendingPathComponent:fileName].path;
 }
 
 NSString* resourcesFilePath(NSString* fileName)
 {
     NSURL* url = [[NSBundle mainBundle] resourceURL];
-    return [url URLByAppendingPathComponent:fileName];
+    return [url URLByAppendingPathComponent:fileName].path;
 }
 
 NSString* fileExtension(NSString* fileName)
@@ -622,12 +642,12 @@ BOOL nullOrEmpty(id obj)
 
 
 // System
-double currentTime();
+NSTimeInterval currentTime()
 {
     return [[NSDate date] timeIntervalSince1970];
 }
 
-CGFloat pixelSize();
+CGFloat pixelSize()
 {
     return 1.0f / [UIScreen mainScreen].scale;
 }
@@ -636,75 +656,75 @@ CGFloat pixelSize();
 // Math
 BOOL equals(double a, double b)
 {
-  return a > b - EPSILON && a < b + EPSILON;
+    return a > b - FLT_MIN && a < b + FLT_MIN;
 }
 
 double clamp(double value, double min, double max)
 {
-  value = fmax(min, value);
-  value = fmin(max, value);
-  return value;
+    value = fmax(min, value);
+    value = fmin(max, value);
+    return value;
 }
 
 int32_t bytesToInt(Byte* b)
 {
-  return (b[0] << 24) | (b[1] << 16) | (b[2] << 8) | b[3];
+    return (b[0] << 24) | (b[1] << 16) | (b[2] << 8) | b[3];
 }
 
 CGSize aspectFit(CGSize limit, CGSize size)
 {
-  float sizeRatio = size.width / size.height;
-  float limitRatio = limit.width / limit.height;
-  
-  float min = fminf(limit.width, limit.height);
-  float max = fmaxf(limit.width, limit.height);
-  
-  if(equals(limit.width, limit.height))
-  {
-    if(sizeRatio > 1)
-    {
-      size.width = max;
-      size.height = max / sizeRatio;
-    }
-    else
-    {
-      size.width = max * sizeRatio;
-      size.height = max;
-    }
-  }
-  else
-  {
-    BOOL acuteRatio =
-    (sizeRatio < 1 && limitRatio < 1 && sizeRatio < limitRatio) ||
-    (sizeRatio > 1 && limitRatio > 1 && sizeRatio > limitRatio);
+    float sizeRatio = size.width / size.height;
+    float limitRatio = limit.width / limit.height;
     
-    if(limit.width > limit.height)
+    float min = fminf(limit.width, limit.height);
+    float max = fmaxf(limit.width, limit.height);
+    
+    if(equals(limit.width, limit.height))
     {
-      if(acuteRatio)
-      {
-        size.width = max;
-        size.height = max / sizeRatio;
-      }
-      else
-      {
-        size.width = min * sizeRatio;
-        size.height = min;
-      }
+        if(sizeRatio > 1)
+        {
+            size.width = max;
+            size.height = max / sizeRatio;
+        }
+        else
+        {
+            size.width = max * sizeRatio;
+            size.height = max;
+        }
     }
     else
     {
-      if(acuteRatio)
-      {
-        size.width = max * sizeRatio;
-        size.height = max;
-      }
-      else
-      {
-        size.width = min;
-        size.height = min / sizeRatio;
-      }
+        BOOL acuteRatio =
+        (sizeRatio < 1 && limitRatio < 1 && sizeRatio < limitRatio) ||
+        (sizeRatio > 1 && limitRatio > 1 && sizeRatio > limitRatio);
+        
+        if(limit.width > limit.height)
+        {
+            if(acuteRatio)
+            {
+                size.width = max;
+                size.height = max / sizeRatio;
+            }
+            else
+            {
+                size.width = min * sizeRatio;
+                size.height = min;
+            }
+        }
+        else
+        {
+            if(acuteRatio)
+            {
+                size.width = max * sizeRatio;
+                size.height = max;
+            }
+            else
+            {
+                size.width = min;
+                size.height = min / sizeRatio;
+            }
+        }
     }
-  }
-  
-  return size;
+    
+    return size;
 }

@@ -1,5 +1,3 @@
-#pragma once
-
 
 //---- CONSTANTS
 const static UIViewAutoresizing UIViewAutoresizingFlexibleSize = (UIViewAutoresizingFlexibleWidth |
@@ -8,12 +6,6 @@ const static UIViewAutoresizing UIViewAutoresizingFlexibleVertical = (UIViewAuto
                                                                       UIViewAutoresizingFlexibleBottomMargin);
 const static UIViewAutoresizing UIViewAutoresizingFlexibleHorizontal = (UIViewAutoresizingFlexibleLeftMargin |
                                                                         UIViewAutoresizingFlexibleRightMargin);
-const static UIViewAutoresizing UIViewAutoresizingFlexibleAll = (UIViewAutoresizingFlexibleSize |
-                                                                 UIViewAutoresizingFlexibleVertical |
-                                                                 UIViewAutoresizingFlexibleHorizontal);
-
-const static double EPSILON = 0.0000001;
-
 
 
 //---- VIEWS
@@ -32,6 +24,7 @@ const static double EPSILON = 0.0000001;
 @property (nonatomic) CGFloat bottom;
 
 - (void)removeSubviews;
+- (UIView*)subviewTagged:(NSInteger)tag;
 
 @end
 
@@ -60,15 +53,8 @@ const static double EPSILON = 0.0000001;
 @end
 
 
+
 //---- COLLECTIONS
-// Array
-@interface NSArray(Custom)
-
-- (id)objectTagged:(NSInteger)tag;
-
-@end
-
-
 // Dictionary
 @interface NSDictionary(Custom)
 
@@ -95,6 +81,7 @@ const static double EPSILON = 0.0000001;
 @property (nonatomic, readonly) CGFloat width;
 @property (nonatomic, readonly) CGFloat height;
 
++ (UIImage*)imageNamed:(NSString*)name tinted:(BOOL)tinted;
 + (UIImage*)withColor:(UIColor*)color;
 + (UIImage*)withColor:(UIColor*)color size:(CGSize)size;
 
@@ -117,6 +104,7 @@ const static double EPSILON = 0.0000001;
 
 - (NSString*)pluralize:(NSString*)plural count:(NSInteger)count;
 
+- (id)json;
 - (NSString*)xml;
 
 - (NSString*)toBase64;
@@ -140,6 +128,8 @@ const static double EPSILON = 0.0000001;
 - (BOOL)writeFile:(NSString*)filePath;
 
 - (NSString*)string;
+- (id)json;
+
 - (NSString*)toBase64;
 - (NSString*)fromBase64;
 
@@ -158,6 +148,7 @@ const static double EPSILON = 0.0000001;
 
 // Files
 NSString* documentsFilePath(NSString* fileName);
+NSString* cachesFilePath(NSString* fileName);
 NSString* resourcesFilePath(NSString* fileName);
 NSString* fileExtension(NSString* fileName);
 
@@ -189,7 +180,7 @@ BOOL nullOrEmpty(id obj);
 
 
 // System
-double currentTime();
+NSTimeInterval currentTime();
 CGFloat pixelSize();
 
 
