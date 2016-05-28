@@ -519,6 +519,11 @@ NSString* documentsFilePath(NSString* fileName)
 {
     NSURL* url = [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory
                                                          inDomains:NSUserDomainMask] firstObject];
+    
+    if(fileName == nil)
+    {
+        return url.path;
+    }
     return [url URLByAppendingPathComponent:fileName].path;
 }
 
@@ -526,12 +531,22 @@ NSString* cachesFilePath(NSString* fileName)
 {
     NSURL* url = [[[NSFileManager defaultManager] URLsForDirectory:NSCachesDirectory
                                                          inDomains:NSUserDomainMask] firstObject];
+    
+    if(fileName == nil)
+    {
+        return url.path;
+    }
     return [url URLByAppendingPathComponent:fileName].path;
 }
 
 NSString* resourcesFilePath(NSString* fileName)
 {
     NSURL* url = [[NSBundle mainBundle] resourceURL];
+    
+    if(fileName == nil)
+    {
+        return url.path;
+    }
     return [url URLByAppendingPathComponent:fileName].path;
 }
 
