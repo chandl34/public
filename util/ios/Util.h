@@ -1,3 +1,10 @@
+//
+//  Util.h
+//  Template-iOS
+//
+//  Created by Jonathan Chandler on 8/7/15.
+//  Copyright (c) 2015 chandl34. All rights reserved.
+//
 
 //---- CONSTANTS
 const static UIViewAutoresizing UIViewAutoresizingFlexibleSize = (UIViewAutoresizingFlexibleWidth |
@@ -23,8 +30,11 @@ const static UIViewAutoresizing UIViewAutoresizingFlexibleHorizontal = (UIViewAu
 @property (nonatomic) CGFloat right;
 @property (nonatomic) CGFloat bottom;
 
++ (UIView*)withColor:(UIColor*)color;
+
 - (void)removeSubviews;
-- (UIView*)subviewTagged:(NSInteger)tag;
+- (UIView*)subviewWithTag:(NSInteger)tag;
+- (UIView*)subviewWithClass:(Class)klass;
 
 @end
 
@@ -189,3 +199,6 @@ BOOL equals(double a, double b);
 double clamp(double value, double min, double max);
 int32_t bytesToInt(Byte* b);
 CGSize aspectFit(CGSize limit, CGSize size);
+UInt32 invertRGB(UInt32 hex);
+UInt32 invertARGB(UInt32 hex);
+

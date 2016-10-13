@@ -1,3 +1,11 @@
+//
+//  Util.m
+//  Template-iOS
+//
+//  Created by Jonathan Chandler on 8/7/15.
+//  Copyright (c) 2015 chandl34. All rights reserved.
+//
+
 #import "Util.h"
 
 //---- VIEWS
@@ -84,6 +92,13 @@
     self.y = bottom - self.height;
 }
 
++ (UIView*)withColor:(UIColor*)color
+{
+    UIView* view = [[UIView alloc] init];
+    view.backgroundColor = color;
+    return view;
+}
+
 - (void)removeSubviews
 {
     NSArray* subviews = self.subviews;
@@ -93,13 +108,32 @@
     }
 }
 
-- (UIView*)subviewTagged:(NSInteger)tag
+- (UIView*)subviewWithTag:(NSInteger)tag
 {
     for(UIView* view in self.subviews)
     {
         if(view.tag == tag)
         {
             return view;
+        }
+    }
+    
+    return nil;
+}
+
+- (UIView*)subviewWithClass:(Class)klass
+{
+    for(UIView* view in self.subviews)
+    {
+        if([view isKindOfClass:klass])
+        {
+            return view;
+        }
+        
+        UIView* subview = [view subviewWithClass:klass];
+        if(subview != nil)
+        {
+            return subview;
         }
     }
     
@@ -190,7 +224,7 @@
         
         if([value respondsToSelector:@selector(xml)])
         {
-            NSString* key = [keys objectAtIndex:i];
+            id key = [keys objectAtIndex:i];
             xml = [NSString stringWithFormat:@"%@<%@>", xml, key];
             xml = [xml stringByAppendingString:[value xml]];
             xml = [NSString stringWithFormat:@"%@</%@>", xml, key];
@@ -742,4 +776,21 @@ CGSize aspectFit(CGSize limit, CGSize size)
     }
     
     return size;
+}
+
+UInt32 invertRGB(UInt32 hex)
+{
+    hex = (hex & 0xFFFFFFFF) + 0xFF000000;
+    return invertARGB(hex);
+}
+
+UInt32 invertARGB(UInt32 hex)
+{
+    UInt32 a = hex & 0xFF000000;
+    
+    UInt32 inverted = ~hex;
+    inverted -= inverted & 0xFF000000;
+    inverted += a;
+    
+    return inverted;
 }
