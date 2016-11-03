@@ -512,6 +512,24 @@
     return [data string];
 }
 
+- (NSString*)hex
+{
+    const unsigned char* dataBuffer = (const unsigned char *)[self bytes];
+    if(!dataBuffer)
+    {
+        return [NSString string];
+    }
+    
+    NSUInteger dataLength  = [self length];
+    NSMutableString* hexString  = [NSMutableString stringWithCapacity:(dataLength * 2)];
+    for(int i = 0; i < dataLength; ++i)
+    {
+        [hexString appendString:[NSString stringWithFormat:@"%02lx", (unsigned long)dataBuffer[i]]];
+    }
+    
+    return [NSString stringWithString:hexString];
+}
+
 @end
 
 
@@ -623,9 +641,14 @@ BOOL deleteFile(NSString* filePath)
 
 + (NSError*)withDescription:(NSString*)description
 {
+    return [self withDescription:description code:0];
+}
+
++ (NSError*)withDescription:(NSString*)description code:(NSInteger)code
+{
     NSDictionary* userInfo = @{NSLocalizedDescriptionKey : description};
     return [NSError errorWithDomain:[[NSBundle mainBundle] bundleIdentifier]
-                               code:0
+                               code:code
                            userInfo:userInfo];
 }
 
@@ -689,6 +712,16 @@ BOOL nullOrEmpty(id obj)
     return null(obj);
 }
 
+id nullToNil(id obj)
+{
+    if([obj isKindOfClass:[NSNull class]])
+    {
+        return nil;
+    }
+    
+    return obj;
+}
+
 
 // System
 NSTimeInterval currentTime()
@@ -713,6 +746,16 @@ double clamp(double value, double min, double max)
     value = fmax(min, value);
     value = fmin(max, value);
     return value;
+}
+
+double degreesToRadians(double degrees)
+{
+    return degrees * M_PI / 180.0;
+}
+
+double radiansToDegrees(double radians)
+{
+    return radians / M_PI * 180.0;
 }
 
 int32_t bytesToInt(Byte* b)

@@ -142,6 +142,7 @@ const static UIViewAutoresizing UIViewAutoresizingFlexibleHorizontal = (UIViewAu
 
 - (NSString*)toBase64;
 - (NSString*)fromBase64;
+- (NSString*)hex;
 
 @end
 
@@ -172,6 +173,7 @@ BOOL deleteFile(NSString* filePath);
 @interface NSError(Custom)
 
 + (NSError*)withDescription:(NSString*)description;
++ (NSError*)withDescription:(NSString*)description code:(NSInteger)code;
 
 @end
 
@@ -187,6 +189,7 @@ BOOL deleteFile(NSString* filePath);
 // Validation
 BOOL null(id obj);
 BOOL nullOrEmpty(id obj);
+id nullToNil(id obj);
 
 
 // System
@@ -197,6 +200,8 @@ CGFloat pixelSize();
 // Math
 BOOL equals(double a, double b);
 double clamp(double value, double min, double max);
+double degreesToRadians(double degrees);
+double radiansToDegrees(double radians);
 int32_t bytesToInt(Byte* b);
 CGSize aspectFit(CGSize limit, CGSize size);
 UInt32 invertRGB(UInt32 hex);
