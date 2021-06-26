@@ -1,25 +1,48 @@
-import React, {Component} from 'react';
-import {Text, View, Button} from 'react-native';
+import React from 'react';
+import {
+  Text,
+  View,
+  ScrollView,
+  FlatList,
+  Button,
+  StyleSheet,
+} from 'react-native';
 
-class MainViewController extends Component {
-  render() {
-    const {navigation} = this.props;
+const MainViewController = () => {
+  //---- CONSTANTS
+  const styles = StyleSheet.create({
+    itemView: {
+      padding: 8,
+      minWidth: 100,
+      minHeight: 44,
+    },
+  });
 
+  //---- MEMBERS
+  let data = [
+    {title: 'A'},
+    {title: 'B'},
+    {title: 'C'},
+  ];
+
+  //---- LAYOUT
+  const _renderItem = (item, index) => {
     return (
-      <View
-        style={{
-          flex: 1,
-          justifyContent: 'center',
-          alignItems: 'center',
-        }}>
-        <Text>Hello, world!</Text>
-        <Button
-          title="Next"
-          onPress={() => navigation.navigate('TestViewController')}
-        />
+      <View style={styles.itemView}>
+        <Text>{index} :: {item.title}</Text>
       </View>
     );
-  }
-}
+  };
+
+  return (
+    <View>
+      <Text>{JSON.stringify({data})}</Text>
+      <FlatList
+      data={data}
+      keyExtractor={(item, index) => index}
+      renderItem={({item, index}) => _renderItem(item, index)} />
+    </View>
+  );
+};
 
 export default MainViewController;
