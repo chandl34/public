@@ -6,17 +6,36 @@
  * @flow strict-local
  */
 
- import React, { Component } from 'react';
+import 'react-native-gesture-handler';
 
- import MainViewController from './src/ui/viewcontroller/MainViewController.js'
+import React, {Component} from 'react';
+import {NavigationContainer} from '@react-navigation/native';
+import {createStackNavigator} from '@react-navigation/stack';
 
+import MainViewController from './src/ui/viewcontroller/MainViewController.js';
+import TestViewController from './src/ui/viewcontroller/TestViewController.js';
 
- class App extends Component {
-   render() {
-     return (
-       <MainViewController />
-     );
-   }
- }
+const Stack = createStackNavigator();
+
+class App extends Component {
+  render() {
+    return (
+      <NavigationContainer>
+        <Stack.Navigator>
+          <Stack.Screen
+            name="MainViewController"
+            component={MainViewController}
+            options={{title: 'Main'}}
+          />
+          <Stack.Screen
+            name="TestViewController"
+            component={TestViewController}
+            options={{title: 'Test'}}
+          />
+        </Stack.Navigator>
+      </NavigationContainer>
+    );
+  }
+}
 
 export default App;
