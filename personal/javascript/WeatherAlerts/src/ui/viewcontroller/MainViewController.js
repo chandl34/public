@@ -1,48 +1,56 @@
 import React from 'react';
 import {
   Text,
+  SafeAreaView,
   View,
   ScrollView,
   FlatList,
   Button,
   StyleSheet,
+  Pressable,
+  TouchableHighlight,
 } from 'react-native';
 
 const MainViewController = () => {
   //---- CONSTANTS
   const styles = StyleSheet.create({
-    itemView: {
+    screen: {},
+    list: {height: '100%'},
+    item: {
       padding: 8,
-      minWidth: 100,
-      minHeight: 44,
+      minHeight: 66,
+      backgroundColor: '#e7e7e7',
     },
   });
 
   //---- MEMBERS
-  let data = [
-    {title: 'A'},
-    {title: 'B'},
-    {title: 'C'},
-  ];
+  let data = [{label: 'A'}, {label: 'B'}, {label: 'C'}];
 
   //---- LAYOUT
-  const _renderItem = (item, index) => {
-    return (
-      <View style={styles.itemView}>
-        <Text>{index} :: {item.title}</Text>
-      </View>
-    );
-  };
-
   return (
-    <View>
-      <Text>{JSON.stringify({data})}</Text>
+    <SafeAreaView style={styles.screen}>
       <FlatList
-      data={data}
-      keyExtractor={(item, index) => index}
-      renderItem={({item, index}) => _renderItem(item, index)} />
-    </View>
+        style={styles.list}
+        data={data}
+        keyExtractor={(item, index) => index}
+        renderItem={({item, index}) => _renderItem(item, index)}
+      />
+    </SafeAreaView>
   );
+
+  function _renderItem(item, index) {
+    return (
+      <TouchableHighlight
+        style={styles.item}
+        underlayColor="#dddddd"
+        onPress={() => _pressedItem(item, index)}>
+        <Text>{item.label}</Text>
+      </TouchableHighlight>
+    );
+  }
+
+  //---- ACTIONS
+  function _pressedItem(item, index) {}
 };
 
 export default MainViewController;
