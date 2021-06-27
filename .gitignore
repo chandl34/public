@@ -15,7 +15,7 @@ local.properties
 
 
 ### NetBeans ###
-**/nbproject/private/
+nbproject/
 
 
 ### Other ###
