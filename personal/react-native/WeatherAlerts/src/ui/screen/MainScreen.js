@@ -106,6 +106,10 @@ const MainScreen = () => {
 
   //---- METHODS
   function _refreshData(uuid) {
+    setMessage('UUID:  ' + uuid);
+
+    // TODO build server and database
+
     // TODO read from database
     /*
     setMessage('Plugin integrity check ...');
