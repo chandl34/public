@@ -10,8 +10,8 @@ import React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 
-import MainViewController from './src/ui/viewcontroller/MainViewController.js';
-import TestViewController from './src/ui/viewcontroller/TestViewController.js';
+import MainScreen from 'src/ui/screen/MainScreen.js';
+import TestScreen from 'src/ui/screen/TestScreen.js';
 
 const Stack = createStackNavigator();
 
@@ -20,13 +20,13 @@ const App = () => {
     <NavigationContainer>
       <Stack.Navigator>
         <Stack.Screen
-          name="MainViewController"
-          component={MainViewController}
+          name="MainScreen"
+          component={MainScreen}
           options={{title: 'Main'}}
         />
         <Stack.Screen
-          name="TestViewController"
-          component={TestViewController}
+          name="TestScreen"
+          component={TestScreen}
           options={{title: 'Test'}}
         />
       </Stack.Navigator>
