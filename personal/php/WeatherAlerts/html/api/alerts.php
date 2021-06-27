@@ -10,7 +10,7 @@ $uuid = filter_input(INPUT_GET, 'uuid', FILTER_SANITIZE_STRING);
 // Return user alerts
 if($requestMethod === 'GET')
 {
-    $data = json_decode('[{"label":"A"}, {"label":"B"}, {"label":"C"}]');
+    $data = json_decode('[{"label":"Aa"}, {"label":"Bb"}, {"label":"Cc"}]');
 
     success_response($data);
     return;

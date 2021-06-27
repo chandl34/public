@@ -106,7 +106,7 @@ const MainScreen = () => {
 
   //---- METHODS
   function _refreshData(uuid) {
-    setMessage('UUID:  ' + uuid);
+    console.log('UUID:  ' + uuid);
 
     // TODO build server and database
 
@@ -131,18 +131,29 @@ const MainScreen = () => {
       */
     // TODO make server request
 
-    //alert(uuid);
-    //*
-    setTimeout(() => {
-      setData([{label: 'A'}, {label: 'B'}, {label: 'C'}]);
-    }, 1000);
-    //*/
-
-    //const db = SQLite.openDatabase("test.db", "1.0", "Test Database", 200000, openCB, errorCB);
+    _requestGetAlerts(uuid);
   }
 
   //---- REQUESTS
-  function _requestData(uuid) {}
+  function _requestGetAlerts(uuid) {
+    const url = Const.API_METHOD_ALERTS;
+    const options = {method: 'GET'};
+
+    console.log("REQUEST\n" + options.method + " " + url);
+    fetch(url, options)
+      .then(response => response.json())
+      .then(json => {
+        console.log("RESPONSE\n" + JSON.stringify(json));
+        if(json.error != null)
+        {
+            alert(json.error);
+            return;
+        }
+
+        setData(json.data);
+      })
+      .catch(e => alert(e.message));
+  }
 };
 
 export default MainScreen;
