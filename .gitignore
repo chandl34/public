@@ -14,5 +14,9 @@ bin/
 local.properties
 
 
+### NetBeans ###
+**/nbproject/private/
+
+
 ### Other ###
 .DS_Store
