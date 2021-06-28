@@ -1,5 +1,8 @@
 import React from 'react';
 import {Text, View, StyleSheet, TouchableHighlight} from 'react-native';
+import * as Format from 'date-fns';
+
+import * as Const from 'src/Const.js';
 
 const LocationItemView = props => {
   //---- CONSTANTS
@@ -39,27 +42,30 @@ const LocationItemView = props => {
   );
 
   function _renderAlert(alert) {
+    const date = Format.parseJSON(alert.datetime);
+
     return (
       <View style={styles.alert}>
         <Text style={styles.alertType}>{alert.type}</Text>
         <Text
           style={[
             styles.alertDateTime,
-            {color: _isDateSoon(alert.datetime) ? 'red' : 'black'},
+            {color: _isDateSoon(date) ? 'red' : 'black'},
           ]}>
-          {alert.datetime}
+          {_getDateTimeString(date)}
         </Text>
       </View>
     );
   }
 
   //---- METHODS
-  function _isDateSoon(datetime) {
-    return (
-      datetime.includes('08:00') ||
-      datetime.includes('09:00') ||
-      datetime.includes('10:00')
-    );
+  function _isDateSoon(date) {
+    const value = Format.differenceInHours(date, new Date());
+    return value < Const.WARNING_THRESHOLD_IN_HOURS;
+  }
+
+  function _getDateTimeString(date) {
+    return Format.format(date, Const.DATE_FORMAT_APP);
   }
 };
 
