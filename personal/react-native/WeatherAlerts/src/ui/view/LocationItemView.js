@@ -1,10 +1,5 @@
 import React from 'react';
-import {
-  Text,
-  View,
-  StyleSheet,
-  TouchableHighlight,
-} from 'react-native';
+import {Text, View, StyleSheet, TouchableHighlight} from 'react-native';
 
 const LocationItemView = props => {
   //---- CONSTANTS

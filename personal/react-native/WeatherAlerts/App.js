@@ -11,7 +11,7 @@ import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 
 import MainScreen from 'src/ui/screen/MainScreen.js';
-import TestScreen from 'src/ui/screen/TestScreen.js';
+import LocationScreen from 'src/ui/screen/LocationScreen.js';
 
 const Stack = createStackNavigator();
 
@@ -22,12 +22,12 @@ const App = () => {
         <Stack.Screen
           name="MainScreen"
           component={MainScreen}
-          options={{title: 'Weather Alerts'}}
+          options={{title: 'Alerts'}}
         />
         <Stack.Screen
-          name="TestScreen"
-          component={TestScreen}
-          options={{title: 'Test'}}
+          name="LocationScreen"
+          component={LocationScreen}
+          options={{title: 'Location'}}
         />
       </Stack.Navigator>
     </NavigationContainer>

@@ -1,3 +1,5 @@
+export const DEBUG_ALERTS = true;
+
 export const KEY_UUID = 'KEY_UUID';
 
 export const DB_NAME = "com.chandl34.weatheralerts.db"

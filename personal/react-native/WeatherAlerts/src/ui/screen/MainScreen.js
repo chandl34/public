@@ -13,15 +13,14 @@ import SQLite from 'react-native-sqlite-storage';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import UUID from 'react-native-uuid';
 
-//import * as Settings from 'src/data/Settings.js';
-import TestScreen from 'src/ui/screen/TestScreen.js';
+import LocationScreen from 'src/ui/screen/LocationScreen.js';
 import LocationItemView from 'src/ui/view/LocationItemView.js';
 import * as Const from 'src/Const.js';
 
 SQLite.DEBUG(true);
 SQLite.enablePromise(true);
 
-const MainScreen = () => {
+const MainScreen = ({navigation}) => {
   //---- CONSTANTS
   const styles = StyleSheet.create({
     screen: {},
@@ -75,7 +74,7 @@ const MainScreen = () => {
       <FlatList
         style={styles.list}
         data={data}
-        keyExtractor={(item, index, separators) => index}
+        keyExtractor={(item, index) => index.toString()}
         ItemSeparatorComponent={() => _renderSeparator()}
         ListHeaderComponent={() => _renderHeader()}
         renderItem={({item, index, separators}) =>
@@ -89,16 +88,16 @@ const MainScreen = () => {
     return <View style={styles.listSeparator} />;
   }
 
-    function _renderHeader() {
-      return <Text style={styles.listHeader}>Monitored Locations</Text>;
-    }
+  function _renderHeader() {
+    return <Text style={styles.listHeader}>Monitored Locations</Text>;
+  }
 
   function _renderItem(item, index, separators) {
     return (
       <TouchableHighlight
         style={{backgroundColor: '#e7e7e7'}}
         underlayColor="#dddddd"
-        onPress={() => _pressedItem(item, index, separators)}
+        onPress={() => _pressedItem(item)}
         onShowUnderlay={separators.highlight}
         onHideUnderlay={separators.unhighlight}>
         <LocationItemView item={item} />
@@ -107,13 +106,13 @@ const MainScreen = () => {
   }
 
   //---- ACTIONS
-  function _pressedItem(item, index, separators) {
-    alert(item.postcode);
+  function _pressedItem(item) {
+    navigation.navigate('LocationScreen', {item: item});
   }
 
   //---- METHODS
   function _refreshData(uuid) {
-    console.log('UUID:  ' + uuid);
+    console.log(`UUID:  ${uuid}`);
 
     // TODO build server and database
 
@@ -143,14 +142,17 @@ const MainScreen = () => {
 
   //---- REQUESTS
   function _requestGetAlerts(uuid) {
-    const url = Const.API_METHOD_ALERTS;
+    const url =
+      `${Const.API_METHOD_ALERTS}?` +
+      `uuid=${encodeURIComponent(uuid)}&` +
+      `debug=${encodeURIComponent(Const.DEBUG_ALERTS)}`;
     const options = {method: 'GET'};
 
-    console.log('REQUEST\n' + options.method + ' ' + url);
+    console.log(`REQUEST\n${options.method} ${url}`);
     fetch(url, options)
       .then(response => response.json())
       .then(json => {
-        console.log('RESPONSE\n' + JSON.stringify(json));
+        console.log(`RESPONSE\n${JSON.stringify(json)}`);
         if (json.error != null) {
           alert(json.error);
           return;
