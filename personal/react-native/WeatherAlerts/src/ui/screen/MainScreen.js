@@ -3,11 +3,9 @@ import {
   Text,
   SafeAreaView,
   View,
-  ScrollView,
   FlatList,
   Button,
   StyleSheet,
-  Pressable,
   TouchableHighlight,
   PixelRatio,
 } from 'react-native';
@@ -17,6 +15,7 @@ import UUID from 'react-native-uuid';
 
 //import * as Settings from 'src/data/Settings.js';
 import TestScreen from 'src/ui/screen/TestScreen.js';
+import LocationItemView from 'src/ui/view/LocationItemView.js';
 import * as Const from 'src/Const.js';
 
 SQLite.DEBUG(true);
@@ -26,15 +25,17 @@ const MainScreen = () => {
   //---- CONSTANTS
   const styles = StyleSheet.create({
     screen: {},
-    list: {},
+    list: {
+      height: '100%',
+    },
+    listHeader: {
+      padding: 8,
+      fontSize: 18,
+      fontWeight: 'bold',
+    },
     listSeparator: {
       height: 1,
       backgroundColor: '#aaaaaa',
-    },
-    item: {
-      padding: 8,
-      minHeight: 66,
-      backgroundColor: '#e7e7e7',
     },
   });
 
@@ -71,9 +72,9 @@ const MainScreen = () => {
   //---- LAYOUT
   return (
     <SafeAreaView style={styles.screen}>
-      <Text style={{padding: 8, textAlign: 'center'}}>{message}</Text>
+      <Text style={styles.listHeader}>Monitored Locations</Text>
       <FlatList
-        style={{height: '100%'}}
+        style={styles.list}
         data={data}
         keyExtractor={(item, index, separators) => index}
         ItemSeparatorComponent={() => _renderSeparator()}
@@ -91,18 +92,20 @@ const MainScreen = () => {
   function _renderItem(item, index, separators) {
     return (
       <TouchableHighlight
-        style={styles.item}
+        style={{backgroundColor: '#e7e7e7'}}
         underlayColor="#dddddd"
         onPress={() => _pressedItem(item, index, separators)}
         onShowUnderlay={separators.highlight}
         onHideUnderlay={separators.unhighlight}>
-        <Text>{item.label}</Text>
+        <LocationItemView item={item} />
       </TouchableHighlight>
     );
   }
 
   //---- ACTIONS
-  function _pressedItem(item, index, separators) {}
+  function _pressedItem(item, index, separators) {
+    alert(item.postcode);
+  }
 
   //---- METHODS
   function _refreshData(uuid) {
@@ -139,15 +142,14 @@ const MainScreen = () => {
     const url = Const.API_METHOD_ALERTS;
     const options = {method: 'GET'};
 
-    console.log("REQUEST\n" + options.method + " " + url);
+    console.log('REQUEST\n' + options.method + ' ' + url);
     fetch(url, options)
       .then(response => response.json())
       .then(json => {
-        console.log("RESPONSE\n" + JSON.stringify(json));
-        if(json.error != null)
-        {
-            alert(json.error);
-            return;
+        console.log('RESPONSE\n' + JSON.stringify(json));
+        if (json.error != null) {
+          alert(json.error);
+          return;
         }
 
         setData(json.data);

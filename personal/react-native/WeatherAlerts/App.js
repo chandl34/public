@@ -22,7 +22,7 @@ const App = () => {
         <Stack.Screen
           name="MainScreen"
           component={MainScreen}
-          options={{title: 'Main'}}
+          options={{title: 'Weather Alerts'}}
         />
         <Stack.Screen
           name="TestScreen"
