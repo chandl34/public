@@ -72,12 +72,12 @@ const MainScreen = () => {
   //---- LAYOUT
   return (
     <SafeAreaView style={styles.screen}>
-      <Text style={styles.listHeader}>Monitored Locations</Text>
       <FlatList
         style={styles.list}
         data={data}
         keyExtractor={(item, index, separators) => index}
         ItemSeparatorComponent={() => _renderSeparator()}
+        ListHeaderComponent={() => _renderHeader()}
         renderItem={({item, index, separators}) =>
           _renderItem(item, index, separators)
         }
@@ -88,6 +88,10 @@ const MainScreen = () => {
   function _renderSeparator() {
     return <View style={styles.listSeparator} />;
   }
+
+    function _renderHeader() {
+      return <Text style={styles.listHeader}>Monitored Locations</Text>;
+    }
 
   function _renderItem(item, index, separators) {
     return (
