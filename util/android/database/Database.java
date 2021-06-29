@@ -1,159 +1,236 @@
-package com.surgeworks.divineoffice.util.database;
+package com.skoop.uniwellkiosk.util.database;
 
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
+import android.database.DatabaseUtils;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import com.skoop.uniwellkiosk.util.Util;
+
+import java.io.Closeable;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
+
+
 public class Database
 extends SQLiteOpenHelper
+implements Closeable
 {
-	//---- CONSTANTS
-	private static final String DATABASE_NAME = "company.project.sqlite";
+    //---- CONSTANTS
+    public enum SQLMethod
+    {
+        Insert,
+        Update,
+        Delete
+    }
+
+    public static final String DATABASE_NAME = "company.project.sqlite";
 	private static final int DATABASE_VERSION = 1;
 	
 	
 	//---- MEMBERS
-	private static Database _instance;
+    private static Lock _mutex = new ReentrantLock();
 	private SQLiteDatabase _db;
 
 	
 	//---- SETUP
-	private Database(Context context)
+	public Database(Context context)
 	{
 		super(context, DATABASE_NAME, null, DATABASE_VERSION);
 
-		_db = getWritableDatabase();
+        _mutex.lock();
+        _db = getWritableDatabase();
+        _db.beginTransaction();
 	}
-	
+
 	@Override
 	public void onCreate(SQLiteDatabase db){}
 
 	@Override
 	public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion){}
-	
 
-	//---- FACTORIES
-	public static Database getInstance(Context context)
-	{
-		if(_instance == null)
-		{
-			_instance = new Database(context);
-		}
-		
-		return _instance;
-	}
-	
-	
+
+	//---- Closeable
+    @Override
+    public void close()
+    {
+        _db.setTransactionSuccessful();
+        _db.endTransaction();
+        _db.close();
+        _mutex.unlock();
+    }
+
+
 	//---- METHODS
-	public SQLiteDatabase open()
-	{
-		//_mutex.lock();
-		//Util.showLog("database open");
-		//return getWritableDatabase("password");
-		return _db;
-	}
+    private boolean sqlExecute(String query)
+    {
+        return sqlExecute(query, true);
+    }
 
-	@Override
-	public void close()
-	{
-		/*
-		if(_mutex.isHeldByCurrentThread())
-		{
-			//Util.showLog("database close");
-			super.close();
-			_mutex.unlock();
-		}	
-		*/
-	}
-			
-	private boolean sqlQuery(SQLiteDatabase db, String query)	
+	private boolean sqlExecute(String query, boolean showError)
 	{
 		try
 		{
-			db.execSQL(query);
+			_db.execSQL(query);
 			return true;
 		}
-		catch(Exception e){e.printStackTrace();}	
+		catch(Exception e)
+        {
+            if(showError)
+            {
+                e.printStackTrace();
+            }
+        }
 		return false;
 	}
 	
-	public Cursor sqlSelect(SQLiteDatabase db, String query)
+	private Cursor sqlQuery(String query)
 	{
-		//Util.showLog(query);		
 		try
 		{
-			return db.rawQuery(query, null);
+			return _db.rawQuery(query, null);
 		}
-		catch(Exception e){e.printStackTrace();}	
+		catch(Exception e){e.printStackTrace();}
 		return null;
 	}
 
-	public void sqlCreate(SQLiteDatabase db, String table, String keys)	
+	public boolean sqlCreate(String table, List<DatabaseColumn> columnList)
 	{
-	    String query = "CREATE TABLE IF NOT EXISTS ";
-	    query += table + " (" + keys + ")";
+	    String query = String.format("CREATE TABLE IF NOT EXISTS %s", table);
+        if(!Util.nullOrEmpty(columnList))
+        {
+            List<String> stringList = new ArrayList<>();
+            for(DatabaseColumn column : columnList)
+            {
+                stringList.add(column.toString());
+            }
+
+            String columns = Util.join(stringList, ", ");
+            query += " (" + columns + ")";
+        }
 	    
-	    sqlQuery(db, query);
-	}
-	
-	public void sqlAlter(SQLiteDatabase db, String table, String column)
-	{
-		// Check if column exists
-		String query = "SELECT " + column + " ";
-		query += "FROM " + table;
-			
-		Cursor cursor = sqlSelect(db, query);
-		if(cursor != null)
-		{
-			cursor.close();
-		}
-		else
-		{
-			//Util.showLog("adding:  " + column + " to " + table);
-	        query = "ALTER TABLE " + table + " ";
-	        query += "ADD " + column + " TEXT";
-	        			
-	        sqlQuery(db, query);		
-		}
+	    return sqlExecute(query);
 	}
 
-	public void sqlDrop(SQLiteDatabase db, String table)
+	public boolean sqlAlter(String table, DatabaseColumn column)
 	{
-	    String query = "DROP TABLE IF EXISTS " + table;
-	    sqlQuery(db, query);
+        String query = String.format("ALTER TABLE %s ADD %s", table, column);
+        return sqlExecute(query, false);
 	}
 
-	public Cursor sqlSelect(SQLiteDatabase db, String table, String[] columns, String where)
+	public boolean sqlDrop(String table)
+	{
+	    String query = String.format("DROP TABLE IF EXISTS %s", table);
+	    return sqlExecute(query);
+	}
+
+    public List<ContentValues> sqlSelect(String query)
+    {
+        Cursor cursor = sqlQuery(query);
+
+        List list = new ArrayList();
+        if(cursor != null)
+        {
+            for(int i = 0; i < cursor.getCount(); ++i)
+            {
+                cursor.moveToNext();
+
+                ContentValues data = new ContentValues();
+                DatabaseUtils.cursorRowToContentValues(cursor, data);
+
+                list.add(data);
+            }
+            cursor.close();
+        }
+
+        return list;
+    }
+
+	public List<ContentValues> sqlSelect(String table, String[] columns, String clause)
 	{
 		String columns_ = "*";
 		if(!Util.nullOrEmpty(columns))
 		{
 			columns_ = Util.join(columns, ", ");
 		}
-			
-	    String query = "SELECT " + columns_ + " FROM " + table + " ";
-	    if(!Util.nullOrEmpty(where))
-	    {
-		    query += "WHERE " + where;
-	    }
-	    
-	    return sqlSelect(db, query);
+
+		if(clause == null)
+        {
+            clause = "";
+        }
+
+	    String query = String.format("SELECT %s FROM %s %s", columns_, table, clause);
+	    return sqlSelect(query);
 	}
 
-	public void sqlUpdate(SQLiteDatabase db, String table, ContentValues values, String where)
+	public long sqlCount(String table, String clause)
+    {
+        if(clause == null)
+        {
+            clause = "";
+        }
+
+        String query = String.format("SELECT COUNT(*) FROM %s %s", table, clause);
+        Cursor cursor = sqlQuery(query);
+
+        long count = 0;
+        if(cursor != null && cursor.getCount() > 0)
+        {
+            cursor.moveToFirst();
+            count = cursor.getInt(0);
+        }
+
+        cursor.close();
+
+        return count;
+    }
+
+    public long sqlInsert(String table, ContentValues values)
+    {
+        return _db.insert(table, null, values);
+    }
+
+	public boolean sqlUpdate(String table, ContentValues values, String clause)
 	{
-	    db.update(table, values, where, null);
+        if(clause == null)
+        {
+            clause = "";
+        }
+
+        String updateClause = getUpdateClause(values);
+        String query = String.format("UPDATE %s SET %s %s", table, updateClause, clause);
+
+        return sqlExecute(query);
 	}
 
-	public long sqlInsert(SQLiteDatabase db, String table, ContentValues values)
-	{
-	    return db.insert(table, null, values);
-	}
+    private String getUpdateClause(ContentValues values)
+    {
+        List<String> updateList = new ArrayList<>();
 
-	public boolean sqlDelete(SQLiteDatabase db, String table, String where)
+        for(String key : values.keySet())
+        {
+            String value = values.getAsString(key);
+            value = value.replace("'", "''");
+
+            String update = String.format("%s='%s'", key, value);
+            updateList.add(update);
+        }
+
+        return Util.join(updateList, ", ");
+    }
+
+	public boolean sqlDelete(String table, String clause)
 	{
-	    return db.delete(table, where, null) > 0;
+        if(clause == null)
+        {
+            clause = "";
+        }
+
+        String query = String.format("DELETE FROM %s %s", table, clause);
+        return sqlExecute(query);
 	}
 }

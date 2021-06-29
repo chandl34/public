@@ -1,12 +1,14 @@
-package com.surgeworks.divineoffice.util.http;
+package com.skoop.uniwellkiosk.util.http;
 
-import java.io.ByteArrayOutputStream;
-import java.io.InputStream;
-import java.net.SocketTimeoutException;
-import java.net.URI;
-import java.net.UnknownHostException;
 
-import javax.net.ssl.SSLPeerUnverifiedException;
+import android.net.Uri;
+import android.os.AsyncTask;
+import android.os.Bundle;
+import android.util.Pair;
+import android.webkit.CookieManager;
+
+import com.skoop.uniwellkiosk.util.JSON;
+import com.skoop.uniwellkiosk.util.Util;
 
 import org.apache.http.Header;
 import org.apache.http.HttpEntity;
@@ -25,13 +27,16 @@ import org.apache.http.params.HttpConnectionParams;
 import org.apache.http.params.HttpParams;
 import org.json.JSONObject;
 
-import android.net.Uri;
-import android.os.AsyncTask;
-import android.os.Bundle;
-import android.util.Pair;
-import android.webkit.CookieManager;
+import java.io.ByteArrayOutputStream;
+import java.io.InputStream;
+import java.net.SocketTimeoutException;
+import java.net.URI;
+import java.net.UnknownHostException;
 
-public class Http
+import javax.net.ssl.SSLPeerUnverifiedException;
+
+
+public class Http // TODO update for non-legacy http requests
 {
 	//---- CONSTANTS
 	public static final int DEFAULT_TIMEOUT = 30000; // ms
@@ -54,11 +59,8 @@ public class Http
 	
 	
 	//---- CLASSES
-	public static class SessionExpiredException
-	extends Exception{}
-	
 	public static class AsyncHttpTask
-	extends AsyncTask<HttpRequestBase, Integer, Pair<byte[], Exception>>
+    extends AsyncTask<HttpRequestBase, Integer, Pair<byte[], Exception>>
 	{
 		@Override
 		protected Pair<byte[], Exception> doInBackground(HttpRequestBase... params)
@@ -79,7 +81,7 @@ public class Http
 		return getHttpRequest(url, HttpMethod.Get, ContentType.Form, params, headers);
 	}
 	
-	public static HttpRequestBase 
+	public static HttpRequestBase
 	getHttpRequest(String url, HttpMethod method, ContentType contentType, Bundle params, Bundle headers)
 	{
 		try
@@ -98,9 +100,8 @@ public class Http
 			}
 			
 			request.setURI(new URI(url));
-			
-			request.setHeader("Is-Device", "1");
-			request.setHeader("Cookie", CookieManager.getInstance().getCookie(url));			
+
+			request.setHeader("Cookie", CookieManager.getInstance().getCookie(url));
 			if(headers != null)
 			{
 				for(String key : headers.keySet())
@@ -111,7 +112,7 @@ public class Http
 			
 			return request;
 		}
-		catch(Exception e){e.printStackTrace();}	
+		catch(Exception e){e.printStackTrace();}
 		return null;
 	}
 	
@@ -119,30 +120,30 @@ public class Http
 	{
 		HttpParams params = new BasicHttpParams();
 		HttpConnectionParams.setConnectionTimeout(params, DEFAULT_TIMEOUT);
-		HttpConnectionParams.setSoTimeout(params, DEFAULT_TIMEOUT);		
+		HttpConnectionParams.setSoTimeout(params, DEFAULT_TIMEOUT);
 
 		DefaultHttpClient client = new DefaultHttpClient(params);
 		try
 		{
 			HttpResponse response = client.execute(request);
-			
+
 			Header setCookie = response.getFirstHeader("Set-Cookie");
 			if(setCookie != null)
 			{
 				String url = request.getURI().toString();
-				CookieManager.getInstance().setCookie(url, setCookie.getValue());	
+				CookieManager.getInstance().setCookie(url, setCookie.getValue());
 			}
-			
+
 			HttpEntity entity = response.getEntity();
 			InputStream input = entity.getContent();
 			
-			return new Pair<byte[], Exception>(Util.toByteArray(input), null);
+			return new Pair<>(Util.toByteArray(input), null);
 			
 		}
 		catch(Exception e)
 		{
 			e.printStackTrace();
-			return new Pair<byte[], Exception>(null, e);
+			return new Pair<>(null, e);
 		}
 	}
 	
@@ -151,11 +152,11 @@ public class Http
 		switch(method)
 		{
 			case Get:
-				return new HttpGet();				
+				return new HttpGet();
 			case Post:
-				return new HttpPost();			
+				return new HttpPost();
 			case Put:
-				return new HttpPut();		
+				return new HttpPut();
 			case Delete:
 				return new HttpDelete();
 		}		
@@ -194,13 +195,13 @@ public class Http
 		    		return new ByteArrayEntity(getMulitpartData(params));
 		    }
 		}
-		catch(Exception e){e.printStackTrace();}		
+		catch(Exception e){e.printStackTrace();}
 		return null;
 	}
 		
 	public static String getQuery(Bundle params)
 	{
-		StringBuilder builder = new StringBuilder();	
+		StringBuilder builder = new StringBuilder();
 		if(!Util.nullOrEmpty(params))
 		{
 			for(String key : params.keySet())
@@ -213,7 +214,7 @@ public class Http
 						builder.append("&");
 					}	
 					
-					builder.append(key + "=" + Uri.encode(entry.toString()));
+					builder.append(key).append("=").append(Uri.encode(entry.toString()));
 				}				
 			}	
 		}
@@ -233,13 +234,14 @@ public class Http
 
 				Util.showLog(String.format("%s : %s", key, value));
 
-				output.write(String.format("\r\n--%s\r\n", MULTIPART_BOUNDARY).getBytes());			
+				output.write(String.format("\r\n--%s\r\n", MULTIPART_BOUNDARY).getBytes());
 				if(value instanceof Attachment)
 				{
 					try
 					{
 						Attachment attachment = (Attachment)value;
-						output.write(String.format("Content-Disposition: form-data; name=\"%s\"; filename=\"%s\"\r\n", key, attachment.getFileName()).getBytes());	
+						output.write(
+                        String.format("Content-Disposition: form-data; name=\"%s\"; filename=\"%s\"\r\n", key, attachment.getFileName()).getBytes());
 						output.write(String.format("Content-Type: %s\r\n\r\n", Attachment.getMimeTypeName(attachment.getMimeType())).getBytes());
 						output.write(attachment.getData());
 					} 
@@ -247,51 +249,21 @@ public class Http
 				}
 				else
 				{
-					output.write(String.format("Content-Disposition: form-data; name=\"%s\"\r\n\r\n%s", key, value).getBytes());	
+					output.write(String.format("Content-Disposition: form-data; name=\"%s\"\r\n\r\n%s", key, value).getBytes());
 				}
 			}
-			output.write(String.format("\r\n--%s--\r\n", MULTIPART_BOUNDARY).getBytes());			
+			output.write(String.format("\r\n--%s--\r\n", MULTIPART_BOUNDARY).getBytes());
 		}
 		catch(Exception e){e.printStackTrace();}
 		
 		return output.toByteArray();
 	}
-	
-	public static JSONObject getJSONResponse(byte[] bytes) throws Exception
-	{
-		String jsonString = new String(bytes);
-		JSONObject json = new JSONObject(jsonString);
-		Util.showLog("RESPONSE:\n" + jsonString);
-		
-		int status = 0;
-		if(json.has("status"))
-		{
-			status = json.getInt("status");
-		}
-		
-		if(status != 200 || json.has("error"))
-		{
-			if(status == 0 || status == 401)
-			{
-				throw new SessionExpiredException();
-			}
-			
-			String message = "Unknown server error.";
-			if(json.has("error"))
-			{
-				message = JSON.getString(json, "error");
-			}
-			throw new Exception(message);
-		}
-		
-		return json;
-	}
-	
+
 	public static boolean isTimeout(Exception e)
 	{
-		return 
-			e instanceof UnknownHostException || 
-			e instanceof SocketTimeoutException || 
-			e instanceof SSLPeerUnverifiedException;
+		return
+        e instanceof UnknownHostException ||
+        e instanceof SocketTimeoutException ||
+        e instanceof SSLPeerUnverifiedException;
 	}
 }

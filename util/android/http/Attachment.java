@@ -1,8 +1,9 @@
-package com.surgeworks.divineoffice.util.http;
+package com.skoop.uniwellkiosk.util.http;
 
 import android.os.Bundle;
 import android.os.Parcel;
 import android.os.Parcelable;
+
 
 public class Attachment
 implements Parcelable

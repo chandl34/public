@@ -1,276 +1,348 @@
-package com.surgeworks.divineoffice.util.database;
+package com.skoop.uniwellkiosk.util.database;
 
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
 
 import android.content.ContentValues;
 import android.content.Context;
-import android.database.Cursor;
-import android.database.DatabaseUtils;
-import android.database.sqlite.SQLiteDatabase;
+
+import com.skoop.uniwellkiosk.Const.DatabaseKey;
+import com.skoop.uniwellkiosk.data.entity.general.DatabaseEntity;
+import com.skoop.uniwellkiosk.util.Util;
+import com.skoop.uniwellkiosk.util.database.Database.SQLMethod;
+
+import java.util.ArrayList;
+import java.util.List;
+
 
 public class DatabaseHelper
 {
 	//---- CLASSES
-	public interface Callback
+	public interface Callback<T>
 	{
-		public Object run(Context context, Database database, SQLiteDatabase db);
-	}
-	
-	
-	//---- FACTORIES
-	public static DatabaseEntity load(Context context, Class<?> entityType, final String[] columns, String where)
-	{		
-		return load(context, null, entityType, columns, where);
-	}
-	
-	public static DatabaseEntity load(Context context, SQLiteDatabase db, Class<?> entityType, final String[] columns, String where)
-	{
-		List<?> list = loadList(context, db, entityType, columns, where);
-		if(list.isEmpty())
-		{
-			return null;
-		}
-		
-		return (DatabaseEntity)list.get(0);
+		T run(Context context, Database database);
 	}
 
-	public static List<?> loadList(Context context, final Class<?> entityType, final String[] columns, String where)
-	{
-		return loadList(context, null, entityType, columns, where);
-	}
 
-	public static List<?> loadList(Context context, SQLiteDatabase db, final Class<?> entityType, final String[] columns, final String where)
-	{
-		Callback callback = new Callback()
-		{
-			@Override
-			public Object run(Context context, Database database, SQLiteDatabase db)
-			{
-				List<DatabaseEntity> list = new ArrayList<DatabaseEntity>();
-				try
-				{
-					DatabaseEntity structure = (DatabaseEntity)entityType.newInstance();			
-					Cursor cursor = database.sqlSelect(db, structure.getTableName(), columns, where);
-					for(int i = 0; i < cursor.getCount(); ++i)
-					{
-						cursor.moveToNext();
-						
-						ContentValues data = new ContentValues();
-						DatabaseUtils.cursorRowToContentValues(cursor, data);
-						
-						DatabaseEntity entity = (DatabaseEntity)entityType.newInstance();
-						entity.loadFromData(data);
-						list.add(entity);
-					}
-					cursor.close();
-				}
-				catch(Exception e)
-				{
-					e.printStackTrace();
-				}		
-				
-				return list;
-			}
-		};
-		
-		return (List<?>)openCloseHelper(context, db, callback);
-	}
+    //---- METHODS
+    public static void createTables(Context context, final List<Class<? extends DatabaseEntity>> entityTypes)
+    {
+        createTables(context, null, entityTypes);
+    }
 
-	public static int count(Context context, final Class<?> entityType, String where)
-	{
-		return count(context, null, entityType, where);
-	}
-	
-	public static int count(Context context, SQLiteDatabase db, final Class<?> entityType, final String where)
-	{
-		Callback callback = new Callback()
-		{
-			@Override
-			public Object run(Context context, Database database, SQLiteDatabase db)
-			{
-				try
-				{
-					DatabaseEntity entity = (DatabaseEntity)entityType.newInstance();	
-					String[] columns = {Key.LOCAL_ID};
-					Cursor cursor = database.sqlSelect(db, entity.getTableName(), columns, where);	
-					int count = cursor.getCount();
-					cursor.close();
-					return count;
-				}
-				catch(Exception e)
-				{
-					e.printStackTrace();
-				}	
-				
-				return 0;
-			}
-		};	
+    public static void createTables(Context context, Database database, final List<Class<? extends DatabaseEntity>> entityTypes)
+    {
+        Callback callback = new Callback()
+        {
+            @Override
+            public Object run(Context context, Database database)
+            {
+                for(Class<? extends DatabaseEntity> entityType : entityTypes)
+                {
+                    try
+                    {
+                        DatabaseEntity entity = entityType.newInstance();
 
-		return (Integer)openCloseHelper(context, db, callback);
-	}
-	
-	
-	//---- METHODS
-	public static void createTables(Context context, final List<Class<?>> entityTypes)
-	{
-		Callback callback = new Callback()
-		{
-			@Override
-			public Object run(Context context, Database database, SQLiteDatabase db)
-			{
-				for(int i = 0; i < entityTypes.size(); ++i)
-				{
-					try
-					{
-						Class<?> entityType = entityTypes.get(i);
-						DatabaseEntity entity = (DatabaseEntity)entityType.newInstance();
-						
-						database.sqlCreate(db, entity.getTableName(), entity.getTableKeys());
-						
-						List<String> columns = entity.getTableColumns();
-						Iterator<String> iter = columns.iterator();						
-						while(iter.hasNext())
-						{
-							String column = iter.next();
-							database.sqlAlter(db, entity.getTableName(), column);
-						}
-					}
-					catch(Exception e)
-					{
-						e.printStackTrace();
-					}									
-				}
-				
-				return null;	
-			}
-		};
-		
-		openCloseHelper(context, null, callback);
-	}
+                        database.sqlCreate(entity.getTableName(), entity.getTableColumns());
+                    }
+                    catch(Exception e)
+                    {
+                        e.printStackTrace();
+                    }
+                }
 
-	public static void clearTables(Context context, final List<Class<?>> entityTypes)
-	{
-		Callback callback = new Callback()
-		{
-			@Override
-			public Object run(Context context, Database database, SQLiteDatabase db)
-			{
-				for(int i = 0; i < entityTypes.size(); ++i)
-				{
-					try
-					{
-						Class<?> entityType = entityTypes.get(i);
-						DatabaseEntity entity = (DatabaseEntity)entityType.newInstance();
-						
-						database.sqlDelete(db, entity.getTableName(), null);
-					}
-					catch(Exception e)
-					{
-						e.printStackTrace();
-					}									
-				}
-				
-				return null;	
-			}
-		};
-		
-		openCloseHelper(context, null, callback);
-	}
-		
-	public static SQLMethod updateDb(Context context, final DatabaseEntity entity)
-	{
-		return updateDb(context, null, entity);
-	}	
-	
-	public static SQLMethod updateDb(Context context, SQLiteDatabase db, final DatabaseEntity entity)
-	{
-		Callback callback = new Callback()
-		{
-			@Override
-			public Object run(Context context, Database database, SQLiteDatabase db)
-			{
-				SQLMethod method = null;
-				
-				int count = count(context, db, entity.getClass(), entity.getWhereClause());
-				if(count > 0)
-				{
-					database.sqlUpdate(db, entity.getTableName(), entity.getChanges(), entity.getWhereClause());
-					if(entity.getLocalID() == 0)
-					{
-						Cursor cursor = database.sqlSelect(db, entity.getTableName(), new String[]{Key.LOCAL_ID}, entity.getWhereClause());
-						cursor.moveToFirst();
-						long localID = cursor.getInt(cursor.getColumnIndex(Key.LOCAL_ID));
-						entity.setLocalID(localID);
-						cursor.close();
-					}
-					
-					method = SQLMethod.Update;
-				}
-				else
-				{
-					long localID = database.sqlInsert(db, entity.getTableName(), entity.getChanges());
-					entity.setLocalID(localID);
-					
-					method = SQLMethod.Insert;
-				}
+                return null;
+            }
+        };
 
-				entity.onUpdate(context, db);
-				
-				return method;
-			}
-		};
+        executeDatabase(context, database, callback);
+    }
 
-		return (SQLMethod)openCloseHelper(context, db, callback);
-	}
+    public static void dropTables(Context context, final List<Class<? extends DatabaseEntity>> entityTypes)
+    {
+        dropTables(context, null, entityTypes);
+    }
 
-	public static void deleteFromDb(Context context, final DatabaseEntity entity)
-	{
-		deleteFromDb(context, null, entity);
-	}	
-	
-	public static void deleteFromDb(Context context, SQLiteDatabase db, final DatabaseEntity entity)
-	{
-		Callback callback = new Callback()
-		{
-			@Override
-			public Object run(Context context, Database database, SQLiteDatabase db)
-			{
-				if(database.sqlDelete(db, entity.getTableName(), entity.getWhereClause()))
-				{
-					entity.onDeletion(context, db);
-				}
-				else
-				{
-					Util.showLog("COULD NOT DELETE");
-				}
-				return null;
-			}
-		};
-		
-		openCloseHelper(context, db, callback);
-	}
-	
-	private static Object openCloseHelper(Context context, SQLiteDatabase db, Callback callback)
-	{
-		Database database = Database.getInstance(context);		
-		Object object = null;
-				
-		boolean keepOpen = true;
-		if(db == null)
-		{
-			keepOpen = false;
-			db = database.open();
-		}
-		
-		object = callback.run(context, database, db);
+    public static void dropTables(Context context, Database database, final List<Class<? extends DatabaseEntity>> entityTypes)
+    {
+        Callback callback = new Callback()
+        {
+            @Override
+            public Object run(Context context, Database database)
+            {
+                for(Class<? extends DatabaseEntity> entityType : entityTypes)
+                {
+                    try
+                    {
+                        DatabaseEntity entity = entityType.newInstance();
 
-		if(!keepOpen)
-		{
-			database.close();
-		}
-				
-		return object;
-	}
+                        database.sqlDrop(entity.getTableName());
+                    }
+                    catch(Exception e){e.printStackTrace();}
+                }
+
+                return null;
+            }
+        };
+
+        executeDatabase(context, database, callback);
+    }
+
+    public static <T extends DatabaseEntity> T load(Context context, Class<T> entityType, String[] columns, String clause)
+    {
+        return load(context, null, entityType, columns, clause);
+    }
+
+    public static <T extends DatabaseEntity> T load(Context context, Database database, Class<T> entityType, String[] columns, String clause)
+    {
+        List<T> objList = loadList(context, database, entityType, columns, clause);
+        if(!Util.nullOrEmpty(objList))
+        {
+            return objList.get(0);
+        }
+
+        return null;
+    }
+
+    public static ContentValues load(Context context, String query)
+    {
+        return load(context, null, query);
+    }
+
+    public static ContentValues load(Context context, Database database, String query)
+    {
+        List<ContentValues> objList = loadList(context, database, query);
+        if(!Util.nullOrEmpty(objList))
+        {
+            return objList.get(0);
+        }
+
+        return null;
+    }
+
+    public static <T extends DatabaseEntity> List<T> loadList(Context context, Class<T> entityType, String[] columns, String clause)
+    {
+        return loadList(context, null, entityType, columns, clause);
+    }
+
+    public static <T extends DatabaseEntity> List<T> loadList(Context context, Database database, final Class<T> entityType, final String[] columns, final String clause)
+    {
+        return loadList(context, database, entityType, null, columns, clause);
+    }
+
+    public static <T extends DatabaseEntity> List<T> loadList(Context context, Class<T> entityType, final List<Class<? extends DatabaseEntity>> joinedTypes, String[] columns, String clause)
+    {
+        return loadList(context, null, entityType, joinedTypes, columns, clause);
+    }
+
+    public static <T extends DatabaseEntity> List<T> loadList(Context context, Database database, final Class<T> entityType, final List<Class<? extends DatabaseEntity>> joinedTypes, final String[] columns, final String clause)
+    {
+        Callback callback = new Callback()
+        {
+            @Override
+            public Object run(Context context, Database database)
+            {
+                try
+                {
+                    String tables = getTables(entityType, joinedTypes);
+                    List<ContentValues> valuesList = database.sqlSelect(tables, columns, clause);
+                    List<DatabaseEntity> objList = new ArrayList<>();
+                    for(ContentValues values : valuesList)
+                    {
+                        DatabaseEntity obj = entityType.newInstance();
+                        obj.setData(values);
+                        objList.add(obj);
+                    }
+
+                    return objList;
+                }
+                catch(Exception e){e.printStackTrace();}
+
+                return null;
+            }
+        };
+
+        return (List)executeDatabase(context, database, callback);
+    }
+
+    public static List<ContentValues> loadList(Context context, String clause)
+    {
+        return loadList(context, null, clause);
+    }
+
+    public static List<ContentValues> loadList(Context context, Database database, final String clause)
+    {
+        Callback callback = new Callback()
+        {
+            @Override
+            public List<ContentValues> run(Context context, Database database)
+            {
+                return database.sqlSelect(clause);
+            }
+        };
+
+        return (List)executeDatabase(context, database, callback);
+    }
+
+    public static long count(Context context, Class<? extends DatabaseEntity> entityType, String clause)
+    {
+        return count(context, null, entityType, clause);
+    }
+
+    public static long count(Context context, Database database, final Class<? extends DatabaseEntity> entityType, final String clause)
+    {
+        Callback callback = new Callback()
+        {
+            @Override
+            public Object run(Context context, Database database)
+            {
+                try
+                {
+                    DatabaseEntity entity = entityType.newInstance();
+
+                    return database.sqlCount(entity.getTableName(), clause);
+                }
+                catch(Exception e){e.printStackTrace();}
+
+                return 0L;
+            }
+        };
+
+        return (Long)executeDatabase(context, database, callback);
+    }
+
+    public static SQLMethod updateDb(Context context, DatabaseEntity entity)
+    {
+        return updateDb(context, null, entity);
+    }
+
+    public static SQLMethod updateDb(Context context, Database database, final DatabaseEntity entity)
+    {
+        Callback callback = new Callback()
+        {
+            @Override
+            public Object run(Context context, Database database)
+            {
+                SQLMethod method;
+
+                DatabaseEntity prevEntity = load(context, database, entity.getClass(), new String[]{DatabaseKey.LOCAL_ID}, entity.getWhereClause());
+
+                entity.setModifyTime(System.currentTimeMillis());
+                if(prevEntity == null)
+                {
+                    entity.setCreateTime(entity.getModifyTime());
+
+                    long localID = database.sqlInsert(entity.getTableName(), entity.getChanges());
+                    entity.setLocalID(localID);
+
+                    method = SQLMethod.Insert;
+                }
+                else
+                {
+                    entity.setLocalID(prevEntity.getLocalID());
+                    database.sqlUpdate(entity.getTableName(), entity.getChanges(), entity.getWhereClause());
+
+                    method = SQLMethod.Update;
+                }
+
+                entity.onUpdate(context);
+
+                return method;
+            }
+        };
+
+        return (SQLMethod)executeDatabase(context, database, callback);
+    }
+
+    public static void deleteFromDb(Context context, DatabaseEntity entity)
+    {
+        deleteFromDb(context, null, entity);
+    }
+
+    public static void deleteFromDb(Context context, Database database, final DatabaseEntity entity)
+    {
+        Callback callback = new Callback()
+        {
+            @Override
+            public Object run(Context context, Database database)
+            {
+                if(database.sqlDelete(entity.getTableName(), entity.getWhereClause()))
+                {
+                    entity.onDelete(context);
+                }
+
+                return null;
+            }
+        };
+
+        executeDatabase(context, database, callback);
+    }
+
+    public static void deleteFromDb(Context context, final Class<? extends DatabaseEntity> entityType, String clause)
+    {
+        deleteFromDb(context, null, entityType, clause);
+    }
+
+    public static void deleteFromDb(Context context, Database database, final Class<? extends DatabaseEntity> entityType, final String clause)
+    {
+        Callback callback = new Callback()
+        {
+            @Override
+            public Object run(Context context, Database database)
+            {
+                try
+                {
+                    DatabaseEntity entity = entityType.newInstance();
+
+                    database.sqlDelete(entity.getTableName(), clause);
+                }
+                catch(Exception e){e.printStackTrace();}
+
+                return null;
+            }
+        };
+
+        executeDatabase(context, database, callback);
+    }
+
+    private static <T> T executeDatabase(Context context, Database database, Callback<T> callback)
+    {
+        boolean temp = database == null;
+        if(temp)
+        {
+            database = new Database(context);
+        }
+
+        T object = callback.run(context, database);
+
+        if(temp)
+        {
+            database.close();
+        }
+
+        return object;
+    }
+
+    private static String getTables(Class<? extends DatabaseEntity> entityType, List<Class<? extends DatabaseEntity>> joinedTypes)
+    {
+        try
+        {
+            DatabaseEntity entity = entityType.newInstance();
+            if(Util.nullOrEmpty(joinedTypes))
+            {
+                return entity.getTableName();
+            }
+
+            List<String> tableList = new ArrayList<>();
+            tableList.add(entity.getTableName());
+            for(Class<? extends DatabaseEntity> joinedType : joinedTypes)
+            {
+                DatabaseEntity joined = joinedType.newInstance();
+                tableList.add(joined.getTableName());
+            }
+
+            return Util.join(tableList, ", ");
+        }
+        catch(Exception e){e.printStackTrace();}
+
+        return null;
+    }
 }
