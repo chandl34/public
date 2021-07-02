@@ -50,7 +50,7 @@ const LocationItemView = props => {
         <Text
           style={[
             styles.alertDateTime,
-            {color: _isDateSoon(date) ? 'red' : 'black'},
+            {color: _isDateWithinWarningThreshold(date) ? 'red' : 'black'},
           ]}>
           {_getDateTimeString(date)}
         </Text>
@@ -59,7 +59,7 @@ const LocationItemView = props => {
   }
 
   //---- METHODS
-  function _isDateSoon(date) {
+  function _isDateWithinWarningThreshold(date) {
     const value = Format.differenceInHours(date, new Date());
     return value < Const.WARNING_THRESHOLD_IN_HOURS;
   }
