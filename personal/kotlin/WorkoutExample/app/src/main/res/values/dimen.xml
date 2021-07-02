@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="layout_small_margin">4dp</dimen>
+    <dimen name="layout_medium_margin">8dp</dimen>
+    <dimen name="layout_large_margin">12dp</dimen>
+    <dimen name="layout_huge_margin">24dp</dimen>
+
+    <dimen name="text_size_primary">16sp</dimen>
+    <dimen name="text_size_secondary">12sp</dimen>
+
+    <dimen name="text_size_large">36sp</dimen>
+
+    <dimen name="button_min_width">48dp</dimen>
+    <dimen name="button_min_height">36dp</dimen>
+
+    <dimen name="cell_small_height">44dp</dimen>
+    <dimen name="cell_medium_height">55dp</dimen>
+    <dimen name="cell_large_height">66dp</dimen>
+
+</resources>

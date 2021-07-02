@@ -1,0 +1,40 @@
+<resources>
+    <string name="app_name">WorkoutExample</string>
+
+    <!-- GENERAL -->
+    <string name="general_okay_button">OK</string>
+    <string name="general_cancel_button">Cancel</string>
+    <string name="general_edit_button">Edit</string>
+    <string name="general_save_button">Save</string>
+
+    <string name="general_workout_step_type_push_ups">Push Ups</string>
+    <string name="general_workout_step_type_sit_ups">Sit Ups</string>
+    <string name="general_workout_step_type_burpees">Burpees</string>
+    <string name="general_workout_step_type_jumping_jacks">Jumping Jacks</string>
+    <string name="general_workout_step_type_rest">Rest</string>
+
+    <string name="general_duration_format">%d s</string>
+
+    <!-- WORKOUT SCREEN -->
+    <string name="screen_workout_title">Workout</string>
+    <string name="screen_workout_step_type_text_step_not_set_text"></string>
+    <string name="screen_workout_step_timer_text_step_not_set_text"></string>
+    <string name="screen_workout_current_step_header">Current Step</string>
+    <string name="screen_workout_steps_header">Upcoming Steps</string>
+    <string name="screen_workout_workout_complete_title">Workout Complete</string>
+    <string name="screen_workout_workout_complete_message">Hit the play button to restart</string>
+
+
+    <!-- WORKOUT EDIT SCREEN -->
+    <string name="screen_workout_edit_title">Edit Workout</string>
+    <string name="screen_workout_edit_info_text">Build your workout by adding or removing steps below.</string>
+    <string name="screen_workout_edit_name_label">Workout Name</string>
+    <string name="screen_workout_edit_steps_header">Workout Steps</string>
+    <string name="screen_workout_edit_add_step_button">Add Step</string>
+
+    <!-- WORKOUT STEP EDIT SCREEN -->
+    <string name="screen_workout_step_edit_title">Edit Workout Step</string>
+    <string name="screen_workout_step_edit_message">Select workout step type and duration below</string>
+
+
+</resources>
