@@ -2,95 +2,103 @@ package com.chandl34.workoutexample.ui.fragment
 
 import android.app.Dialog
 import android.content.DialogInterface
-import android.content.DialogInterface.OnShowListener
 import android.os.Bundle
-import android.util.Pair
+import android.view.LayoutInflater
 import android.view.View
 import android.widget.AdapterView
-import android.widget.AdapterView.OnItemSelectedListener
 import android.widget.Spinner
 import androidx.appcompat.app.AlertDialog
+import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.DialogFragment
-import com.chandl34.workoutexample.Const.IntentKey
-import com.chandl34.workoutexample.Const.RequestKey
-import com.chandl34.workoutexample.Const.WorkoutStepType
+import androidx.lifecycle.ViewModelProvider
+import com.chandl34.workoutexample.IntentKey
 import com.chandl34.workoutexample.R
-import com.chandl34.workoutexample.data.entity.WorkoutStep
-import com.chandl34.workoutexample.ui.view.adapter.general.SingleChoiceSpinnerAdapter
-import com.chandl34.workoutexample.util.Helper.getWorkoutStepTypeName
+import com.chandl34.workoutexample.RequestKey
+import com.chandl34.workoutexample.WorkoutStepType
+import com.chandl34.workoutexample.data.domain.WorkoutStep
+import com.chandl34.workoutexample.databinding.FragmentWorkoutStepEditBinding
+import com.chandl34.workoutexample.ui.adapters.SingleChoiceSpinnerAdapter
+import com.chandl34.workoutexample.util.getWorkoutStepTypeName
+import com.chandl34.workoutexample.viewmodel.WorkoutStepEditViewModel
 import com.google.android.material.slider.RangeSlider
 import java.util.*
 
-class WorkoutStepEditFragment : DialogFragment(), OnShowListener {
+class WorkoutStepEditFragment : DialogFragment(), DialogInterface.OnShowListener {
     //---- MEMBERS
-    private var _type: WorkoutStepType? = null
-    private var _duration = 0
+    private lateinit var _viewModel : WorkoutStepEditViewModel
+    private lateinit var _binding : FragmentWorkoutStepEditBinding
+
 
     //---- LIFE CYCLE
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        if (arguments != null) {
-        }
+    override fun onCreateDialog(savedInstanceState : Bundle?) : Dialog {
+        _viewModel = ViewModelProvider(
+                this,
+                WorkoutStepEditViewModel.Factory()
+        ).get(WorkoutStepEditViewModel::class.java)
 
-        val context = requireContext()
-        _type = WorkoutStepType.PushUps
-        _duration = context.resources.getInteger(R.integer.min_workout_step_duration)
-    }
+        val inflater = LayoutInflater.from(context)
+        _binding =
+                DataBindingUtil.inflate(inflater, R.layout.fragment_workout_step_edit, null, false)
+        _binding.viewModel = _viewModel
 
-    override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         val dialog = AlertDialog.Builder(requireActivity())
                 .setTitle(R.string.screen_workout_step_edit_title)
                 .setMessage(R.string.screen_workout_step_edit_message)
-                .setView(R.layout.fragment_workout_step_edit)
-                .setPositiveButton(R.string.general_okay_button) { dialog, which -> pressedSave() }
+                .setView(_binding.root)
+                .setPositiveButton(R.string.general_okay_button) { dialog, which -> _viewModel.pressedSave() }
                 .setNeutralButton(R.string.general_cancel_button, null)
                 .create()
         dialog.setOnShowListener(this)
         return dialog
     }
 
+
     //---- DialogInterface.OnShowListener
-    override fun onShow(dialog: DialogInterface) {
+    override fun onShow(dialog : DialogInterface) {
         val alertDialog = dialog as AlertDialog
         val context = alertDialog.context
-        val typeSpinner = alertDialog.findViewById<Spinner>(R.id.type_spinner)
-        val durationSlider = alertDialog.findViewById<RangeSlider>(R.id.duration_slider)
-        val optionList: MutableList<Pair<String, WorkoutStepType>> = ArrayList()
-        for (type in WorkoutStepType.values()) {
-            val label = getWorkoutStepTypeName(context, type)
-            optionList.add(Pair.create(label, type))
-        }
-        typeSpinner!!.onItemSelectedListener = object : OnItemSelectedListener {
-            override fun onItemSelected(parent: AdapterView<*>, view: View, position: Int, id: Long) {
+
+        _binding.lifecycleOwner = this
+
+        _binding.durationSlider.addOnChangeListener(RangeSlider.OnChangeListener { slider, value, fromUser ->
+            _viewModel.duration.value = value.toLong()
+        })
+
+        _binding.typeSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(parent : AdapterView<*>, view : View, position : Int, id : Long) {
                 val spinner = parent as Spinner
-                val option: Pair<String, WorkoutStepType> = spinner.selectedItem as Pair<String, WorkoutStepType>
-                _type = option.second
+                val option : Pair<String, WorkoutStepType> = spinner.selectedItem as Pair<String, WorkoutStepType>
+                _viewModel.workoutStepType.value = option.second
             }
 
-            override fun onNothingSelected(parent: AdapterView<*>?) {}
+            override fun onNothingSelected(parent : AdapterView<*>?) {}
         }
+
+        val optionList = ArrayList<Pair<String, WorkoutStepType>>()
+        for(type in WorkoutStepType.values()) {
+            val label = getWorkoutStepTypeName(context, type)
+            optionList.add(Pair(label, type))
+        }
+
         val adapter = SingleChoiceSpinnerAdapter<WorkoutStepType>()
         adapter.setData(optionList)
-        typeSpinner.adapter = adapter
-        durationSlider!!.addOnChangeListener(RangeSlider.OnChangeListener { slider, value, fromUser -> _duration = value.toInt() })
+        _binding.typeSpinner.adapter = adapter
+
+        _viewModel.navigateToWorkoutEditFragment.observe(this, { navigateToWorkoutEditFragment ->
+            navigateToWorkoutEditFragment?.let { workoutStep ->
+                navigateToWorkoutEditFragment(workoutStep)
+                _viewModel.onWorkoutEditFragmentNavigatedTo()
+            }
+        })
     }
+
 
     //---- ACTIONS
-    private fun pressedSave() {
+    private fun navigateToWorkoutEditFragment(workoutStep : WorkoutStep) {
         val result = Bundle()
-        result.putSerializable(IntentKey.WORKOUT_STEP, WorkoutStep(_type!!, _duration))
-        val fragmentManager = parentFragmentManager
-        fragmentManager.setFragmentResult(RequestKey.EDIT_STEP, result)
-    }
+        result.putParcelable(IntentKey.WORKOUT_STEP, workoutStep)
 
-    companion object {
-        //---- FACTORIES
-        @JvmStatic
-        fun newInstance(): WorkoutStepEditFragment {
-            val fragment = WorkoutStepEditFragment()
-            val args = Bundle()
-            fragment.arguments = args
-            return fragment
-        }
+        val fragmentManager = parentFragmentManager
+        fragmentManager.setFragmentResult(RequestKey.EDIT_WORKOUT_STEP, result)
     }
 }

@@ -1,121 +1,144 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".ui.fragment.WorkoutFragment">
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/vertical_center_guideline"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.5"/>
+    <data>
 
-    <ImageButton
-        android:id="@+id/play_pause_button"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_margin="@dimen/layout_large_margin"
-        app:layout_constraintDimensionRatio="H, 1:1"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/vertical_center_guideline"
-        app:layout_constraintTop_toTopOf="parent"
-        android:src="@drawable/baseline_play_arrow_black_48"
-        android:background="?android:selectableItemBackgroundBorderless"
-        tools:background="@color/light_gray"/>
+        <import type="android.view.View" />
 
-    <ImageButton
-        android:id="@+id/reset_button"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_margin="@dimen/layout_large_margin"
-        app:layout_constraintDimensionRatio="H, 1:1"
-        app:layout_constraintStart_toEndOf="@id/vertical_center_guideline"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:src="@drawable/baseline_replay_black_48"
-        android:background="?android:selectableItemBackgroundBorderless"
-        tools:background="@color/light_gray"/>
+        <variable
+            name="viewModel"
+            type="com.chandl34.workoutexample.viewmodel.WorkoutViewModel" />
+    </data>
 
-    <TextView
-        android:id="@+id/current_step_header_text_view"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/play_pause_button"
-        android:text="@string/screen_workout_current_step_header"
-        android:textSize="@dimen/text_size_primary"
-        android:gravity="center"/>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.fragment.WorkoutFragment">
 
-    <View
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@id/step_timer_text_view"
-        app:layout_constraintBottom_toBottomOf="@id/step_timer_text_view"
-        android:background="@color/light_gray"/>
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/vertical_center_guideline"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.5" />
 
-    <ImageView
-        android:id="@+id/step_image_view"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_margin="@dimen/layout_large_margin"
-        app:layout_constraintDimensionRatio="H, 4:3"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/vertical_center_guideline"
-        app:layout_constraintTop_toBottomOf="@id/current_step_header_text_view"
-        tools:background="@color/light_gray"/>
+        <ImageButton
+            android:id="@+id/play_pause_button"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_margin="@dimen/layout_large_margin"
+            android:background="?android:selectableItemBackgroundBorderless"
+            android:clickable="@{viewModel.workoutIsValid}"
+            android:onClick="@{() -> viewModel.pressedPlayPause()}"
+            android:src="@{viewModel.playButtonImageResource}"
+            app:layout_constraintDimensionRatio="H, 1:1"
+            app:layout_constraintEnd_toStartOf="@id/vertical_center_guideline"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:background="@color/light_gray"
+            tools:src="@drawable/baseline_play_arrow_black_48" />
 
-    <TextView
-        android:id="@+id/step_type_text_view"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/layout_large_margin"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/vertical_center_guideline"
-        app:layout_constraintTop_toBottomOf="@id/step_image_view"
-        tools:text="Push Ups"
-        android:textSize="@dimen/text_size_primary"
-        android:gravity="center"/>
+        <ImageButton
+            android:id="@+id/reset_button"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_margin="@dimen/layout_large_margin"
+            android:background="?android:selectableItemBackgroundBorderless"
+            android:clickable="@{viewModel.workoutIsValid}"
+            android:onClick="@{() -> viewModel.pressedReset()}"
+            android:src="@drawable/baseline_replay_black_48"
+            app:layout_constraintDimensionRatio="H, 1:1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/vertical_center_guideline"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:background="@color/light_gray" />
 
-    <TextView
-        android:id="@+id/step_timer_text_view"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintStart_toEndOf="@id/vertical_center_guideline"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@id/step_image_view"
-        app:layout_constraintBottom_toBottomOf="@id/step_type_text_view"
-        tools:text="60 s"
-        android:textSize="@dimen/text_size_large"
-        android:gravity="center"/>
+        <TextView
+            android:id="@+id/current_step_header_text_view"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:gravity="center"
+            android:text="@string/screen_workout_current_step_header"
+            android:textSize="@dimen/text_size_primary"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/play_pause_button" />
 
-    <TextView
-        android:id="@+id/steps_header_text_view"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/step_type_text_view"
-        android:text="@string/screen_workout_steps_header"
-        android:textSize="@dimen/text_size_primary"
-        android:gravity="center"/>
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@color/light_gray"
+            app:layout_constraintBottom_toBottomOf="@id/step_timer_text_view"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/step_timer_text_view" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/steps_recycler_view"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/steps_header_text_view"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:background="@color/light_gray"/>
+        <ImageView
+            android:id="@+id/step_image_view"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_margin="@dimen/layout_large_margin"
+            app:layout_constraintDimensionRatio="H, 4:3"
+            app:layout_constraintEnd_toStartOf="@id/vertical_center_guideline"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/current_step_header_text_view"
+            app:workout_step="@{viewModel.currentWorkoutStep}"
+            tools:background="@color/light_gray" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <TextView
+            android:id="@+id/step_type_text_view"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/layout_large_margin"
+            android:gravity="center"
+            android:textSize="@dimen/text_size_primary"
+            app:layout_constraintEnd_toStartOf="@id/vertical_center_guideline"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/step_image_view"
+            app:workout_step="@{viewModel.currentWorkoutStep}"
+            tools:text="@string/general_workout_step_type_push_ups" />
+
+        <TextView
+            android:id="@+id/step_timer_text_view"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:gravity="center"
+            android:textSize="@dimen/text_size_large"
+            android:visibility="@{viewModel.currentWorkoutStep != null ? View.VISIBLE : View.INVISIBLE}"
+            app:duration="@{viewModel.stepTimeRemaining}"
+            app:layout_constraintBottom_toBottomOf="@id/step_type_text_view"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/vertical_center_guideline"
+            app:layout_constraintTop_toTopOf="@id/step_image_view"
+            tools:text="60 s" />
+
+        <TextView
+            android:id="@+id/steps_header_text_view"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:gravity="center"
+            android:text="@string/screen_workout_steps_header"
+            android:textSize="@dimen/text_size_primary"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/step_type_text_view" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/steps_recycler_view"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@color/light_gray"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/steps_header_text_view" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

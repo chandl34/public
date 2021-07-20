@@ -1,110 +1,101 @@
 package com.chandl34.workoutexample.ui.fragment
 
-import android.content.Context
 import android.os.Bundle
 import android.view.*
-import android.widget.Button
-import androidx.fragment.app.DialogFragment
+import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import com.chandl34.workoutexample.Const.IntentKey
-import com.chandl34.workoutexample.Const.RequestKey
+import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
+import com.chandl34.workoutexample.IntentKey
 import com.chandl34.workoutexample.R
-import com.chandl34.workoutexample.data.entity.Workout
-import com.chandl34.workoutexample.data.entity.WorkoutStep
-import com.chandl34.workoutexample.ui.fragment.WorkoutStepEditFragment.Companion.newInstance
-import com.chandl34.workoutexample.ui.view.GridItemDecoration
-import com.chandl34.workoutexample.ui.view.adapter.WorkoutStepAdapter
-import com.chandl34.workoutexample.util.Util.dpToPx
+import com.chandl34.workoutexample.RequestKey
+import com.chandl34.workoutexample.data.domain.Workout
+import com.chandl34.workoutexample.data.domain.WorkoutStep
+import com.chandl34.workoutexample.databinding.FragmentWorkoutEditBinding
+import com.chandl34.workoutexample.ui.adapters.WorkoutStepAdapter
+import com.chandl34.workoutexample.viewmodel.WorkoutEditViewModel
 
 class WorkoutEditFragment : Fragment() {
-    //---- INTERFACES
-    interface OnSelectionListener {
-        fun onWorkoutEdited(workout: Workout)
-    }
-
     //---- MEMBERS
-    private var _workout: Workout? = null
-    private var _recyclerView: RecyclerView? = null
-    private var _onSelectionListener: OnSelectionListener? = null
+    private lateinit var _viewModel : WorkoutEditViewModel
+
 
     //---- LIFE CYCLE
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
+    override fun onCreateView(inflater : LayoutInflater, container : ViewGroup?, savedInstanceState : Bundle?) : View {
         setHasOptionsMenu(true)
-        val args = arguments
-        if (args != null) {
-            _workout = args.getSerializable(IntentKey.WORKOUT) as Workout?
-        }
-        if (_workout == null) {
-            _workout = Workout()
-        }
+
+        val arguments = WorkoutEditFragmentArgs.fromBundle(requireArguments())
+        val workout = arguments.workout
+
+        _viewModel = ViewModelProvider(this, WorkoutEditViewModel.Factory(workout)).get(WorkoutEditViewModel::class.java)
+
+        val binding : FragmentWorkoutEditBinding =
+                DataBindingUtil.inflate(inflater, R.layout.fragment_workout_edit, container, false)
+        binding.lifecycleOwner = viewLifecycleOwner
+        binding.viewModel = _viewModel
+
         val fragmentManager = parentFragmentManager
-        fragmentManager.setFragmentResultListener(RequestKey.EDIT_STEP, this, { requestKey, bundle ->
-            val step = bundle.getSerializable(IntentKey.WORKOUT_STEP) as WorkoutStep?
-            val adapter = _recyclerView!!.adapter as WorkoutStepAdapter?
-            adapter!!.addItem(step!!)
+        fragmentManager.setFragmentResultListener(RequestKey.EDIT_WORKOUT_STEP, viewLifecycleOwner, { requestKey, bundle ->
+            val workoutStep = bundle.getParcelable(IntentKey.WORKOUT_STEP) as WorkoutStep?
+            workoutStep?.let {
+                _viewModel.addWorkoutStep(workoutStep)
+            }
         })
+
+        val adapter = WorkoutStepAdapter(WorkoutStepAdapter.ClickListener { workoutStep ->
+            _viewModel.pressedDelete(workoutStep)
+        })
+        binding.stepsRecyclerView.adapter = adapter
+
+        _viewModel.navigateToWorkoutFragment.observe(viewLifecycleOwner, { navigateToWorkoutFragment ->
+            navigateToWorkoutFragment?.let { workout ->
+                navigateToWorkoutFragment(workout)
+                _viewModel.onWorkoutFragmentNavigatedTo()
+            }
+        })
+
+        _viewModel.navigateToWorkoutStepEditFragment.observe(viewLifecycleOwner, { navigateToWorkoutStepEditFragment ->
+            if(navigateToWorkoutStepEditFragment) {
+                navigateToWorkoutStepEditFragment()
+                _viewModel.onWorkoutStepEditFragmentNavigatedTo()
+            }
+        })
+
+        _viewModel.workoutSteps.observe(viewLifecycleOwner, { workoutSteps ->
+            adapter.submitList(ArrayList(workoutSteps))
+        })
+
+        return binding.root
     }
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val context = requireContext()
-        val view = inflater.inflate(R.layout.fragment_workout_edit, container, false)
-        _recyclerView = view.findViewById(R.id.steps_recycler_view)
-        val addStepButton = view.findViewById<Button>(R.id.add_step_button)
-        _recyclerView?.layoutManager = LinearLayoutManager(context)
-        _recyclerView?.addItemDecoration(GridItemDecoration(dpToPx(context, 1f).toInt()))
-        val adapter = WorkoutStepAdapter(true)
-        adapter.data = _workout?.steps
-        _recyclerView?.adapter = adapter
-        addStepButton.setOnClickListener { pressedAddStep() }
-        return view
-    }
-
-    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+    override fun onCreateOptionsMenu(menu : Menu, inflater : MenuInflater) {
         super.onCreateOptionsMenu(menu, inflater)
         inflater.inflate(R.menu.save, menu)
     }
 
-    override fun onAttach(context: Context) {
-        super.onAttach(context)
-        _onSelectionListener = try {
-            context as OnSelectionListener
-        } catch (e: ClassCastException) {
-            throw ClassCastException(context.toString() + " must implement " + this.javaClass.canonicalName + ".OnSelectionListener")
-        }
+
+    //---- METHODS
+    private fun navigateToWorkoutFragment(workout : Workout) {
+        val result = Bundle()
+        result.putParcelable(IntentKey.WORKOUT, workout)
+
+        val fragmentManager = parentFragmentManager
+        fragmentManager.setFragmentResult(RequestKey.EDIT_WORKOUT, result)
+
+        findNavController().navigate(WorkoutEditFragmentDirections.actionWorkoutEditFragmentToWorkoutFragment())
     }
+
+    private fun navigateToWorkoutStepEditFragment() {
+        findNavController().navigate(WorkoutEditFragmentDirections.actionWorkoutEditFragmentToWorkoutStepEditFragment())
+    }
+
 
     //---- ACTIONS
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        if (item.itemId == R.id.save) {
-            pressedSave()
-            return true
+    override fun onOptionsItemSelected(item : MenuItem) : Boolean {
+        when(item.itemId) {
+            R.id.save -> _viewModel.pressedSave()
         }
-        return super.onOptionsItemSelected(item)
-    }
 
-    private fun pressedSave() {
-        if (_workout != null) {
-            _onSelectionListener?.onWorkoutEdited(_workout!!)
-        }
-    }
-
-    private fun pressedAddStep() {
-        val fragment: DialogFragment = newInstance()
-        fragment.show(parentFragmentManager, null)
-    }
-
-    companion object {
-        //---- FACTORIES
-        @JvmStatic
-        fun newInstance(workout: Workout?): WorkoutEditFragment {
-            val fragment = WorkoutEditFragment()
-            val args = Bundle()
-            args.putSerializable(IntentKey.WORKOUT, workout)
-            fragment.arguments = args
-            return fragment
-        }
+        return true
     }
 }

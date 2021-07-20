@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="workoutStep"
+            type="com.chandl34.workoutexample.data.domain.WorkoutStep" />
+
+        <variable
+            name="clickListener"
+            type="com.chandl34.workoutexample.ui.adapters.WorkoutStepAdapter.ClickListener" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/cell_large_height"
+        android:background="@color/white"
+        android:padding="@dimen/layout_medium_margin">
+
+        <ImageView
+            android:id="@+id/image_view"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@color/light_gray"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintDimensionRatio="W, 4:3"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:workout_step="@{workoutStep}" />
+
+        <TextView
+            android:id="@+id/type_text_view"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="@dimen/layout_medium_margin"
+            android:gravity="center_vertical"
+            android:textSize="@dimen/text_size_primary"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/duration_text_view"
+            app:layout_constraintStart_toEndOf="@id/image_view"
+            app:layout_constraintTop_toTopOf="parent"
+            app:workout_step="@{workoutStep}"
+            tools:text="Push Ups" />
+
+        <TextView
+            android:id="@+id/duration_text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_marginStart="@dimen/layout_medium_margin"
+            android:layout_marginEnd="@dimen/layout_medium_margin"
+            android:gravity="center_vertical"
+            android:textSize="@dimen/text_size_primary"
+            app:duration="@{workoutStep.duration}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/remove_button"
+            app:layout_constraintStart_toEndOf="@id/type_text_view"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="60 s" />
+
+        <ImageButton
+            android:id="@+id/remove_button"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="?android:selectableItemBackgroundBorderless"
+            android:onClick="@{() -> clickListener.pressedDelete(workoutStep)}"
+            android:src="@drawable/baseline_delete_20"
+            android:visibility="@{clickListener != null ? View.VISIBLE : View.GONE}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintDimensionRatio="W, 4:3"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>
