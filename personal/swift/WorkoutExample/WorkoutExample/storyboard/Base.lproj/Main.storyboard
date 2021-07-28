@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="sfy-Zi-twE">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
@@ -17,7 +17,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aID-DF-bYO" userLabel="Play/Pause Button">
-                                <rect key="frame" x="0.0" y="44" width="207" height="207"/>
+                                <rect key="frame" x="0.0" y="88" width="207" height="207"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="aID-DF-bYO" secondAttribute="height" multiplier="1:1" id="94Z-Hq-TGR"/>
                                 </constraints>
@@ -27,7 +27,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A1n-FK-WTN" userLabel="Reset Button">
-                                <rect key="frame" x="207" y="44" width="207" height="207"/>
+                                <rect key="frame" x="207" y="88" width="207" height="207"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="A1n-FK-WTN" secondAttribute="height" multiplier="1:1" id="Noq-nB-SrB"/>
                                 </constraints>
@@ -37,62 +37,62 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Current Step" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KsH-Zh-Ixd" userLabel="Current Step Label">
-                                <rect key="frame" x="0.0" y="251" width="414" height="19.5"/>
+                                <rect key="frame" x="0.0" y="295" width="414" height="19.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="step_type_rest" translatesAutoresizingMaskIntoConstraints="NO" id="Yrs-Pe-sge" userLabel="Step Type Image View">
-                                <rect key="frame" x="0.0" y="270.5" width="207" height="155.5"/>
+                                <rect key="frame" x="0.0" y="314.5" width="207" height="155.5"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="Yrs-Pe-sge" secondAttribute="height" multiplier="4:3" id="ugb-Y6-MgP"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rest" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GX5-6e-YsN" userLabel="Step Type Label">
-                                <rect key="frame" x="0.0" y="426" width="207" height="19.5"/>
+                                <rect key="frame" x="0.0" y="470" width="207" height="19.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="60 s" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tQ6-QQ-yqe" userLabel="Step Duration Label">
-                                <rect key="frame" x="207" y="270.5" width="207" height="175"/>
+                                <rect key="frame" x="207" y="314.5" width="207" height="175"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="36"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Upcoming Steps" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FjP-1J-fTO" userLabel="Upcoming Steps Label">
-                                <rect key="frame" x="0.0" y="465.5" width="414" height="20"/>
+                                <rect key="frame" x="0.0" y="509.5" width="414" height="20"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="oYF-bz-rfi" userLabel="Upcoming Steps Table View">
-                                <rect key="frame" x="0.0" y="485.5" width="414" height="376.5"/>
+                                <rect key="frame" x="0.0" y="529.5" width="414" height="332.5"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" textLabel="Uyr-eG-17v" detailTextLabel="bXx-zp-cl1" imageView="P55-ft-41s" style="IBUITableViewCellStyleValue1" id="rKI-fe-Ovs" customClass="WorkoutStepTableViewCell" customModule="WorkoutExample" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="49.5" width="414" height="43.5"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="WorkoutStepCell" textLabel="Uyr-eG-17v" detailTextLabel="bXx-zp-cl1" imageView="P55-ft-41s" rowHeight="88" style="IBUITableViewCellStyleValue1" id="rKI-fe-Ovs">
+                                        <rect key="frame" x="0.0" y="49.5" width="414" height="88"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="rKI-fe-Ovs" id="lrZ-Lr-17Q">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="88"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Uyr-eG-17v" userLabel="Step Type Label">
-                                                    <rect key="frame" x="100" y="15" width="25" height="14.5"/>
+                                                    <rect key="frame" x="167" y="37" width="25" height="14.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="0.0"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="bXx-zp-cl1" userLabel="Step Duration Label">
-                                                    <rect key="frame" x="361" y="15" width="33" height="14.5"/>
+                                                    <rect key="frame" x="361" y="37" width="33" height="14.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="0.0"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" image="step_type_burpees" id="P55-ft-41s" userLabel="Step Type Image View">
-                                                    <rect key="frame" x="20" y="0.0" width="65" height="43.5"/>
+                                                    <rect key="frame" x="20" y="0.0" width="132" height="88"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                 </imageView>
                                             </subviews>
@@ -132,6 +132,13 @@
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="tQ6-QQ-yqe" secondAttribute="trailing" id="zi0-HG-5Gd"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="Xhz-5r-4Vj">
+                        <barButtonItem key="rightBarButtonItem" systemItem="edit" id="CfL-74-KDk">
+                            <connections>
+                                <segue destination="PFh-Gl-Zad" kind="show" identifier="ShowWorkoutEditSegue" id="HRQ-LL-zR8"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="playPauseButton" destination="aID-DF-bYO" id="Ydv-8o-Anz"/>
                         <outlet property="resetButton" destination="A1n-FK-WTN" id="cs4-yh-05k"/>
@@ -143,7 +150,147 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="30" y="65"/>
+            <point key="canvasLocation" x="1" y="65"/>
+        </scene>
+        <!--Workout Edit View Controller-->
+        <scene sceneID="lDf-G0-3Wg">
+            <objects>
+                <viewController id="PFh-Gl-Zad" customClass="WorkoutEditViewController" customModule="WorkoutExample" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Kpi-Er-J51">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Build your workout by adding or removing steps below." lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sbq-PS-fJ7" userLabel="Info Label">
+                                <rect key="frame" x="12" y="100" width="414" height="19.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Workout Steps" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZAd-RA-rdf" userLabel="Workout Steps Label">
+                                <rect key="frame" x="0.0" y="179.5" width="414" height="19.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="3YW-h6-SCT">
+                                <rect key="frame" x="0.0" y="199" width="414" height="633"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="WorkoutStepCell" textLabel="R2D-i8-AdO" detailTextLabel="nmj-4G-f4O" imageView="8VW-iu-ktR" rowHeight="88" style="IBUITableViewCellStyleValue1" id="kHD-ZN-xxJ">
+                                        <rect key="frame" x="0.0" y="49.5" width="414" height="88"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="kHD-ZN-xxJ" id="PA7-Il-gDy">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="88"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="R2D-i8-AdO" userLabel="Step Type Label">
+                                                    <rect key="frame" x="167" y="37" width="25" height="14.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="0.0"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="nmj-4G-f4O" userLabel="Step Duration Label">
+                                                    <rect key="frame" x="361" y="37" width="33" height="14.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="0.0"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" image="step_type_burpees" id="8VW-iu-ktR" userLabel="Step Type Image View">
+                                                    <rect key="frame" x="20" y="0.0" width="132" height="88"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                </imageView>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="D2o-nQ-h5b" userLabel="Add Step Button">
+                                <rect key="frame" x="0.0" y="832" width="414" height="30"/>
+                                <state key="normal" title="Add Step"/>
+                                <connections>
+                                    <segue destination="7vx-qA-aDV" kind="show" identifier="ShowWorkoutStepEditSegue" id="5aH-ZR-GWH"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="XCI-U5-LUu"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="3YW-h6-SCT" firstAttribute="bottom" secondItem="D2o-nQ-h5b" secondAttribute="top" id="0Mg-va-Mwt"/>
+                            <constraint firstItem="sbq-PS-fJ7" firstAttribute="leading" secondItem="XCI-U5-LUu" secondAttribute="leading" constant="12" id="7UG-1F-Wvf"/>
+                            <constraint firstItem="D2o-nQ-h5b" firstAttribute="leading" secondItem="XCI-U5-LUu" secondAttribute="leading" id="Bpr-jo-oeR"/>
+                            <constraint firstItem="3YW-h6-SCT" firstAttribute="leading" secondItem="XCI-U5-LUu" secondAttribute="leading" id="CMm-VP-MjY"/>
+                            <constraint firstItem="ZAd-RA-rdf" firstAttribute="top" secondItem="sbq-PS-fJ7" secondAttribute="bottom" constant="60" id="JW0-6R-6Qx"/>
+                            <constraint firstItem="XCI-U5-LUu" firstAttribute="trailing" secondItem="3YW-h6-SCT" secondAttribute="trailing" id="LSF-zj-dWS"/>
+                            <constraint firstItem="XCI-U5-LUu" firstAttribute="trailing" secondItem="ZAd-RA-rdf" secondAttribute="trailing" id="OAu-zx-vRG"/>
+                            <constraint firstItem="XCI-U5-LUu" firstAttribute="bottom" secondItem="D2o-nQ-h5b" secondAttribute="bottom" id="Om4-Pa-ps4"/>
+                            <constraint firstItem="3YW-h6-SCT" firstAttribute="top" secondItem="ZAd-RA-rdf" secondAttribute="bottom" id="Orw-ok-PXv"/>
+                            <constraint firstItem="sbq-PS-fJ7" firstAttribute="trailing" secondItem="XCI-U5-LUu" secondAttribute="trailing" constant="12" id="PE2-9g-vAV"/>
+                            <constraint firstItem="sbq-PS-fJ7" firstAttribute="top" secondItem="XCI-U5-LUu" secondAttribute="top" constant="12" id="US1-PF-x8n"/>
+                            <constraint firstItem="XCI-U5-LUu" firstAttribute="trailing" secondItem="D2o-nQ-h5b" secondAttribute="trailing" id="rPu-J4-mnA"/>
+                            <constraint firstItem="ZAd-RA-rdf" firstAttribute="leading" secondItem="XCI-U5-LUu" secondAttribute="leading" id="xW9-ND-wHp"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="gYr-Is-kUP">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="mKw-o7-PWh">
+                            <connections>
+                                <action selector="pressedCancel:" destination="PFh-Gl-Zad" id="zEk-gz-JPa"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" style="done" systemItem="save" id="LIT-AT-Z8x">
+                            <connections>
+                                <action selector="pressedSave:" destination="PFh-Gl-Zad" id="9wy-X1-O0t"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0PX-JW-3nD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="711.59420289855075" y="64.955357142857139"/>
+        </scene>
+        <!--Workout Step Edit View Controller-->
+        <scene sceneID="1xR-Yl-aWQ">
+            <objects>
+                <viewController id="7vx-qA-aDV" customClass="WorkoutStepEditViewController" customModule="WorkoutExample" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="IyJ-Ux-DOH">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="4oE-qv-iwD"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="N1V-eV-IGQ">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="ByT-ma-nJh">
+                            <connections>
+                                <action selector="pressedCancel:" destination="7vx-qA-aDV" id="Abz-Ym-L7f"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" style="done" systemItem="save" id="Pxr-JV-NZ9">
+                            <connections>
+                                <action selector="pressedSave:" destination="7vx-qA-aDV" id="g8l-4E-xpi"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="WcY-eB-cDH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1426" y="65"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="OWP-KP-fTy">
+            <objects>
+                <navigationController id="sfy-Zi-twE" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="JQr-P5-hYw">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="k6Y-h3-GHA"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="YwU-lo-Zri" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-719" y="65"/>
         </scene>
     </scenes>
     <resources>

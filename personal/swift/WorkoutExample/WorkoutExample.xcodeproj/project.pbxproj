@@ -15,10 +15,11 @@
 		8071721A26B0C0E0002484EA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8071721826B0C0E0002484EA /* LaunchScreen.storyboard */; };
 		8071722826B0D14E002484EA /* WorkoutEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8071722726B0D14E002484EA /* WorkoutEditViewController.swift */; };
 		8071722A26B0D185002484EA /* WorkoutStepEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8071722926B0D185002484EA /* WorkoutStepEditViewController.swift */; };
-		8084B4BF26B0EBC70096639F /* WorkoutStepTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8084B4BE26B0EBC70096639F /* WorkoutStepTableViewCell.swift */; };
 		8084B4C226B0ED4C0096639F /* Workout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8084B4C126B0ED4C0096639F /* Workout.swift */; };
 		8084B4C426B0ED540096639F /* WorkoutStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8084B4C326B0ED540096639F /* WorkoutStep.swift */; };
 		8084B4C626B0EEDC0096639F /* Const.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8084B4C526B0EEDC0096639F /* Const.swift */; };
+		8084B4C926B117DA0096639F /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8084B4C826B117DA0096639F /* Helper.swift */; };
+		8084B4CC26B11B480096639F /* WorkoutStepDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8084B4CB26B11B480096639F /* WorkoutStepDataSource.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,10 +33,11 @@
 		8071721B26B0C0E0002484EA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8071722726B0D14E002484EA /* WorkoutEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutEditViewController.swift; sourceTree = "<group>"; };
 		8071722926B0D185002484EA /* WorkoutStepEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutStepEditViewController.swift; sourceTree = "<group>"; };
-		8084B4BE26B0EBC70096639F /* WorkoutStepTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutStepTableViewCell.swift; sourceTree = "<group>"; };
 		8084B4C126B0ED4C0096639F /* Workout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Workout.swift; sourceTree = "<group>"; };
 		8084B4C326B0ED540096639F /* WorkoutStep.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutStep.swift; sourceTree = "<group>"; };
 		8084B4C526B0EEDC0096639F /* Const.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Const.swift; sourceTree = "<group>"; };
+		8084B4C826B117DA0096639F /* Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
+		8084B4CB26B11B480096639F /* WorkoutStepDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutStepDataSource.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +83,7 @@
 			children = (
 				8084B4C026B0ED360096639F /* data */,
 				8071722426B0C17B002484EA /* ui */,
+				8084B4C726B117C40096639F /* util */,
 				8071720D26B0C0DF002484EA /* AppDelegate.swift */,
 				8071720F26B0C0DF002484EA /* SceneDelegate.swift */,
 				8084B4C526B0EEDC0096639F /* Const.swift */,
@@ -100,6 +103,7 @@
 			isa = PBXGroup;
 			children = (
 				8084B4BD26B0EBB00096639F /* tableviewcell */,
+				8084B4CA26B11A230096639F /* datasource */,
 				8071722526B0C184002484EA /* viewcontroller */,
 			);
 			path = ui;
@@ -127,7 +131,6 @@
 		8084B4BD26B0EBB00096639F /* tableviewcell */ = {
 			isa = PBXGroup;
 			children = (
-				8084B4BE26B0EBC70096639F /* WorkoutStepTableViewCell.swift */,
 			);
 			path = tableviewcell;
 			sourceTree = "<group>";
@@ -139,6 +142,22 @@
 				8084B4C326B0ED540096639F /* WorkoutStep.swift */,
 			);
 			path = data;
+			sourceTree = "<group>";
+		};
+		8084B4C726B117C40096639F /* util */ = {
+			isa = PBXGroup;
+			children = (
+				8084B4C826B117DA0096639F /* Helper.swift */,
+			);
+			path = util;
+			sourceTree = "<group>";
+		};
+		8084B4CA26B11A230096639F /* datasource */ = {
+			isa = PBXGroup;
+			children = (
+				8084B4CB26B11B480096639F /* WorkoutStepDataSource.swift */,
+			);
+			path = datasource;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -213,11 +232,12 @@
 			files = (
 				8071721226B0C0DF002484EA /* WorkoutViewController.swift in Sources */,
 				8071720E26B0C0DF002484EA /* AppDelegate.swift in Sources */,
+				8084B4CC26B11B480096639F /* WorkoutStepDataSource.swift in Sources */,
 				8084B4C226B0ED4C0096639F /* Workout.swift in Sources */,
 				8084B4C426B0ED540096639F /* WorkoutStep.swift in Sources */,
 				8071722826B0D14E002484EA /* WorkoutEditViewController.swift in Sources */,
-				8084B4BF26B0EBC70096639F /* WorkoutStepTableViewCell.swift in Sources */,
 				8071721026B0C0DF002484EA /* SceneDelegate.swift in Sources */,
+				8084B4C926B117DA0096639F /* Helper.swift in Sources */,
 				8071722A26B0D185002484EA /* WorkoutStepEditViewController.swift in Sources */,
 				8084B4C626B0EEDC0096639F /* Const.swift in Sources */,
 			);
