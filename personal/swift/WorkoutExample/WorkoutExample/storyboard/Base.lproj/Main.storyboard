@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Workout View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="WorkoutViewController" customModule="WorkoutExample" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aID-DF-bYO" userLabel="Play/Pause Button">
+                                <rect key="frame" x="0.0" y="44" width="207" height="207"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="aID-DF-bYO" secondAttribute="height" multiplier="1:1" id="94Z-Hq-TGR"/>
+                                </constraints>
+                                <state key="normal" image="play"/>
+                                <connections>
+                                    <action selector="pressedPlayPause:" destination="BYZ-38-t0r" eventType="touchUpInside" id="dXJ-uW-sVJ"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A1n-FK-WTN" userLabel="Reset Button">
+                                <rect key="frame" x="207" y="44" width="207" height="207"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="A1n-FK-WTN" secondAttribute="height" multiplier="1:1" id="Noq-nB-SrB"/>
+                                </constraints>
+                                <state key="normal" image="replay"/>
+                                <connections>
+                                    <action selector="pressedReset:" destination="BYZ-38-t0r" eventType="touchUpInside" id="BA7-lR-NdV"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Current Step" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KsH-Zh-Ixd" userLabel="Current Step Label">
+                                <rect key="frame" x="0.0" y="251" width="414" height="19.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="step_type_rest" translatesAutoresizingMaskIntoConstraints="NO" id="Yrs-Pe-sge" userLabel="Step Type Image View">
+                                <rect key="frame" x="0.0" y="270.5" width="207" height="155.5"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="Yrs-Pe-sge" secondAttribute="height" multiplier="4:3" id="ugb-Y6-MgP"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rest" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GX5-6e-YsN" userLabel="Step Type Label">
+                                <rect key="frame" x="0.0" y="426" width="207" height="19.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="60 s" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tQ6-QQ-yqe" userLabel="Step Duration Label">
+                                <rect key="frame" x="207" y="270.5" width="207" height="175"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="36"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Upcoming Steps" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FjP-1J-fTO" userLabel="Upcoming Steps Label">
+                                <rect key="frame" x="0.0" y="465.5" width="414" height="20"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="oYF-bz-rfi" userLabel="Upcoming Steps Table View">
+                                <rect key="frame" x="0.0" y="485.5" width="414" height="376.5"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" textLabel="Uyr-eG-17v" detailTextLabel="bXx-zp-cl1" imageView="P55-ft-41s" style="IBUITableViewCellStyleValue1" id="rKI-fe-Ovs" customClass="WorkoutStepTableViewCell" customModule="WorkoutExample" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="49.5" width="414" height="43.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="rKI-fe-Ovs" id="lrZ-Lr-17Q">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Uyr-eG-17v" userLabel="Step Type Label">
+                                                    <rect key="frame" x="100" y="15" width="25" height="14.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="0.0"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="bXx-zp-cl1" userLabel="Step Duration Label">
+                                                    <rect key="frame" x="361" y="15" width="33" height="14.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="0.0"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" image="step_type_burpees" id="P55-ft-41s" userLabel="Step Type Image View">
+                                                    <rect key="frame" x="20" y="0.0" width="65" height="43.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                </imageView>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="KsH-Zh-Ixd" firstAttribute="top" secondItem="aID-DF-bYO" secondAttribute="bottom" id="3S2-qv-N6G"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="leading" secondItem="Yrs-Pe-sge" secondAttribute="leading" id="5g8-N2-aPO"/>
+                            <constraint firstItem="KsH-Zh-Ixd" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="5sE-cS-hHh"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="KsH-Zh-Ixd" secondAttribute="trailing" id="6Bf-yG-0Sw"/>
+                            <constraint firstItem="tQ6-QQ-yqe" firstAttribute="top" secondItem="KsH-Zh-Ixd" secondAttribute="bottom" id="ANU-Fg-nXE"/>
+                            <constraint firstItem="A1n-FK-WTN" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="Chn-Xc-ivU"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="FjP-1J-fTO" secondAttribute="trailing" id="EWR-d0-vjZ"/>
+                            <constraint firstItem="aID-DF-bYO" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="LAJ-eN-LJD"/>
+                            <constraint firstItem="FjP-1J-fTO" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Lax-0x-VwO"/>
+                            <constraint firstItem="FjP-1J-fTO" firstAttribute="top" secondItem="GX5-6e-YsN" secondAttribute="bottom" constant="20" id="LrY-fu-mBI"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="oYF-bz-rfi" secondAttribute="bottom" id="Nrd-es-pAG"/>
+                            <constraint firstItem="aID-DF-bYO" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="XLp-ZF-aHw"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="centerX" secondItem="aID-DF-bYO" secondAttribute="trailing" id="d2h-eq-dqn"/>
+                            <constraint firstItem="tQ6-QQ-yqe" firstAttribute="bottom" secondItem="GX5-6e-YsN" secondAttribute="bottom" id="etY-jH-xyV"/>
+                            <constraint firstItem="Yrs-Pe-sge" firstAttribute="top" secondItem="KsH-Zh-Ixd" secondAttribute="bottom" id="gNk-Oa-Y55"/>
+                            <constraint firstItem="oYF-bz-rfi" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="hgx-E9-AD7"/>
+                            <constraint firstItem="tQ6-QQ-yqe" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="jg7-V3-Sth"/>
+                            <constraint firstItem="GX5-6e-YsN" firstAttribute="leading" secondItem="Yrs-Pe-sge" secondAttribute="leading" id="jne-aS-kU2"/>
+                            <constraint firstItem="oYF-bz-rfi" firstAttribute="top" secondItem="FjP-1J-fTO" secondAttribute="bottom" id="k5q-U1-vcu"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="A1n-FK-WTN" secondAttribute="trailing" id="mzC-FM-CeZ"/>
+                            <constraint firstItem="GX5-6e-YsN" firstAttribute="trailing" secondItem="Yrs-Pe-sge" secondAttribute="trailing" id="r9n-hb-atc"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="oYF-bz-rfi" secondAttribute="trailing" id="sRZ-F3-L8d"/>
+                            <constraint firstItem="A1n-FK-WTN" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="tiF-BL-bSR"/>
+                            <constraint firstItem="GX5-6e-YsN" firstAttribute="top" secondItem="Yrs-Pe-sge" secondAttribute="bottom" id="uKD-FH-29t"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="centerX" secondItem="Yrs-Pe-sge" secondAttribute="trailing" id="xja-FS-9na"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="tQ6-QQ-yqe" secondAttribute="trailing" id="zi0-HG-5Gd"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="playPauseButton" destination="aID-DF-bYO" id="Ydv-8o-Anz"/>
+                        <outlet property="resetButton" destination="A1n-FK-WTN" id="cs4-yh-05k"/>
+                        <outlet property="stepDurationLabel" destination="tQ6-QQ-yqe" id="qiW-S5-V3T"/>
+                        <outlet property="stepTypeImageView" destination="Yrs-Pe-sge" id="YvC-Jc-DNc"/>
+                        <outlet property="stepTypeLabel" destination="GX5-6e-YsN" id="hHZ-u6-LGW"/>
+                        <outlet property="upcomingStepsTableView" destination="oYF-bz-rfi" id="sVc-gG-ICh"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="30" y="65"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="play" width="48" height="48"/>
+        <image name="replay" width="48" height="48"/>
+        <image name="step_type_burpees" width="1024" height="687"/>
+        <image name="step_type_rest" width="500" height="500"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
