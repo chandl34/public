@@ -18,8 +18,12 @@ class WorkoutEditViewController: UIViewController
     
     
     // MARK: MEMBERS
+    @IBOutlet var workoutStepsTableView: UITableView!
+    
     private var _workoutSteps : Array<WorkoutStep> = Array()
     private var _editAction: WorkoutEditAction?
+    
+    private var _dataSource: WorkoutStepDataSource?
     
         
     // MARK: LIFE CYCLE
@@ -27,7 +31,7 @@ class WorkoutEditViewController: UIViewController
     {
         super.viewDidLoad()
         
-        
+        updateWorkoutSteps(workoutSteps: _workoutSteps)
     }
     
     
@@ -36,6 +40,14 @@ class WorkoutEditViewController: UIViewController
     {
         _workoutSteps = workout.steps
         _editAction = editAction
+    }
+    
+    private func updateWorkoutSteps(workoutSteps: Array<WorkoutStep>)
+    {
+        _workoutSteps = workoutSteps
+        
+        _dataSource = WorkoutStepDataSource(data: _workoutSteps)
+        workoutStepsTableView.dataSource = _dataSource
     }
         
     

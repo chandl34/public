@@ -21,6 +21,8 @@ class WorkoutViewController: UIViewController
     @IBOutlet var stepDurationLabel: UILabel!
     @IBOutlet var upcomingStepsTableView: UITableView!
      
+    private var _timer: Timer?
+    
     private var _workout: Workout = Workout(steps: Array())
     private var _isPlaying: Bool = false
     private var _stepTimeRemaining: Int = 0
@@ -31,6 +33,11 @@ class WorkoutViewController: UIViewController
     
     
     // MARK: LIFE CYCLE
+    deinit
+    {
+        _timer?.invalidate()
+    }
+    
     override func viewDidLoad()
     {
         super.viewDidLoad()
@@ -77,6 +84,15 @@ class WorkoutViewController: UIViewController
         
         _dataSource = WorkoutStepDataSource(data: _remainingWorkoutSteps)
         upcomingStepsTableView.dataSource = _dataSource
+        upcomingStepsTableView.reloadData()
+    }
+    
+    private func updateIsPlaying(isPlaying: Bool)
+    {
+        _isPlaying = isPlaying
+        
+        let image = _isPlaying ? UIImage(named: "pause") : UIImage(named: "play")
+        playPauseButton.setImage(image, for: .normal)
     }
     
     private func resetSteps()
@@ -111,17 +127,26 @@ class WorkoutViewController: UIViewController
     
     private func startTimer(seconds: Int)
     {
-        _isPlaying = true
-        
-        // _timer.create
-        // _timer.callbacks
-        // _timer.start
+        updateIsPlaying(isPlaying: true)
+            
+        updateStepTimeRemaining(stepTimeRemaining: seconds)
+        _timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: { timer in
+            if(self._stepTimeRemaining > 0)
+            {
+                self.updateStepTimeRemaining(stepTimeRemaining: self._stepTimeRemaining - 1)
+            }
+            else
+            {
+                timer.invalidate()
+                self.onStepComplete()
+            }
+        })
     }
     
     private func stopTimer()
     {
-        _isPlaying = false
-        //_timer.cancel
+        updateIsPlaying(isPlaying: false)
+        _timer?.invalidate()
     }
     
     
@@ -139,12 +164,26 @@ class WorkoutViewController: UIViewController
     
     @IBAction func pressedPlayPause(_ sender: Any)
     {
-        
+        if(_isPlaying)
+        {
+            stopTimer()
+        }
+        else
+        {
+            if(_stepTimeRemaining > 0)
+            {
+                startTimer(seconds: _stepTimeRemaining)
+            }
+            else
+            {
+                onStepComplete()
+            }
+        }
     }
     
     @IBAction func pressedReset(_ sender: Any)
     {
-        
+        resetSteps()
     }
 }
 
