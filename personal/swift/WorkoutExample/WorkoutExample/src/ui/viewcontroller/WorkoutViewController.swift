@@ -67,7 +67,7 @@ class WorkoutViewController: UIViewController
         
         stepDurationLabel.isHidden = _currentWorkoutStep == nil
         
-        stepTypeLabel.text = workoutStep?.type.description
+        stepTypeLabel.text = workoutStep?.type.description ?? " "
         stepTypeImageView.image = workoutStep?.type.image
     }
     

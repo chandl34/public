@@ -45,7 +45,8 @@ class WorkoutStepEditViewController: UIViewController
         
         let currTime = Int(Date().timeIntervalSince1970)
         let duration = Int.random(in: 1...10)
-        let workoutStep = WorkoutStep(id: currTime, type: .rest, duration: duration)
+        let type = WorkoutStepType.allCases[Int.random(in: 0..<WorkoutStepType.allCases.count)]
+        let workoutStep = WorkoutStep(id: currTime, type: type, duration: duration)
         
         _editAction?(workoutStep)
     }

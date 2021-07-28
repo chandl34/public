@@ -31,6 +31,11 @@ class WorkoutEditViewController: UIViewController
     {
         super.viewDidLoad()
         
+        if(!_workoutSteps.isEmpty)
+        {
+            _workoutSteps.remove(at: Int.random(in: 0..<_workoutSteps.count))
+        }
+        
         updateWorkoutSteps(workoutSteps: _workoutSteps)
     }
     
@@ -59,7 +64,7 @@ class WorkoutEditViewController: UIViewController
         {
             destination.configure { workoutStep in
                 self._workoutSteps.append(workoutStep)
-                // TODO update ui
+                self.updateWorkoutSteps(workoutSteps: self._workoutSteps)
             }
         }
     }

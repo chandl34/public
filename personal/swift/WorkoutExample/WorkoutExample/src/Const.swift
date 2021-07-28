@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 
 
-enum WorkoutStepType
+enum WorkoutStepType: CaseIterable
 {
     case pushUps
     case sitUps
