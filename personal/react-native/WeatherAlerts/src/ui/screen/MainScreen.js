@@ -8,6 +8,7 @@ import {
   StyleSheet,
   TouchableHighlight,
   PixelRatio,
+  NativeModules,
 } from 'react-native';
 import SQLite from 'react-native-sqlite-storage';
 import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -15,7 +16,9 @@ import UUID from 'react-native-uuid';
 
 import LocationScreen from 'src/ui/screen/LocationScreen.js';
 import LocationItemView from 'src/ui/view/LocationItemView.js';
+import TimerModule from 'src/module/TimerModule.tsx';
 import * as Const from 'src/Const.js';
+
 
 SQLite.DEBUG(true);
 SQLite.enablePromise(true);
@@ -38,10 +41,12 @@ const MainScreen = ({navigation}) => {
     },
   });
 
+
   //---- MEMBERS
   const [uuid, setUUID] = useState(null);
   const [data, setData] = useState([]);
   const [message, setMessage] = useState(null);
+
 
   //---- EVENTS
   useEffect(() => {
@@ -97,7 +102,7 @@ const MainScreen = ({navigation}) => {
       <TouchableHighlight
         style={{backgroundColor: '#e7e7e7'}}
         underlayColor="#dddddd"
-        onPress={() => _pressedItem(item)}
+        onPress={() => _pressedItem(item, index)}
         onShowUnderlay={separators.highlight}
         onHideUnderlay={separators.unhighlight}>
         <LocationItemView item={item} />
@@ -106,8 +111,20 @@ const MainScreen = ({navigation}) => {
   }
 
   //---- ACTIONS
-  function _pressedItem(item) {
-    navigation.navigate('LocationScreen', {item: item});
+  function _pressedItem(item, index) {
+    if(index == 0)
+    TimerModule.startTimer(
+      15 * 1000,
+      1 * 1000,
+      (millisUntilFinished) => {
+        console.log(`onTick(${millisUntilFinished})`);
+      },
+      () => {
+        console.log(`onFinish()`);
+      });
+    else if(index == 1)
+    TimerModule.stopTimer();
+    //navigation.navigate('LocationScreen', {item: item});
   }
 
   //---- METHODS
